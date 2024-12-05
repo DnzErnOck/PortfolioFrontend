@@ -2,7 +2,7 @@ import React from 'react'
 
 function HomeContainer() {
   return (
-    <div>Home Container</div>
+    <div>HomeContainer</div>
   )
 }
 
