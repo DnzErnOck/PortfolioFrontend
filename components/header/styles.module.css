@@ -1,0 +1,27 @@
+.header {
+    background: linear-gradient(180deg, rgba(240, 186, 216, 0.432), rgba(255, 255, 255, 0));
+  }
+  
+  .headerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #552727e0;
+  }
+  
+  .navigationMenu {
+    display: flex;
+    gap: 48px;
+    color: #494949;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
