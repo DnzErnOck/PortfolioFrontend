@@ -1,9 +1,9 @@
-import HomeContainer from "@/containers/home";
+import Home from "@/containers/home";
 
 
 function HomePage() {
   return (
-    <HomeContainer/>
+    <Home/>
   );
 }
 export default HomePage;

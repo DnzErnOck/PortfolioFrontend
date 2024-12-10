@@ -1,0 +1,67 @@
+/* Genel Konteyner */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background: #f8f8f8; /* Arka plan rengi */
+}
+
+/* Hoş Geldiniz Metni */
+.greetingText {
+  font-size: 2rem;
+  color: #555;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Kullanıcı Adı */
+.nameText {
+  font-size: 3.8rem;
+  font-weight: bold;
+  color: #333; /* Görseldeki gibi */
+  margin: 1.2rem 0;
+}
+
+/* Typewriter Efekt Metni */
+.typingText {
+  font-size: 1.4rem;
+  color: #555;
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+/* Buton Hover */
+.button {
+  background-color: #5b5bae;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+.resumeButton {
+  background-color: #5b5bae;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.resumeButton:hover {
+  background-color: #3f3f91;
+  transform: scale(1.05);
+}
