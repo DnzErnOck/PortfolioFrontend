@@ -3,11 +3,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
+  justify-content: flex-start; /* Üstten biraz daha boşluk bırakalım */
+  min-height: 80vh; /* Home sayfası biraz daha aşağıya kayacak */
+  padding: 4rem 2rem; /* Daha fazla padding ekleyelim */
   text-align: center;
-  background: #f8f8f8; /* Arka plan rengi */
+  background: #f8f8f8;
+  margin-top: 40px; /* Home sayfası biraz daha aşağıda */
 }
 
 /* Hoş Geldiniz Metni */
@@ -22,7 +23,7 @@
 .nameText {
   font-size: 3.8rem;
   font-weight: bold;
-  color: #333; /* Görseldeki gibi */
+  color: #333;
   margin: 1.2rem 0;
 }
 
@@ -34,21 +35,6 @@
   font-style: italic;
 }
 
-/* Buton Hover */
-.button {
-  background-color: #5b5bae;
-  color: white;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  transform: scale(1.1);
-}
 .resumeButton {
   background-color: #5b5bae;
   color: #fff;
