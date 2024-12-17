@@ -1,55 +1,71 @@
-.skills-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .skills-title {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-  }
-  
-  .skills-icons {
-    display: flex;
-    flex-wrap: wrap; /* Bu özellik, elemanları bir satırda sığmadığında alt satıra kaydırır */
-    justify-content: center; /* Ortalamak için */
-    gap: 20px;
-    max-width: 50%; /* Genişliği kısıtlayalım */
-    padding: 0 20px;
-  }
-  
-  .skill {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 80px; /* Sabit genişlik ile düzeni kontrol et */
-  }
-  
-  .icon img {
-    width: 60px;
-    height: 60px;
-    transition: transform 0.3s ease; /* Hover animasyonu için geçiş efekti */
-  }
-  
-  .icon img:hover {
-    transform: scale(1.2); /* Hoverda büyüme efekti */
-  }
-  
-  .skill-name {
-    font-size: 1rem;
-    margin-top: 10px;
-    color: #333;
-    font-weight: 600;
-  }
-  
-  .error-message {
-    color: red;
-    font-size: 1rem;
-    margin-top: 20px;
-    text-align: center;
-  }
-  
+/* Container genel tasarımı */
+.skillsContainer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  max-width: 900px;
+}
+
+/* Başlık */
+.skillsTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #808080; /* Gri renk */
+  margin-bottom: 1.5rem;
+}
+
+/* Hata mesajı */
+.errorMessage {
+  color: red;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* İkonların olduğu alan */
+.skillsIcons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Her bir skill kartı */
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 120px;
+  height: 120px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-image: url(); /* Dinamik arka planlar burada işlenecek */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Hover efekti */
+.skill:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* İkon */
+.icon img {
+  width: 60px; /* Biraz daha büyük ikonlar */
+  height: 60px;
+  margin-bottom: 0.5rem;
+}
+
+/* Skill ismi */
+.skillName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}

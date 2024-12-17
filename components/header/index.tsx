@@ -12,7 +12,7 @@ function Header() {
         <nav className={styles.navigationMenu}>
           <Link href='/'>Home</Link>
           <Link href='/'>About</Link>
-          <Link href='/'>Projects</Link>
+          <Link href="/projects">Projects</Link>
           <Link href='/'>Experience</Link>
           <Link href='/'>Certificate</Link>
           <Link href='/'>Contact</Link>
