@@ -13,10 +13,11 @@ function Header() {
           <Link href='/'>Home</Link>
           <Link href='/'>About</Link>
           <Link href="/projects">Projects</Link>
-          <Link href='/'>Experience</Link>
-          <Link href='/'>Certificate</Link>
+          <Link href='/experiences'>Experience</Link>
+          <Link href='/certificates'>Certificate</Link>
           <Link href='/'>Contact</Link>
           <Link href='/'>Blog</Link>
+
         </nav>
       </div>
     </header>

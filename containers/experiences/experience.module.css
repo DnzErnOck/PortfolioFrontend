@@ -1,0 +1,117 @@
+.container {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+  }
+   
+  .pageTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+   
+  .timeline {
+    position: relative;
+    padding: 1rem 0;
+  }
+   
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #e0e0e0;
+    transform: translateX(-50%);
+  }
+   
+  .timelineItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+   
+  .timelineItem:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+   
+  .timelineContent {
+    width: 45%;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+   
+  .timelineIcon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #cbabcd69;
+    color: #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+   
+  .position {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+  }
+   
+  .department {
+    font-size: 1rem;
+    color: #777;
+  }
+   
+  .detail {
+    margin-top: 0.5rem;
+    color: #555;
+  }
+   
+  .date {
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #888;
+  }
+   
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+   
+  .pageButton {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+   
+  .pageButton:hover {
+    background-color: #e0e0e0;
+  }
+   
+  .pageButton.active {
+    background-color: #4caf50;
+    color: white;
+    border-color: #4caf50;
+  }
+   
+  .pageButton.disabled {
+    cursor: not-allowed;
+    color: #bbb;
+    background-color: #f5f5f5;
+  }
