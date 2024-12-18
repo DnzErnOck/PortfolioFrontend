@@ -1,0 +1,15 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  .containerStyle {
+    width: 50%;
+    margin: 0 auto; /* Ortalamak için */
+  }
+  

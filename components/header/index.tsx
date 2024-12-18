@@ -15,6 +15,8 @@ function Header() {
           <Link href="/projects">Projects</Link>
           <Link href='/experiences'>Experience</Link>
           <Link href='/certificates'>Certificate</Link>
+          <Link href='/educationLanguagePage'>Education-Language</Link>
+          <Link href='/courses'>Courses</Link>
           <Link href='/contact'>Contact</Link>
           <Link href='/'>Blog</Link>
 

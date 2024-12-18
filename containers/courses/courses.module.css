@@ -1,0 +1,22 @@
+.courseContainer {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .courseList {
+    list-style-type: none;
+    padding: 0;
+    color: black;
+  }
+  .title{
+    color: black;
+  }
+  
+  .courseItem {
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 500px;
+  }
+  

@@ -1,0 +1,70 @@
+/* Ana Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    background-color: #f4f7f6;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Başlık Stili */
+  .sectionTitle {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Eğitim Kartı */
+  .educationItem {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .educationItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Eğitim Kartı Başlığı */
+  .educationItem h3 {
+    font-size: 20px;
+    color: #2b6cb0;
+    margin-bottom: 8px;
+  }
+  
+  /* Detay Paragrafları */
+  .educationItem p {
+    font-size: 16px;
+    color: #555;
+    margin: 4px 0;
+  }
+  
+  /* Tarih */
+  .educationItem p:last-child {
+    font-style: italic;
+    color: #888;
+  }
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .languageItem,
+    .educationItem {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .progressBar {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
