@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { fetchCourses } from "@/services/courseService";
 import styles from "./courses.module.css";
 
-// Kurs Arayüzü Tanımı
 interface Course {
   id: number;
   name: string;
@@ -24,28 +23,32 @@ const CoursesContainer: React.FC = () => {
       const data = await fetchCourses();
       setCourses(data);
     } catch (error) {
-      console.error("Kurslar çekilirken bir hata oluştu.");
+      console.error("Error fetching courses:", error);
     }
   };
 
   return (
-    <div className={styles.courseContainer}>
-      <h1 className={styles.title}>Kurslar</h1>
+    <section className={styles.courseSection}>
+      <h1 className={styles.title}>Courses</h1>
       {courses.length ? (
-        <ul className={styles.courseList}>
+        <div className={styles.cardGrid}>
           {courses.map((course) => (
-            <li key={course.id} className={styles.courseItem}>
-              <strong>İsim:</strong> {course.name} <br />
-              <strong>Eğitmen:</strong> {course.instructor} <br />
-              <strong>Açıklama:</strong> {course.detail} <br />
-              <strong>Tarih:</strong> {new Date(course.date).toLocaleString()}
-            </li>
+            <div key={course.id} className={styles.courseCard}>
+              <h2 className={styles.courseName}>{course.name}</h2>
+              <p className={styles.courseInstructor}>
+                <strong>Instructor:</strong> {course.instructor}
+              </p>
+              <p className={styles.courseDetail}>{course.detail}</p>
+              <p className={styles.courseDate}>
+                <strong>Date:</strong> {new Date(course.date).toLocaleDateString()}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
-        <p>Kurs bulunamadı.</p>
+        <p className={styles.noCourses}>No courses found.</p>
       )}
-    </div>
+    </section>
   );
 };
 

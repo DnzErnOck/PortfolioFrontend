@@ -1,22 +1,58 @@
-.courseContainer {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .courseList {
-    list-style-type: none;
-    padding: 0;
-    color: black;
-  }
-  .title{
-    color: black;
-  }
-  
-  .courseItem {
-    margin: 10px auto;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    max-width: 500px;
-  }
-  
+.courseSection {
+  padding: 3rem 2rem;
+  background-color: #f9f9f9;
+}
+
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Ensures 3 cards per row */
+  gap: 2rem;
+  padding: 0 1rem;
+  justify-content: center; /* Centers the grid content on wider screens */
+}
+
+.courseCard {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.courseCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.courseName {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.courseInstructor,
+.courseDetail,
+.courseDate {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.noCourses {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+}

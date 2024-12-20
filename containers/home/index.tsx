@@ -53,7 +53,7 @@ const Home = () => {
           <span><b>I'm a</b> </span>
           
           <Typewriter
-            words={["Frontend Developer", "Game Developer", "Graphic Designer"]}
+            words={["Frontend Developer", "Backend Developer", "Full-Stack Developer"]}
             typeSpeed={50}
             deleteSpeed={50}
             delaySpeed={2000}

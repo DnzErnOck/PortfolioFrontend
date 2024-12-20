@@ -1,111 +1,124 @@
 /* General styling for the form container */
 .formContainer {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  border: 1px solid #e2e2e2;
 }
 
 .formContainer:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2); /* Daha güçlü gölge */
+  transform: translateY(-5px);
 }
 
 /* Page Title Styling */
 .pageTitle {
   text-align: center;
-  font-size: 28px;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: 500;
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: 700;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 /* Styling for each form input element */
 .formGroup {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .formGroup label {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   display: block;
-  margin-bottom: 6px;
-  color: #555;
-  transition: color 0.2s ease;
+  margin-bottom: 10px;
+  color: #34495e;
 }
 
 .formGroup input,
 .formGroup textarea {
   width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
   box-sizing: border-box;
-  background-color: #f7f7f7;
-  transition: all 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus {
   outline: none;
-  border-color: #007bff;
-  background-color: #e9f1ff;
+  border-color: #3498db;
+  background-color: #eef6fc;
 }
 
 .formGroup textarea {
-  height: 120px;
+  height: 150px;
   resize: vertical;
 }
 
 /* Button styling */
 .button {
-  padding: 14px 25px;
-  background-color: #007bff;
+  padding: 16px;
+  background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
+  background-color: #2980b9;
+  transform: scale(1.05);
 }
 
 .button:active {
-  transform: translateY(1px);
+  transform: scale(1);
 }
 
 /* Popup styling */
 .popup {
   position: fixed;
-  top: 20px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  padding: 15px 30px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  padding: 20px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 10px;
   text-align: center;
   z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0s 0.5s;
+  display: inline-flex; /* Değişiklik: inline-flex ile yatayda hizalama */
+  align-items: center; /* Yatayda ortalama */
+  gap: 10px; /* İkon ile yazı arasına boşluk ekler */
+  animation: fadeIn 0.5s ease-out;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  white-space: nowrap; /* Yazının alt satıra inmesini engeller */
 }
 
-/* Show the popup */
-.popupVisible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.5s ease, visibility 0s 0s;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .success {
@@ -116,4 +129,23 @@
 .error {
   background-color: #dc3545;
   color: white;
+}
+
+.icon {
+  font-size: 24px; /* Adjust icon size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .formContainer {
+    padding: 30px;
+  }
+
+  .pageTitle {
+    font-size: 30px;
+  }
+
+  .button {
+    font-size: 16px;
+  }
 }
