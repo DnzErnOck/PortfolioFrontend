@@ -1,0 +1,73 @@
+.editorContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.toolbar {
+  position: relative;
+  top: 100px;
+  left: -320px;
+}
+
+.saveButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.saveButton:hover {
+  background-color: #218838;
+}
+.popupMessage {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  z-index: 1000;
+  font-size: 14px;
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* Yazı rengi beyaz */
+}
+
+.popup.success {
+  background: #28a745; /* Başarılı için yeşil */
+}
+
+.popup.error {
+  background: #dc3545; /* Başarısız için kırmızı */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
