@@ -69,7 +69,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
       // 2 saniye sonra yönlendirme
       setTimeout(() => {
         if (onSaveSuccess) onSaveSuccess();
-        router.push("/success-page"); // Yönlendirme yapılacak sayfa
+        router.push("/posts"); // Yönlendirme yapılacak sayfa
       }, 2000);
     } catch (error) {
       console.error("Error saving post:", error);

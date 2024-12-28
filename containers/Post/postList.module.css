@@ -1,0 +1,156 @@
+.postListContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .header {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+  }
+  
+  .searchContainer {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    margin-right: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .searchInput:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .loading {
+    text-align: center;
+    color: #666;
+  }
+  
+  .error {
+    text-align: center;
+    color: red;
+  }
+  
+  .postList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .postItem {
+    display: flex;
+    gap: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+    background-color: #fff;
+  }
+  
+  .postItem:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .postImage {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .postContent {
+    flex: 1;
+  }
+  
+  .postTitle {
+    font-size: 22px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .postDate {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .postPreview {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pageButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pageButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .pageButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pageInfo {
+    font-size: 16px;
+    color: #555;
+  }
+  .postImage {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+  }
+  .sortButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .sortIcon {
+    font-size: 24px;
+    color: #000000;
+    transition: color 0.3s;
+  }
+  
+  .sortButton:hover .sortIcon {
+    color: #000000;
+  }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
