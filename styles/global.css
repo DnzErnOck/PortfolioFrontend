@@ -21,3 +21,7 @@ div[data-nextjs-scroll-focus-boundary] {
 .container > .fluid {
   grid-column: 1 / -1;
 }
+body.loading {
+  overflow-y: scroll; /* Kaydırma çubuğunu göster */
+  
+}

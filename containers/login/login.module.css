@@ -1,0 +1,123 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .formContainer {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .sectionTitle {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    color: #444;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .inputGroup {
+    margin-bottom: 20px;
+  }
+  
+  .inputLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .inputField:focus {
+    border-color: #6e8efb;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+  }
+  
+  .button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6e8efb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #5a76d8;
+    transform: translateY(-3px);
+  }
+  
+  .button:active {
+    transform: translateY(0);
+  }
+  
+  .successMessage {
+    color: #4caf50;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .errorMessage {
+    color: #f44336;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  @media (max-width: 500px) {
+    .formContainer {
+      padding: 20px;
+    }
+  
+    .sectionTitle {
+      font-size: 22px;
+    }
+  
+    .button {
+      font-size: 14px;
+    }
+  }
+  
