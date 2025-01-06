@@ -5,7 +5,7 @@ import styles from "./home.module.css";
 import TextSpan from "@/components/TextSpan";
 import SocialMediaIcons from "@/components/SocialMedia/SocialMediaIcons";
 import { downloadResume } from "@/services/resumeService"
-import { getUser } from "@/services/userService";
+import { UserService } from "@/services/userService";
 import About from "@/components/about";
 import Skill from "@/components/skill/skill";
 
@@ -17,7 +17,7 @@ const Home = () => {
     useEffect(() => {
       const fetchUserName = async () => {
         try {
-          const user = await getUser(); // getUser çağrısı
+          const user = await UserService.getUser(); // getUser çağrısı
           const { name, surname, detail } = user; // name, surname ve detail alanlarını al
           const combinedName = `${name} ${surname}`; // İsim ve soyadı birleştir
           setFullName(combinedName.split("")); // Harf harf ayır ve state'e aktar

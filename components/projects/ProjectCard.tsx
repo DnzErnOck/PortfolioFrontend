@@ -9,7 +9,8 @@ interface ProjectCardProps {
   detail: string;
   liveSiteLink: string;
   githubLink: string;
-  skillName: string[];
+  skillNames: string[];
+  skillIds: number[];
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -18,7 +19,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   detail,
   liveSiteLink,
   githubLink,
-  skillName,
+  skillNames,
+  skillIds,
 }) => {
   return (
     <div className={styles.cardContainer}>
@@ -33,7 +35,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         
         {/* Etiketler */}
         <div className={styles.skills}>
-          {skillName.map((skill, index) => (
+          {skillNames.map((skill, index) => (
             <span key={index} className={styles.skill}>
               {skill}
             </span>

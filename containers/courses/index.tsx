@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { fetchCourses } from "@/services/courseService";
+import { CourseService } from "@/services/courseService";
 import styles from "./courses.module.css";
 
 interface Course {
@@ -20,7 +20,7 @@ const CoursesContainer: React.FC = () => {
 
   const getCourses = async () => {
     try {
-      const data = await fetchCourses();
+      const data = await CourseService.fetchCourses();
       setCourses(data);
     } catch (error) {
       console.error("Error fetching courses:", error);

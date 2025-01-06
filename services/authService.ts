@@ -1,13 +1,12 @@
-import axios from "axios";
-import { BASE_URL } from "@/config/config";
+import { BASE_API } from "@/config/axiosInstances";
 
-export const fetchAuth = async () => {
-    try{
-        const response = await axios.post(`${BASE_URL}/auth/createSecretPass`);
-        return response.data;
-    }
-    catch(error){
-        console.error("Şİfre alınırken hata oluştu:", error);
-        return [];
-    }
-  };
+
+export const fetchAuth = async (): Promise<any> => {
+  try {
+    const response = await BASE_API.post(`/auth/createSecretPass`);
+    return response.data;
+  } catch (error) {
+    console.error("Şifre alınırken hata oluştu:", error);
+    throw error;
+  }
+};

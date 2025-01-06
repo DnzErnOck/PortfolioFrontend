@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { fetchLanguages } from "../../services/languageService";
+import { LanguageService } from "../../services/languageService";
 import styles from "./language.module.css";
 
 interface Language {
@@ -23,7 +23,7 @@ const LanguageContainer: React.FC = () => {
 
   useEffect(() => {
     const getLanguages = async () => {
-      const data = await fetchLanguages();
+      const data = await LanguageService.fetchLanguages();  
       setLanguages(data);
     };
     getLanguages();

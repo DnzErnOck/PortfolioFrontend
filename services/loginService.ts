@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "@/config/config";
+import { BASE_API, API } from "@/config/axiosInstances";
 
 interface LoginRequest {
   username: string;
@@ -12,7 +12,7 @@ interface LoginResponse {
 
 export const loginUser = async (loginData: LoginRequest): Promise<LoginResponse | null> => {
   try {
-    const response = await axios.post(`${BASE_URL}/auth/login`, loginData);
+    const response = await BASE_API.post(`/auth/login`, loginData);
     return response.data;
   } catch (error) {
     console.error("Giriş sırasında hata oluştu:", error);

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { fetchExperiences } from "../../services/experienceService";
+import { ExperienceService } from "../../services/experienceService";
 import styles from "./experience.module.css";
 
 interface Experience {
@@ -18,7 +18,7 @@ const ExperienceContainer: React.FC = () => {
 
   useEffect(() => {
     const getExperiences = async () => {
-      const data: Experience[] = await fetchExperiences();
+      const data: Experience[] = await ExperienceService.fetchExperiences();
 
       // Sort experiences with most recent (or ongoing) first
       const sortedData = data.sort((a, b) => {

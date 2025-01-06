@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllSocialMedias } from "@/services/socialMediaService";
+import { SocialMediaService } from "@/services/socialMediaService";
 import styles from "./socialMediaIcons.module.css";
 
 type SocialMedia = {
@@ -14,7 +14,7 @@ const SocialMediaIcons = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getAllSocialMedias();
+      const data = await SocialMediaService.getAllSocialMedias();
       setSocialMedias(data);
     }
     fetchData();

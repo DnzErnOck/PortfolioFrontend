@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa"; // FontAwesome'dan ikonlar
 import styles from "./postList.module.css";
-import { fetchPosts } from "@/services/postService";
+import { PostService } from "@/services/postService";
 
 const extractFirstParagraph = (contents: any[] | undefined) => {
   if (!contents || contents.length === 0) return "No preview available";
@@ -30,7 +30,7 @@ const PostList: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchPosts(page, 10, search, sort); // Sayfalama ve sıralama
+      const data = await PostService.fetchPosts(page, 10, search, sort); // Sayfalama ve sıralama
       setPosts(data.content);
       setTotalPages(data.totalPages);
     } catch (err) {

@@ -1,4 +1,4 @@
-import { getSkills } from '@/services/skillService';
+import { SkillService } from '@/services/skillService';
 import React, { useEffect, useState } from 'react';
 import styles from "./skill.module.css";
 
@@ -49,7 +49,7 @@ const Skill: React.FC = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const fetchedSkills = await getSkills();
+        const fetchedSkills = await SkillService.getSkills();
         setSkills(fetchedSkills);
       } catch (err) {
         setError('Failed to fetch skills');

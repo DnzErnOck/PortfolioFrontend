@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import { fetchEducations } from "../../services/educationService";
+import { EducationService } from "../../services/educationService";
 import styles from "./education.module.css";
 
 interface Education {
@@ -16,7 +16,7 @@ const EducationContainer: React.FC = () => {
 
   useEffect(() => {
     const getEducations = async () => {
-      const data = await fetchEducations();
+      const data = await EducationService.fetchEducations();
       setEducations(data);
     };
     getEducations();

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { BASE_URL } from "@/config/config";
+import { BASE_API } from "@/config/axiosInstances";
 
 export const fetchCertificates = async () => {
     try{
-        const response = await axios.get(`${BASE_URL}/certificates`);
+        const response = await BASE_API.get(`/certificates`);
         return response.data;
     }
     catch(error){

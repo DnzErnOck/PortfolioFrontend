@@ -5,7 +5,7 @@ import styles from "./postEditor.module.css";
 import TitleInput from "@/components/PostEditor/TitleInput";
 import PostToolbar from "@/components/PostEditor/PostToolbar";
 import ContentArea from "@/components/PostEditor/ContentArea";
-import { createPosts } from "@/services/postService";
+import { PostService } from "@/services/postService";
 
 interface PostEditorContainerProps {
   onSaveSuccess?: () => void; // Başarı callback'i
@@ -61,7 +61,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
     });
 
     try {
-      const response = await createPosts(formData);
+      const response = await PostService.createPost(formData);
       console.log("Post saved successfully:", response);
       setPopupMessage("Post saved successfully!");
       setIsSuccess(true);

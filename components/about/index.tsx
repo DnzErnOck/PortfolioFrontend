@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { getUser } from "@/services/userService"; // Kullanıcı servisi, bilgileri almak için.
+import { UserService } from "@/services/userService"; // Kullanıcı servisi, bilgileri almak için.
 import styles from "./about.module.css"; // CSS dosyasını import ediyoruz
 import Image from "next/image"; // next/image bileşenini import ettik
 import image from '../../images/about_avata.jpg'; // Resmi import ettik
@@ -10,7 +10,7 @@ const About = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await getUser();
+      const user = await UserService.getUser();
       const { aboutMe } = user;
       setAboutMe(aboutMe);
     };
