@@ -4,7 +4,7 @@ import styles from "./socialMediaIcons.module.css";
 
 type SocialMedia = {
   id: number;
-  imageBase64: string;
+  imageBase64: string; // Zorunlu string
   name: string;
   link: string;
 };
@@ -14,8 +14,18 @@ const SocialMediaIcons = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await SocialMediaService.getAllSocialMedias();
-      setSocialMedias(data);
+      try {
+        const pagedResponse = await SocialMediaService.getAll();
+        const data = pagedResponse.content.map((item) => ({
+          id: item.id,
+          imageBase64: item.imageBase64 || "", // Varsayılan bir değer atanıyor
+          name: item.name,
+          link: item.link,
+        }));
+        setSocialMedias(data); // Uygun türde veriler ayarlandı
+      } catch (error) {
+        console.error("Error fetching social medias:", error);
+      }
     }
     fetchData();
   }, []);

@@ -7,6 +7,7 @@ const menuItems = [
   { title: "Profile", icon: "👤", url: "/admin/profile" },
   { title: "Projects", icon: "📁", url: "/admin/projects" },
   { title: "Skills", icon: "🛠️", url: "/admin/skills" },
+  { title: "Social Media", icon: "🌐", url: "/admin/socialMedia" },
   { title: "Gallery", icon: "🖼️", url: "/admin/gallery" },
   { title: "Achievements", icon: "🏆", url: "/admin/achievements" },
   { title: "Settings", icon: "⚙️", url: "/admin/settings" },

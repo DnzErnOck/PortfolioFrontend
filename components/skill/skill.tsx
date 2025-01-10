@@ -49,15 +49,22 @@ const Skill: React.FC = () => {
   useEffect(() => {
     const fetchSkills = async () => {
       try {
-        const fetchedSkills = await SkillService.getSkills();
+        const pagedResponse = await SkillService.getAll();
+        // `content` doğru alan ise burayı kontrol edin
+        const fetchedSkills = pagedResponse.content.map((item) => ({
+          id: item.id,
+          imageBase64: item.imageBase64 || "", // Varsayılan bir değer atanıyor
+          name: item.name,
+        }));
         setSkills(fetchedSkills);
       } catch (err) {
-        setError('Failed to fetch skills');
+        setError("Failed to fetch skills");
       }
     };
-
+  
     fetchSkills();
   }, []);
+  
 
   useEffect(() => {
     const skillCards = document.querySelectorAll(`.${styles.skill}`);
@@ -81,7 +88,6 @@ const Skill: React.FC = () => {
             <div className={styles.icon}>
               <img src={skill.imageBase64} alt={skill.name} />
             </div>
-            {/* <div className={styles.skillName}>{skill.name}</div> */}
           </div>
         ))}
       </div>
