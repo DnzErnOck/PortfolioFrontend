@@ -1,4 +1,4 @@
-import styles from "./ProjectTable.module.css";
+import styles from "../../../utils/adminTable/table.module.css";
 import { Edit, Trash } from "lucide-react";
 
 interface ProjectTableProps {

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./ProjectForm.module.css";
-import { SkillService } from "@/services/skillService";
+import styles from "../../../utils/adminTable/form.module.css";
+import {SkillService } from "@/services/skillService";
 
 interface ProjectFormProps {
   initialData?: any;
@@ -39,20 +39,17 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, onCanc
 
   useEffect(() => {
     const fetchSkills = async () => {
-      const skillList = await SkillService.getSkills();
-      setSkills(skillList);
-
-      if (initialData && initialData.skillIds) {
-        const selectedSkillIds = initialData.skillIds;
-        setFormData((prev: typeof formData) => ({
-          ...prev,
-          skillIds: selectedSkillIds,
-        }));
+      try {
+        const skillPagedResponse = await SkillService.getAll(0, 10); // Sayfa ve boyut belirtiliyor
+        setSkills(skillPagedResponse.content); // Yalnızca `content` kısmını ayarlıyoruz
+      } catch (error) {
+        console.error("Error fetching skills:", error);
       }
     };
-
+  
     fetchSkills();
   }, [initialData]);
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;

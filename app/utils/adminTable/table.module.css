@@ -1,0 +1,80 @@
+.tableContainer {
+    margin-top: 20px;
+    overflow-x: auto; /* Ensures the table is scrollable on smaller screens */
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table th,
+  .table td {
+    padding: 16px 20px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f8fafc;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .table td {
+    background-color: #fff;
+    color: #555;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tr:hover {
+    background-color: #f1f5f9;
+  }
+  
+  .detailCell {
+    max-width: 400px; /* Limit the width of the detail column */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions button.edit {
+    background-color: #e0f2fe;
+    color: #0284c7;
+  }
+  
+  .actions button.edit:hover {
+    background-color: #bae6fd;
+  }
+  
+  .actions button.delete {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  .actions button.delete:hover {
+    background-color: #fecaca;
+  }
+  
