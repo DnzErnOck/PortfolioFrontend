@@ -8,10 +8,18 @@ const menuItems = [
   { title: "Projects", icon: "📁", url: "/admin/projects" },
   { title: "Skills", icon: "🛠️", url: "/admin/skills" },
   { title: "Social Media", icon: "🌐", url: "/admin/socialMedia" },
+  { title: "Experience", icon: "💼", url: "/admin/experience" },
+  { title: "Certificate", icon: "📜", url: "/admin/certificate" },
+  { title: "Education", icon: "🎓", url: "/admin/education" },
+  { title: "Language", icon: "🗣️", url: "/admin/language" },
+  { title: "Courses", icon: "📚", url: "/admin/courses" },
+  { title: "Blog", icon: "✍️", url: "/admin/blog" },
   { title: "Gallery", icon: "🖼️", url: "/admin/gallery" },
   { title: "Achievements", icon: "🏆", url: "/admin/achievements" },
   { title: "Settings", icon: "⚙️", url: "/admin/settings" },
 ];
+
+
 
 export default function DashboardSidebar() {
   return (

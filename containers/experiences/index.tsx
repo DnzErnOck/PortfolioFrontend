@@ -13,28 +13,40 @@ interface Experience {
   finishDate: string | null; // Allow null for finishDate
 }
 
+interface PagedResponse<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+}
+
 const ExperienceContainer: React.FC = () => {
   const [experiences, setExperiences] = useState<Experience[]>([]);
 
   useEffect(() => {
     const getExperiences = async () => {
-      const data: Experience[] = await ExperienceService.fetchExperiences();
+      try {
+        const response: PagedResponse<Experience> = await ExperienceService.fetchExperiences();
+        
+        // Sort experiences with most recent (or ongoing) first
+        const sortedData = response.content.sort((a, b) => {
+          const finishA = a.finishDate ? new Date(a.finishDate).getTime() : Infinity;
+          const finishB = b.finishDate ? new Date(b.finishDate).getTime() : Infinity;
 
-      // Sort experiences with most recent (or ongoing) first
-      const sortedData = data.sort((a, b) => {
-        const finishA = a.finishDate ? new Date(a.finishDate).getTime() : Infinity;
-        const finishB = b.finishDate ? new Date(b.finishDate).getTime() : Infinity;
+          if (finishA === finishB) {
+            const startA = new Date(a.startDate).getTime();
+            const startB = new Date(b.startDate).getTime();
+            return startB - startA; // Secondary sort by startDate (most recent first)
+          }
 
-        if (finishA === finishB) {
-          const startA = new Date(a.startDate).getTime();
-          const startB = new Date(b.startDate).getTime();
-          return startB - startA; // Secondary sort by startDate (most recent first)
-        }
+          return finishB - finishA; // Sort by finishDate (most recent first)
+        });
 
-        return finishB - finishA; // Sort by finishDate (most recent first)
-      });
-
-      setExperiences(sortedData);
+        setExperiences(sortedData);
+      } catch (error) {
+        console.error("Error fetching experiences:", error);
+      }
     };
     getExperiences();
   }, []);

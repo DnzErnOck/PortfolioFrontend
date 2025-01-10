@@ -10,17 +10,28 @@ export interface Experience {
   finishDate: string | null; // Allow null for finishDate
 }
 
+export interface PagedResponse<T> {
+  content: T[]; // Dizi, sayfalı sonuçların içeriğini temsil eder
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
+}
+
 export const ExperienceService = {
   /**
    * Tüm deneyimleri getir (yetkilendirme gereksiz)
+   * Sayfalama desteği eklendi
    */
-  async fetchExperiences(): Promise<Experience[]> {
+  async fetchExperiences(page: number = 0, size: number = 10): Promise<PagedResponse<Experience>> {
     try {
-      const response = await BASE_API.get<Experience[]>("/experiences");
+      const response = await BASE_API.get<PagedResponse<Experience>>("/experiences", {
+        params: { page, size },
+      });
       return response.data;
     } catch (error) {
       console.error("Experiences alınırken hata oluştu:", error);
-      return [];
+      throw new Error("Failed to fetch experiences.");
     }
   },
 
@@ -52,9 +63,9 @@ export const ExperienceService = {
   /**
    * Deneyim bilgilerini güncelle (yetkilendirme gerekli)
    */
-  async updateExperience(experienceId: number, experienceData: Partial<Experience>): Promise<void> {
+  async updateExperience(updateData: { id: number } & Partial<Experience>): Promise<void> {
     try {
-      await API.put(`/experiences/${experienceId}`, experienceData);
+      await API.put("/experiences", updateData);
     } catch (error) {
       console.error("Experience güncellenirken hata oluştu:", error);
       throw new Error("Failed to update the experience.");
