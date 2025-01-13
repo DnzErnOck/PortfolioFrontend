@@ -11,7 +11,7 @@ const menuItems = [
   { title: "Experience", icon: "💼", url: "/admin/experience" },
   { title: "Certificate", icon: "📜", url: "/admin/certificates" },
   { title: "Education", icon: "🎓", url: "/admin/educations" },
-  { title: "Language", icon: "🗣️", url: "/admin/language" },
+  { title: "Language", icon: "🗣️", url: "/admin/languages" },
   { title: "Courses", icon: "📚", url: "/admin/courses" },
   { title: "Blog", icon: "✍️", url: "/admin/blog" },
   { title: "Gallery", icon: "🖼️", url: "/admin/gallery" },

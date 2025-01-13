@@ -38,7 +38,7 @@ export const LanguageService = {
    */
   async createLanguage(languageData: Omit<Language, "id">): Promise<void> {
     try {
-      await API.post("/languages", languageData);
+      await API.post("/language", languageData);
     } catch (error) {
       console.error("Language oluşturulurken hata oluştu:", error);
       throw new Error("Failed to create the language.");
@@ -48,9 +48,9 @@ export const LanguageService = {
   /**
    * Dil bilgilerini güncelle (yetkilendirme gerekli)
    */
-  async updateLanguage(languageId: number, languageData: Partial<Language>): Promise<void> {
+  async updateLanguage(updateData: { id: number } & Partial<Language>): Promise<void> {
     try {
-      await API.put(`/languages/${languageId}`, languageData);
+      await API.put("/language", updateData);
     } catch (error) {
       console.error("Language güncellenirken hata oluştu:", error);
       throw new Error("Failed to update the language.");
