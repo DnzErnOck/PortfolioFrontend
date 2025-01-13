@@ -50,9 +50,9 @@ export const EducationService = {
   /**
    * Eğitim bilgilerini güncelle (yetkilendirme gerekli)
    */
-  async updateEducation(educationId: number, educationData: Partial<Education>): Promise<void> {
+  async updateEducation(updateData: { id: number } & Partial<Education>): Promise<void> {
     try {
-      await API.put(`/educations/${educationId}`, educationData);
+      await API.put("/educations", updateData);
     } catch (error) {
       console.error("Education güncellenirken hata oluştu:", error);
       throw new Error("Failed to update the education.");

@@ -10,7 +10,7 @@ const menuItems = [
   { title: "Social Media", icon: "🌐", url: "/admin/socialMedia" },
   { title: "Experience", icon: "💼", url: "/admin/experience" },
   { title: "Certificate", icon: "📜", url: "/admin/certificates" },
-  { title: "Education", icon: "🎓", url: "/admin/education" },
+  { title: "Education", icon: "🎓", url: "/admin/educations" },
   { title: "Language", icon: "🗣️", url: "/admin/language" },
   { title: "Courses", icon: "📚", url: "/admin/courses" },
   { title: "Blog", icon: "✍️", url: "/admin/blog" },
