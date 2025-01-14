@@ -9,6 +9,15 @@ interface LanguageFormProps {
   onCancel: () => void;
 }
 
+const levels = [
+  { id: 1, name: "A1" },
+  { id: 2, name: "A2" },
+  { id: 3, name: "B1" },
+  { id: 4, name: "B2" },
+  { id: 5, name: "C1" },
+  { id: 6, name: "C2" },
+];
+
 const LanguageForm: React.FC<LanguageFormProps> = ({ initialData, onSubmit, onCancel }) => {
   const [formData, setFormData] = useState<any>({
     name: "",
@@ -24,7 +33,7 @@ const LanguageForm: React.FC<LanguageFormProps> = ({ initialData, onSubmit, onCa
     }
   }, [initialData]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -52,16 +61,24 @@ const LanguageForm: React.FC<LanguageFormProps> = ({ initialData, onSubmit, onCa
           </div>
 
           <div className={styles.formGroup}>
-            <label htmlFor="levelId">Level ID</label>
-            <input
-              type="text"
+            <label htmlFor="levelId">Level</label>
+            <select
               id="levelId"
               name="levelId"
-              placeholder="Enter Level ID"
-              value={formData.levelId}
+              className={styles.select}
+              value={formData.levelId} // Seçili olan değer burada belirleniyor
               onChange={handleInputChange}
               required
-            />
+            >
+              <option value="" disabled>
+                Select Level
+              </option>
+              {levels.map((level) => (
+                <option key={level.id} value={level.id}>
+                  {level.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className={styles.formActions}>

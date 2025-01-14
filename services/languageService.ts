@@ -4,6 +4,7 @@ export interface Language {
   id: number;
   name: string;
   languageLevel: string; // A1, B2 gibi seviyeler
+  levelId:string;
 }
 
 export const LanguageService = {
