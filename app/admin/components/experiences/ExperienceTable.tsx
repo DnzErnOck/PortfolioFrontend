@@ -26,7 +26,7 @@ const ExperienceTable: React.FC<ExperienceTableProps> = ({ experiences, onEdit, 
               <td>{experience.departmentTitle}</td>
               <td>{experience.workplace}</td>
               <td>{experience.position}</td>
-              <td>{experience.detail}</td> {/* Yeni veri */}
+              <td className={styles.detailCell}>{experience.detail}</td> {/* Yeni veri */}
               <td className={styles.actions}>
                 <button className={styles.edit} onClick={() => onEdit(experience)}>
                   <Edit size={18} />

@@ -1,50 +1,87 @@
-import { BASE_API } from "@/config/axiosInstances";
+import { PagedResponse } from "@/app/utils/PagedResponse";
+import { BASE_API, API } from "@/config/axiosInstances";
 
+// Course Response Interface
+export interface CourseResponse {
+  id: number;
+  name: string;
+  instructor: string;
+  detail: string;
+  date: string;
+}
+
+// Course Create Request Interface
+export interface CreateCourseRequest {
+  name: string;
+  instructor: string;
+  detail: string;
+  date: string;
+}
+
+// Course Update Request Interface
+export interface UpdateCourseRequest {
+  id: number;
+  name: string;
+  instructor: string;
+  detail: string;
+  date: string;
+}
+
+// Course Service
 export const CourseService = {
-  async fetchCourses(): Promise<any[]> {
+  // Get all courses (Paged)
+  getAll: async (page: number = 0, size: number = 10): Promise<PagedResponse<CourseResponse>> => {
     try {
-      const response = await BASE_API.get("/courses");
+      const response = await BASE_API.get<PagedResponse<CourseResponse>>("/courses", {
+        params: { page, size },
+      });
       return response.data;
     } catch (error) {
-      console.error("Kurslar çekilirken hata oluştu:", error);
-      return [];
+      console.error("Error fetching courses:", error);
+      throw error;
     }
   },
 
-  async getCourseById(courseId: number): Promise<any> {
+  // Get a course by ID
+  getById: async (id: number): Promise<CourseResponse> => {
     try {
-      const response = await BASE_API.get(`/courses/${courseId}`);
+      const response = await API.get<CourseResponse>(`/courses/${id}`);
       return response.data;
     } catch (error) {
-      console.error("Kurs bilgisi alınırken hata oluştu:", error);
-      throw new Error("Failed to fetch the course information.");
+      console.error("Error fetching course by ID:", error);
+      throw error;
     }
   },
 
-  async createCourse(courseData: any): Promise<void> {
+  // Create a new course
+  create: async (data: CreateCourseRequest): Promise<void> => {
     try {
-      await BASE_API.post("/courses", courseData);
+      const response = await API.post("/courses", data);
+      return response.data;
     } catch (error) {
-      console.error("Kurs oluşturulurken hata oluştu:", error);
-      throw new Error("Failed to create the course.");
+      console.error("Error creating course:", error);
+      throw error;
     }
   },
 
-  async updateCourse(courseId: number, courseData: any): Promise<void> {
+  // Update an existing course
+  update: async (data: UpdateCourseRequest): Promise<void> => {
     try {
-      await BASE_API.put(`/courses/${courseId}`, courseData);
+      const response = await API.put("/courses", data);
+      return response.data;
     } catch (error) {
-      console.error("Kurs güncellenirken hata oluştu:", error);
-      throw new Error("Failed to update the course.");
+      console.error("Error updating course:", error);
+      throw error;
     }
   },
 
-  async deleteCourse(courseId: number): Promise<void> {
+  // Delete a course
+  delete: async (id: number): Promise<void> => {
     try {
-      await BASE_API.delete(`/courses/${courseId}`);
+      await API.delete(`/courses/${id}`);
     } catch (error) {
-      console.error("Kurs silinirken hata oluştu:", error);
-      throw new Error("Failed to delete the course.");
+      console.error("Error deleting course:", error);
+      throw error;
     }
   },
 };
