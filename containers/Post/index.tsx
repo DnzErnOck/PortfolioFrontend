@@ -4,9 +4,9 @@ import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa"; // FontAwesom
 import styles from "./postList.module.css";
 import { PostService } from "@/services/postService";
 
-const extractFirstParagraph = (contents: any[] | undefined) => {
-  if (!contents || contents.length === 0) return "No preview available";
-  const textContent = contents.find((content) => content.type === "TEXT");
+const extractFirstParagraph = (elements: any[] | undefined) => {
+  if (!elements || elements.length === 0) return "No preview available";
+  const textContent = elements.find((content) => content.type === "TEXT");
   return textContent?.content.split("\n")[0] || "No preview available";
 };
 
@@ -30,7 +30,7 @@ const PostList: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await PostService.fetchPosts(page, 10, search, sort); // Sayfalama ve sıralama
+      const data = await PostService.getAll(page, 10); // Sayfalama ve sıralama
       setPosts(data.content);
       setTotalPages(data.totalPages);
     } catch (err) {

@@ -14,34 +14,34 @@ interface PostEditorContainerProps {
 const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess }) => {
   const router = useRouter(); // Yönlendirme için
   const [title, setTitle] = useState<string>(""); // Başlık için state
-  const [contents, setContents] = useState<{ type: string; value: string }[]>([]);
+  const [elements, setElements] = useState<{ type: string; value: string }[]>([]);
   const [imageFiles, setImageFiles] = useState<File[]>([]); // Resim dosyaları için state
   const [popupMessage, setPopupMessage] = useState<string | null>(null); // Popup mesajı
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null); // Başarı durumu
 
   const handleAddContent = (type: string) => {
-    setContents([...contents, { type, value: "" }]);
+    setElements([...elements, { type, value: "" }]);
   };
 
   const handleChangeContent = (index: number, value: string) => {
-    const updatedContents = [...contents];
+    const updatedContents = [...elements];
     updatedContents[index].value = value;
-    setContents(updatedContents);
+    setElements(updatedContents);
   };
 
   const handleFileChange = (index: number, file: File | null) => {
     if (file) {
-      const updatedContents = [...contents];
+      const updatedContents = [...elements];
       updatedContents[index].value = file.name; // İçeriği dosya adı olarak ayarla
       updatedContents[index].type = "IMAGE"; // Tip IMAGE olarak ayarla
-      setContents(updatedContents);
+      setElements(updatedContents);
       setImageFiles([...imageFiles, file]); // Dosyayı ekle
     }
   };
 
   const handleRemoveContent = (index: number) => {
-    const updatedContents = contents.filter((_, i) => i !== index);
-    setContents(updatedContents);
+    const updatedContents = elements.filter((_, i) => i !== index);
+    setElements(updatedContents);
   };
 
   const handleSave = async () => {
@@ -50,7 +50,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
     const postRequest = {
       title: title || "Untitled Post",
       active: true,
-      elements: contents.map((content) => ({
+      elements: elements.map((content) => ({
         type: content.type,
         content: content.value,
       })),
@@ -61,7 +61,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
     });
 
     try {
-      const response = await PostService.createPost(formData);
+      const response = await PostService.create(formData);
       console.log("Post saved successfully:", response);
       setPopupMessage("Post saved successfully!");
       setIsSuccess(true);
@@ -94,7 +94,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
       </div>
       <TitleInput value={title} onChange={(value) => setTitle(value)} />
       <ContentArea
-        contents={contents}
+        contents={elements}
         onChangeContent={handleChangeContent}
         onFileChange={handleFileChange}
         onRemoveContent={handleRemoveContent}

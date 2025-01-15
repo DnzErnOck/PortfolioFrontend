@@ -1,31 +1,28 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 interface ContentBlockProps {
   index: number;
   type: string;
   value: string;
+  imageBase64?: string; // Resim için base64 verisi
   onChangeContent: (index: number, value: string) => void;
   onFileChange: (index: number, file: File | null) => void;
-  onRemoveContent: (index: number) => void; // İçerik kaldırma fonksiyonu
+  onRemoveContent: (index: number) => void;
 }
 
 const ContentBlock: React.FC<ContentBlockProps> = ({
   index,
   type,
   value,
+  imageBase64, // Base64 resmi burada alıyoruz
   onChangeContent,
   onFileChange,
   onRemoveContent,
 }) => {
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-
   useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    }
-  }, [value]);
-  const [fileURL, setFileURL] = useState<string | null>(null); // Geçici URL için state
+    console.log(`ContentBlock - Index: ${index}, Value:`, value); // Kontrol için
+  }, [value, imageBase64]);
+
   return (
     <div style={{ position: "relative", marginBottom: "20px" }}>
       {/* İçeriği silme düğmesi */}
@@ -55,27 +52,40 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
             onChange={(e) => {
               const file = e.target.files?.[0] || null;
               if (file) {
-                const url = URL.createObjectURL(file);
-                setFileURL(url); // Görüntüleme için URL ayarla
                 onFileChange(index, file);
-                onChangeContent(index, file.name);
               }
             }}
           />
-          {fileURL && (
-          <img
-            src={fileURL}
-            alt="Uploaded"
-            style={{ maxWidth: "300px", marginTop: "10px", borderRadius: "8px" }}
-          />
-        )}  
+          {/* Eğer `imageBase64` varsa göster */}
+          {imageBase64 ? (
+            <img
+              src={imageBase64} // Base64 verisini göster
+              alt="Uploaded"
+              style={{
+                maxWidth: "300px",
+                marginTop: "10px",
+                borderRadius: "8px",
+              }}
+            />
+          ) : (
+            value && (
+              <img
+                src={value} // Eğer base64 yoksa `value` ile göster
+                alt="Uploaded"
+                style={{
+                  maxWidth: "300px",
+                  marginTop: "10px",
+                  borderRadius: "8px",
+                }}
+              />
+            )
+          )}
         </div>
       )}
 
       {/* TEXT Alanı */}
       {type === "TEXT" && (
         <textarea
-          ref={textareaRef}
           style={{
             resize: "none",
             width: "100%",
@@ -86,26 +96,6 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
             backgroundColor: "#f9f9f9",
           }}
           placeholder="Write your text here..."
-          value={value}
-          onChange={(e) => onChangeContent(index, e.target.value)}
-        />
-      )}
-
-      {/* CODE Alanı */}
-      {type === "CODE" && (
-        <textarea
-          ref={textareaRef}
-          style={{
-            resize: "none",
-            width: "100%",
-            minHeight: "50px",
-            padding: "10px",
-            fontFamily: "monospace",
-            backgroundColor: "#f9f9f9",
-            border: "none",
-            outline: "none",
-          }}
-          placeholder="Write your code here..."
           value={value}
           onChange={(e) => onChangeContent(index, e.target.value)}
         />

@@ -13,7 +13,7 @@ const menuItems = [
   { title: "Education", icon: "🎓", url: "/admin/educations" },
   { title: "Language", icon: "🗣️", url: "/admin/languages" },
   { title: "Courses", icon: "📚", url: "/admin/courses" },
-  { title: "Blog", icon: "✍️", url: "/admin/blog" },
+  { title: "Blog", icon: "✍️", url: "/admin/post" },
   { title: "Gallery", icon: "🖼️", url: "/admin/gallery" },
   { title: "Achievements", icon: "🏆", url: "/admin/achievements" },
   { title: "Settings", icon: "⚙️", url: "/admin/settings" },
