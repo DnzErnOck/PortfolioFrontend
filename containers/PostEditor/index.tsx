@@ -14,13 +14,13 @@ interface PostEditorContainerProps {
 const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess }) => {
   const router = useRouter(); // Yönlendirme için
   const [title, setTitle] = useState<string>(""); // Başlık için state
-  const [elements, setElements] = useState<{ type: string; value: string }[]>([]);
+  const [elements, setElements] = useState<{ contentType: string; value: string }[]>([]);
   const [imageFiles, setImageFiles] = useState<File[]>([]); // Resim dosyaları için state
   const [popupMessage, setPopupMessage] = useState<string | null>(null); // Popup mesajı
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null); // Başarı durumu
 
-  const handleAddContent = (type: string) => {
-    setElements([...elements, { type, value: "" }]);
+  const handleAddContent = (contentType: string) => {
+    setElements([...elements, { contentType, value: "" }]);
   };
 
   const handleChangeContent = (index: number, value: string) => {
@@ -33,7 +33,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
     if (file) {
       const updatedContents = [...elements];
       updatedContents[index].value = file.name; // İçeriği dosya adı olarak ayarla
-      updatedContents[index].type = "IMAGE"; // Tip IMAGE olarak ayarla
+      updatedContents[index].contentType = "IMAGE"; // Tip IMAGE olarak ayarla
       setElements(updatedContents);
       setImageFiles([...imageFiles, file]); // Dosyayı ekle
     }
@@ -51,7 +51,7 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
       title: title || "Untitled Post",
       active: true,
       elements: elements.map((content) => ({
-        type: content.type,
+        contentType: content.contentType,
         content: content.value,
       })),
     };
@@ -93,12 +93,12 @@ const PostEditorContainer: React.FC<PostEditorContainerProps> = ({ onSaveSuccess
         <PostToolbar onAddContent={handleAddContent} />
       </div>
       <TitleInput value={title} onChange={(value) => setTitle(value)} />
-      <ContentArea
+     {/*  <ContentArea
         contents={elements}
         onChangeContent={handleChangeContent}
         onFileChange={handleFileChange}
         onRemoveContent={handleRemoveContent}
-      />
+      /> */}
       <button className={styles.saveButton} onClick={handleSave}>
         Save
       </button>

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 interface ContentBlockProps {
   index: number;
-  type: string;
+  contentType: string;
   value: string;
   imageBase64?: string; // Resim için base64 verisi
   onChangeContent: (index: number, value: string) => void;
@@ -12,7 +12,7 @@ interface ContentBlockProps {
 
 const ContentBlock: React.FC<ContentBlockProps> = ({
   index,
-  type,
+  contentType,
   value,
   imageBase64, // Base64 resmi burada alıyoruz
   onChangeContent,
@@ -44,7 +44,7 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
       </button>
 
       {/* IMAGE Alanı */}
-      {type === "IMAGE" && (
+      {contentType === "IMAGE" && (
         <div>
           <input
             type="file"
@@ -84,7 +84,7 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
       )}
 
       {/* TEXT Alanı */}
-      {type === "TEXT" && (
+      {contentType === "TEXT" && (
         <textarea
           style={{
             resize: "none",

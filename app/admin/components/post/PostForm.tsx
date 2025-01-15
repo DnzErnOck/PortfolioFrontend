@@ -10,7 +10,7 @@ interface PostFormProps {
   initialData?: {
     id?: number;
     title: string;
-    elements: { id:number,type: string; content: string,imageBase64:string }[];
+    elements: { id:number,contentType: string; content: string,imageBase64:string,isGetNewPicture:boolean }[];
     active: boolean; // Aktif durumu
   };
   onSaveSuccess: (post: any) => void; // Kaydetme işlemi başarılı olduğunda çağrılacak fonksiyon
@@ -19,7 +19,7 @@ interface PostFormProps {
 
 const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCancel }) => {
   const [title, setTitle] = useState<string>(initialData?.title || ""); // Başlık için state
-  const [elements, setElements] = useState<{ type: string; content: string }[]>(
+  const [elements, setElements] = useState<{ id:number,contentType: string; content: string,isGetNewPicture:boolean }[]>(
     initialData?.elements || []
   ); // İçerikler için state
   const [imageFiles, setImageFiles] = useState<File[]>([]); // Resim dosyaları için state
@@ -31,7 +31,7 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
       setTitle(initialData.title || "");
       // Eğer `imageBase64` varsa onu koruyarak elements güncelleniyor
       const updatedElements = initialData.elements.map((element) =>
-        element.type === "IMAGE"
+        element.contentType === "IMAGE"
           ? { ...element,id:element.id, content: element.content, imageBase64: element.imageBase64 }
           : element
       );
@@ -42,9 +42,21 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
   
   
 
-  const handleAddContent = (type: string) => {
-    setElements([...elements, { type, content: "" }]); // Yeni içerik ekleme
+  const handleAddContent = (contentType: string) => {
+    const tempId = -(Math.floor(Math.random() * 100) + 1);
+    setElements([
+      ...elements,
+      {
+        id: tempId, // Geçici bir ID
+        contentType,
+        content: "",
+        isGetNewPicture: false,
+      },
+    ]);
+    console.log("elements"+elements);
+    
   };
+  
 
   const handleChangeContent = (index: number, value: string) => {
     const updatedContents = [...elements];
@@ -56,7 +68,7 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
     if (file) {
       const updatedContents = [...elements];
       updatedContents[index].content = file.name; // İçeriği dosya adı olarak ayarla
-      updatedContents[index].type = "IMAGE"; // Tip IMAGE olarak ayarla
+      updatedContents[index].contentType = "IMAGE"; // Tip IMAGE olarak ayarla
       setElements(updatedContents);
       setImageFiles([...imageFiles, file]); // Dosyayı ekle
     }
@@ -73,16 +85,19 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
       title: title || "Untitled Post",
       active, // Aktiflik durumu
       elements: elements.map((element, index) => ({
-        id: initialData?.elements[index]?.id || null, // Eğer ID varsa kullan
-        type: element.type,
+        id: element.id || initialData?.elements[index]?.id || null, // Mevcut ID'yi al veya null
+        contentType: element.contentType,
         content: element.content,
-        isGetNewPicture: element.type === "IMAGE" && !!imageFiles.find((file) => file.name === element.content),
+        isGetNewPicture:
+          element.contentType === "IMAGE" &&
+          !!imageFiles.find((file) => file.name === element.content),
       })),
       imageFiles,
     };
     console.log("Gönderilen Post Verisi:", postData); // Kontrol için log
     onSaveSuccess(postData); // Post verilerini üst bileşene gönder
   };
+  
   
 
   return (

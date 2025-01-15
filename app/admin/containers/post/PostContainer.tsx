@@ -43,10 +43,10 @@ const PostContainer = () => {
       active: post.active,
       elements: post.elements.map((content: any) => ({
         id:content.id,
-        contentType: content.type,
+        contentType: content.contentType,
         content: content.content,
         isGetNewPicture:
-          content.type === "IMAGE" &&
+          content.contentType === "IMAGE" &&
           !!post.imageFiles?.find((file: any) => file.name === content.content),
       })),
     };

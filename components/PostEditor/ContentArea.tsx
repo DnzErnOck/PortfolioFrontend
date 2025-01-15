@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ContentBlock from "./ContentBlock";
 
 interface ContentAreaProps {
-  contents: { type: string; content: string; imageBase64?: string }[]; // Base64 alanı eklendi
+  contents: { contentType: string; content: string; imageBase64?: string }[]; // Base64 alanı eklendi
   onChangeContent: (index: number, value: string) => void;
   onFileChange: (index: number, file: File | null) => void;
   onRemoveContent: (index: number) => void;
@@ -24,7 +24,7 @@ const ContentArea: React.FC<ContentAreaProps> = ({
         <ContentBlock
           key={index}
           index={index}
-          type={content.type}
+          contentType={content.contentType}
           value={content.content} // İçeriğin text ya da content kısmı
           imageBase64={content.imageBase64} // Base64 alanını geçiriyoruz
           onChangeContent={onChangeContent}

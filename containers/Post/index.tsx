@@ -6,13 +6,13 @@ import { PostService } from "@/services/postService";
 
 const extractFirstParagraph = (elements: any[] | undefined) => {
   if (!elements || elements.length === 0) return "No preview available";
-  const textContent = elements.find((content) => content.type === "TEXT");
+  const textContent = elements.find((content) => content.contentType === "TEXT");
   return textContent?.content.split("\n")[0] || "No preview available";
 };
 
 const extractFirstImage = (contents: any[] | undefined): string | undefined => {
   if (!contents || contents.length === 0) return undefined;
-  const imageContent = contents.find((content) => content.type === "IMAGE");
+  const imageContent = contents.find((content) => content.contentType === "IMAGE");
   if (!imageContent?.imageBase64) return undefined;
   return `${imageContent.imageBase64}`;
 };
