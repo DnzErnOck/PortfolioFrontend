@@ -27,6 +27,8 @@ const PostContainer = () => {
       setPosts(data.content);
       setTotalPages(data.totalPages);
       setCurrentPage(page);
+      
+      
     } catch (error) {
       console.error("Postlar yüklenirken hata oluştu:", error);
       setNotification({ type: "error", message: "Postlar yüklenirken hata oluştu." });
@@ -37,10 +39,12 @@ const PostContainer = () => {
 
   const handleSave = async (post: any): Promise<void> => {
     const formData = new FormData();
+    
     const postRequest = {
       id: post.id,
       title: post.title || "Untitled Post",
-      active: post.active,
+      isActive: post.isActive,
+      deletedElements:post.deletedElements || [],
       elements: post.elements.map((content: any) => ({
         id:content.id,
         contentType: content.contentType,
@@ -102,7 +106,7 @@ const PostContainer = () => {
 
   const showNotification = (newNotification: Notification) => {
     setNotification(newNotification);
-    setTimeout(() => setNotification(null), 3000);
+    setTimeout(() => setNotification(null), 3000); // 3 saniye sonra kapat
   };
 
   useEffect(() => {
@@ -126,10 +130,10 @@ const PostContainer = () => {
 
       {notification && (
         <div
-          className={`${styles.notification} ${!notification ? styles.hidden : ""}`}
+          className={`${styles.notification}`}
           style={{
-            "--notification-bg-color": notification.type === "success" ? "#4CAF50" : "#F44336",
-          } as React.CSSProperties}
+            backgroundColor: notification.type === "success" ? "#4CAF50" : "#F44336",
+          }}
         >
           {notification.message}
         </div>

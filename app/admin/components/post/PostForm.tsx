@@ -11,7 +11,7 @@ interface PostFormProps {
     id?: number;
     title: string;
     elements: { id:number,contentType: string; content: string,imageBase64:string,isGetNewPicture:boolean }[];
-    active: boolean; // Aktif durumu
+    isActive: boolean; // Aktif durumu
   };
   onSaveSuccess: (post: any) => void; // Kaydetme işlemi başarılı olduğunda çağrılacak fonksiyon
   onCancel: () => void; // İptal işlemi
@@ -23,11 +23,11 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
     initialData?.elements || []
   ); // İçerikler için state
   const [imageFiles, setImageFiles] = useState<File[]>([]); // Resim dosyaları için state
-  const [active, setActive] = useState<boolean>(initialData?.active || true); // Aktiflik durumu
+  const [isActive, setIsActive] = useState<boolean>(initialData?.isActive || true); // Aktiflik durumu
+  const [deletedElements, setDeletedElements] = useState<number[]>([]);
 
   useEffect(() => {
     if (initialData) {
-      console.log("PostForm - Initial Data:", initialData);
       setTitle(initialData.title || "");
       // Eğer `imageBase64` varsa onu koruyarak elements güncelleniyor
       const updatedElements = initialData.elements.map((element) =>
@@ -36,7 +36,7 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
           : element
       );
       setElements(updatedElements);
-      setActive(initialData.active ?? true);
+      setIsActive(initialData.isActive ?? true);
     }
   }, [initialData]);
   
@@ -53,7 +53,6 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
         isGetNewPicture: false,
       },
     ]);
-    console.log("elements"+elements);
     
   };
   
@@ -75,15 +74,20 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
   };
 
   const handleRemoveContent = (index: number) => {
-    const updatedContents = elements.filter((_, i) => i !== index);
-    setElements(updatedContents);
+    const elementId = elements[index]?.id; // Silinecek içeriğin ID'sini al
+    if (elementId && elementId > 0) { 
+      setDeletedElements([...deletedElements, elementId]); // Pozitif ID'leri silinenlere ekle
+    }
+    setElements(elements.filter((_, i) => i !== index)); // Görsel olarak kaldır
   };
+  
 
   const handleSubmit = () => {
     const postData = {
       id: initialData?.id, // Post ID
       title: title || "Untitled Post",
-      active, // Aktiflik durumu
+      isActive,
+      deletedElements,
       elements: elements.map((element, index) => ({
         id: element.id || initialData?.elements[index]?.id || null, // Mevcut ID'yi al veya null
         contentType: element.contentType,
@@ -94,7 +98,6 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
       })),
       imageFiles,
     };
-    console.log("Gönderilen Post Verisi:", postData); // Kontrol için log
     onSaveSuccess(postData); // Post verilerini üst bileşene gönder
   };
   
@@ -110,7 +113,6 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
         <ContentArea
             contents={elements}
             onChangeContent={(index, value) => {
-                console.log("ContentArea - Değiştirilen İçerik:", index, value); // Değişiklik kontrolü
                 handleChangeContent(index, value);
             }}
             onFileChange={handleFileChange}
@@ -121,8 +123,8 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onSaveSuccess, onCance
           <label>
             <input
               type="checkbox"
-              checked={active}
-              onChange={(e) => setActive(e.target.checked)}
+              checked={isActive}
+              onChange={(e) => setIsActive(e.target.checked)}
             />
             Aktif
           </label>

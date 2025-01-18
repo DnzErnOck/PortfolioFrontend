@@ -6,7 +6,7 @@ export interface PostResponse {
   id: number;
   title: string;
   elements: PostContent[];
-  active: boolean;
+  isActive: boolean;
 }
 
 // Post Content Interface
@@ -25,17 +25,25 @@ export const PostService = {
    * @param page Sayfa numarası (default: 0)
    * @param size Sayfa boyutu (default: 10)
    */
-  getAll: async (page: number = 0, size: number = 10): Promise<PagedResponse<PostResponse>> => {
+  getAll: async (
+    page: number = 0,
+    size: number = 10,
+    search: string = "",
+    sort: string = ""
+  ): Promise<PagedResponse<PostResponse>> => {
     try {
       const response = await BASE_API.get<PagedResponse<PostResponse>>("/posts", {
-        params: { page, size },
+        params: { page, size, search, sort },
       });
+      console.log("response", response.data);
+  
       return response.data;
     } catch (error) {
       console.error("Error fetching posts:", error);
       throw error;
     }
   },
+  
 
   /**
    * Yeni bir post oluştur

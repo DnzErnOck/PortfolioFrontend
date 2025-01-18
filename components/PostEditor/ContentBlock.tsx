@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
 interface ContentBlockProps {
   index: number;
   contentType: string;
   value: string;
-  imageBase64?: string; // Resim için base64 verisi
+  imageBase64?: string; // Mevcut resim için base64 verisi
   onChangeContent: (index: number, value: string) => void;
   onFileChange: (index: number, file: File | null) => void;
   onRemoveContent: (index: number) => void;
@@ -14,14 +14,14 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
   index,
   contentType,
   value,
-  imageBase64, // Base64 resmi burada alıyoruz
+  imageBase64, // Base64 ile gelen mevcut resim
   onChangeContent,
   onFileChange,
   onRemoveContent,
 }) => {
-  useEffect(() => {
-    console.log(`ContentBlock - Index: ${index}, Value:`, value); // Kontrol için
-  }, [value, imageBase64]);
+  const [fileURL, setFileURL] = useState<string | null>(null); // Yeni yüklenen resmin URL'si
+
+
 
   return (
     <div style={{ position: "relative", marginBottom: "20px" }}>
@@ -52,15 +52,18 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
             onChange={(e) => {
               const file = e.target.files?.[0] || null;
               if (file) {
-                onFileChange(index, file);
+                const url = URL.createObjectURL(file); // Yeni resim için URL oluştur
+                setFileURL(url); // Yeni resmi göster
+                onFileChange(index, file); // File'ı yukarıya gönder
+                onChangeContent(index, file.name); // Dosya adını içerik olarak kaydet
               }
             }}
           />
-          {/* Eğer `imageBase64` varsa göster */}
-          {imageBase64 ? (
+          {/* Yeni resim varsa öncelikli olarak göster, yoksa mevcut resmi göster */}
+          {fileURL ? (
             <img
-              src={imageBase64} // Base64 verisini göster
-              alt="Uploaded"
+              src={fileURL}
+              alt="New Upload"
               style={{
                 maxWidth: "300px",
                 marginTop: "10px",
@@ -68,10 +71,10 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
               }}
             />
           ) : (
-            value && (
+            imageBase64 && (
               <img
-                src={value} // Eğer base64 yoksa `value` ile göster
-                alt="Uploaded"
+                src={imageBase64}
+                alt="Existing Image"
                 style={{
                   maxWidth: "300px",
                   marginTop: "10px",

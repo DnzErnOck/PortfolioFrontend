@@ -154,3 +154,10 @@
     align-items: center;
     margin-bottom: 20px;
   }
+  .postItem {
+    cursor: pointer;
+  }
+  .postItem:hover {
+    background-color: #f0f0f0;
+  }
+  

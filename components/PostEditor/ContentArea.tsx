@@ -14,9 +14,7 @@ const ContentArea: React.FC<ContentAreaProps> = ({
   onFileChange,
   onRemoveContent,
 }) => {
-  useEffect(() => {
-    console.log("ContentArea - Elements:", contents); // Gelen elemanları kontrol et
-  }, [contents]);
+ 
 
   return (
     <div>

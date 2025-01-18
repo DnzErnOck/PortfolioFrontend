@@ -1,13 +1,20 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa"; // FontAwesome'dan ikonlar
+import { useRouter } from "next/navigation"; // Yönlendirme için
+import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
 import styles from "./postList.module.css";
 import { PostService } from "@/services/postService";
 
-const extractFirstParagraph = (elements: any[] | undefined) => {
-  if (!elements || elements.length === 0) return "No preview available";
-  const textContent = elements.find((content) => content.contentType === "TEXT");
-  return textContent?.content.split("\n")[0] || "No preview available";
+const extractContent = (elements: any[] | undefined) => {
+  if (!elements || elements.length === 0) return "No content available";
+
+  // Tüm TEXT içerikleri birleştir
+  const textContents = elements
+    .filter((content) => content.contentType === "TEXT")
+    .map((content) => content.content)
+    .join("\n");
+
+  return textContents || "No content available";
 };
 
 const extractFirstImage = (contents: any[] | undefined): string | undefined => {
@@ -18,11 +25,12 @@ const extractFirstImage = (contents: any[] | undefined): string | undefined => {
 };
 
 const PostList: React.FC = () => {
+  const router = useRouter(); // useRouter hook'u
   const [posts, setPosts] = useState<any[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState<string>("desc"); // Default sorting
+  const [sort, setSort] = useState<string>("desc");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,11 +38,12 @@ const PostList: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await PostService.getAll(page, 10); // Sayfalama ve sıralama
+      const data = await PostService.getAll(page, 10, search, sort);
       setPosts(data.content);
+      console.log("data", data.content);
       setTotalPages(data.totalPages);
     } catch (err) {
-      setError("Failed to fetch posts. Please try again.");
+      setError("Gönderiler alınamadı. Lütfen tekrar deneyin.");
     } finally {
       setLoading(false);
     }
@@ -46,12 +55,12 @@ const PostList: React.FC = () => {
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-    setPage(0); // Arama değiştiğinde sayfayı sıfırla
+    setPage(0);
   };
 
   const toggleSort = () => {
     setSort(sort === "desc" ? "asc" : "desc");
-    setPage(0); // Sıralama değiştiğinde sayfayı sıfırla
+    setPage(0);
   };
 
   const handlePreviousPage = () => {
@@ -60,6 +69,10 @@ const PostList: React.FC = () => {
 
   const handleNextPage = () => {
     if (page < totalPages - 1) setPage(page + 1);
+  };
+
+  const handlePostClick = (id: number) => {
+    router.push(`/posts/${id}`);
   };
 
   return (
@@ -89,10 +102,14 @@ const PostList: React.FC = () => {
         <>
           <ul className={styles.postList}>
             {posts.map((post) => (
-              <li key={post.id} className={styles.postItem}>
-                {extractFirstImage(post.contents) && (
+              <li
+                key={post.id}
+                className={styles.postItem}
+                onClick={() => handlePostClick(post.id)}
+              >
+                {extractFirstImage(post.elements) && (
                   <img
-                    src={extractFirstImage(post.contents)}
+                    src={extractFirstImage(post.elements)}
                     alt={post.title || "Post image"}
                     className={styles.postImage}
                   />
@@ -103,7 +120,7 @@ const PostList: React.FC = () => {
                     {new Date(post.createdDate).toLocaleDateString()}
                   </p>
                   <p className={styles.postPreview}>
-                    {extractFirstParagraph(post.contents)}
+                    {extractContent(post.elements)}
                   </p>
                 </div>
               </li>

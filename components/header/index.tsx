@@ -19,7 +19,6 @@ function Header() {
           <Link href='/courses'>Courses</Link>
           <Link href='/contact'>Contact</Link>
           <Link href='/posts'>Blog</Link>
-          <Link href='/postEditor'>Blog Ekle</Link>
 
         </nav>
       </div>
