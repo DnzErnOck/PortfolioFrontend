@@ -55,15 +55,17 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
-    align-items: center; /* İkon solda, yazı sağda olacak şekilde hizalanır */
+    flex-direction: column; /* İçeriğin dikey hizalanması için */
+    align-items: center;
+    justify-content: center; /* İçeriği tam ortalar */
     gap: 1rem;
+    height: 200px; /* Sabit yükseklik */
   }
   
   .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   }
-  
   .cardIcon {
     padding: 1rem;
     border-radius: 50%;
@@ -76,11 +78,12 @@
   .textContainer {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    align-items: center; /* Metinlerin ortalanması */
+    text-align: center;
   }
   
   .title {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: #1b1c1f;
     margin-bottom: 0.25rem;
@@ -89,8 +92,8 @@
   .description {
     font-size: 0.875rem;
     color: #6b7280;
+    line-height: 1.4;
   }
-  
   .activityGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -166,10 +169,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
   }
+  .iconContainer svg {
+    width: 2rem; /* İkon boyutu */
+    height: 2rem;
+  }
+  
+  
   .activityTitle {
     font-weight: 600;
     font-size: 1.125rem;
     color: #374151;
   }
+  .inspiration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem; /* Daha küçük ve zarif yazı boyutu */
+    font-family: "Georgia", serif; /* Zarif bir serif yazı tipi */
+    font-style: italic;
+    color: #2c3e50; /* Daha koyu, zarif bir renk tonu */
+    background-color: #fdfdfd;
+    border: 1px solid #dcdcdc; /* İnce bir çerçeve */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .inspiration:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Hafif bir hover efekti */
+  }
+  
+  .inspiration p {
+    margin: 0;
+    font-weight: 400; /* Hafif yazı kalınlığı */
+    text-align: center; /* Ortalanmış metin */
+  }
+  
+  .inspiration .quote-icon {
+    margin: 0 0.3rem; /* Daha az boşluk */
+    font-size: 1.4rem; /* Daha küçük ikon boyutu */
+    color: #f1c40f; /* Göz alıcı ama zarif bir renk */
+  }
+  
+  

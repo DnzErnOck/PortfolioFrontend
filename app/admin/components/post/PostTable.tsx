@@ -15,6 +15,15 @@ const formatDate = (dateString: string): string => {
   return `${day}-${month}-${year}`;
 };
 
+const truncateText = (text: string, maxLength: number): string => {
+  return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+};
+
+const getFirstTextContent = (elements: any[]): string => {
+  const textElement = elements.find((element) => element.contentType === "TEXT");
+  return textElement?.content || "No text content";
+};
+
 const PostTable: React.FC<PostTableProps> = ({ posts, onEdit, onDelete }) => {
   return (
     <div className={styles.tableContainer}>
@@ -32,9 +41,7 @@ const PostTable: React.FC<PostTableProps> = ({ posts, onEdit, onDelete }) => {
             <tr key={post.id}>
               <td>{post.title}</td>
               <td className={styles.detailCell}>
-                {post.elements.map((content: any, index: number) => (
-                  <p key={index}>{content.contentType === "TEXT" ? content.content : "Image Content"}</p>
-                ))}
+                {truncateText(getFirstTextContent(post.elements), 50)}
               </td>
               <td>{formatDate(post.createdDate)}</td>
               <td className={styles.actions}>

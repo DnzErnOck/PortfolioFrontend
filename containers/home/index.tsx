@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 import styles from "./home.module.css";
 import TextSpan from "@/components/TextSpan";
 import SocialMediaIcons from "@/components/SocialMedia/SocialMediaIcons";
-import { downloadResume } from "@/services/resumeService"
+import { ResumeService } from "@/services/resumeService"
 import { UserService } from "@/services/userService";
 import About from "@/components/about";
 import Skill from "@/components/skill/skill";
@@ -32,7 +32,7 @@ const Home = () => {
 
   
   const handleDownloadResume = () => {
-    downloadResume(); // ResumeService çağrılıyor
+    ResumeService.downloadResume(); // ResumeService çağrılıyor
   };
   
   return (

@@ -1,18 +1,76 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import ToDoList from "../toDoList/ToDoList";
 import styles from "./dashboardContent.module.css";
-import { User2, Book, Code2, ImageIcon, BarChart3, Settings } from "lucide-react";
+import { User2, Book, Code2, ImageIcon, BarChart3, Settings, Globe, Briefcase } from "lucide-react";
 
 const cards = [
-  { icon: User2, title: "Profile", color: "#3b82f6", description: "Update your personal information and contact details", link: "./user" },
-  { icon: Book, title: "Projects", color: "#8b5cf6", description: "Manage your portfolio projects and case studies", link: "./projects" },
-  { icon: Code2, title: "Skills", color: "#10b981", description: "Update your technical skills and expertise", link: "./skills" },
-  { icon: ImageIcon, title: "Resume", color: "#f97316", description: "Manage your work samples and images", link: "./resume" },
-  { icon: BarChart3, title: "Analytics", color: "#ec4899", description: "View portfolio performance and visitor statistics", link: "/analytics" },
-  { icon: Settings, title: "Settings", color: "#eab308", description: "Configure your portfolio preferences", link: "/settings" },
+  { 
+    icon: User2, 
+    title: "Profile", 
+    color: "#3b82f6", 
+    description: "Update and customize your personal information and contact details.", 
+    link: "./user" 
+  },
+  { 
+    icon: Book, 
+    title: "Projects", 
+    color: "#8b5cf6", 
+    description: "Showcase and manage your portfolio projects and case studies.", 
+    link: "./projects" 
+  },
+  { 
+    icon: Code2, 
+    title: "Skills", 
+    color: "#10b981", 
+    description: "Highlight and update your technical skills and expertise.", 
+    link: "./skills" 
+  },
+  { 
+    icon: ImageIcon, 
+    title: "Resume", 
+    color: "#f97316", 
+    description: "Upload and manage your professional resume with ease.", 
+    link: "./resume" 
+  },
+  { 
+    icon: Globe, 
+    title: "Social Media", 
+    color: "#ec4899", 
+    description: "Link and manage your social media profiles for better visibility.", 
+    link: "./socialMedia" 
+  },
+  { 
+    icon: Briefcase, 
+    title: "Experience", 
+    color: "#eab308", 
+    description: "Add and organize your professional experiences and achievements.", 
+    link: "./experience" 
+  },
+  
 ];
 
+const quotes = [
+  "Success is not the key to happiness. Happiness is the key to success.",
+  "Stay positive, work hard, and make it happen.",
+  "The best way to predict the future is to create it.",
+  "Do something today that your future self will thank you for.",
+  "Don’t watch the clock; do what it does. Keep going.",
+  "Great things never come from comfort zones.",
+  "Dream it. Believe it. Build it.",
+];
 export default function DashboardContent() {
+  const [quote, setQuote] = useState("");
+
+  useEffect(() => {
+    setQuote(getRandomQuote(quotes)); // Sayfa yüklendiğinde bir söz seç
+  }, []);
+
+  const getRandomQuote = (quotes: string[]) => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  };
   return (
     <div className={styles.content}>
     {/* Header Section */}
@@ -40,30 +98,20 @@ export default function DashboardContent() {
 
       {/* Activity Section */}
       <div className={styles.activityGrid}>
+     
         <div className={styles.activityCard}>
           <div className={styles.activityHeader}>
-            <h3 className={styles.activityTitle}>Recent Activity</h3>
+            <h3 className={styles.activityTitle}>To Do List</h3>
           </div>
-          <div>
-            {[1, 2, 3].map((item) => (
-              <div key={item} className={styles.activityItem}>
-                <div className={styles.activityDot}></div>
-                <p className={styles.activityText}>Updated project documentation</p>
-                <span className={styles.activityTime}>2h ago</span>
-              </div>
-            ))}
-          </div>
+          <ToDoList />
         </div>
 
-        <div className={styles.activityCard}>
+         <div className={styles.activityCard}>
           <div className={styles.activityHeader}>
-            <h3 className={styles.activityTitle}>Quick Actions</h3>
+            <h3 className={styles.activityTitle}>Inspirational Quote</h3>
           </div>
-          <div className={styles.quickActions}>
-            <button className={styles.actionButton}>New Project</button>
-            <button className={styles.actionButton}>Update Skills</button>
-            <button className={styles.actionButton}>Add Image</button>
-            <button className={styles.actionButton}>View Stats</button>
+          <div className={styles.inspiration}>
+            <p>🌟 {quote} 🌟</p>
           </div>
         </div>
       </div>
