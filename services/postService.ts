@@ -83,7 +83,7 @@ export const PostService = {
    */
   getById: async (id: number): Promise<PostResponse> => {
     try {
-      const response = await API.get<PostResponse>(`/posts/${id}`);
+      const response = await BASE_API.get<PostResponse>(`/posts/${id}`);
       return response.data;
     } catch (error) {
       console.error("Error fetching post by ID:", error);

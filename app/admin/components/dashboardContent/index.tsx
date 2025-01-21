@@ -4,10 +4,10 @@ import styles from "./dashboardContent.module.css";
 import { User2, Book, Code2, ImageIcon, BarChart3, Settings } from "lucide-react";
 
 const cards = [
-  { icon: User2, title: "Profile", color: "#3b82f6", description: "Update your personal information and contact details", link: "/profile" },
-  { icon: Book, title: "Projects", color: "#8b5cf6", description: "Manage your portfolio projects and case studies", link: "/projects" },
-  { icon: Code2, title: "Skills", color: "#10b981", description: "Update your technical skills and expertise", link: "/skills" },
-  { icon: ImageIcon, title: "Gallery", color: "#f97316", description: "Manage your work samples and images", link: "/gallery" },
+  { icon: User2, title: "Profile", color: "#3b82f6", description: "Update your personal information and contact details", link: "./user" },
+  { icon: Book, title: "Projects", color: "#8b5cf6", description: "Manage your portfolio projects and case studies", link: "./projects" },
+  { icon: Code2, title: "Skills", color: "#10b981", description: "Update your technical skills and expertise", link: "./skills" },
+  { icon: ImageIcon, title: "Resume", color: "#f97316", description: "Manage your work samples and images", link: "./resume" },
   { icon: BarChart3, title: "Analytics", color: "#ec4899", description: "View portfolio performance and visitor statistics", link: "/analytics" },
   { icon: Settings, title: "Settings", color: "#eab308", description: "Configure your portfolio preferences", link: "/settings" },
 ];
