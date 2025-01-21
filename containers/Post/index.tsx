@@ -5,14 +5,19 @@ import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
 import styles from "./postList.module.css";
 import { PostService } from "@/services/postService";
 
-const extractContent = (elements: any[] | undefined) => {
+const extractContent = (elements: any[] | undefined, maxLength: number = 100) => {
   if (!elements || elements.length === 0) return "No content available";
 
-  // Tüm TEXT içerikleri birleştir
+  // Combine all TEXT contents
   const textContents = elements
     .filter((content) => content.contentType === "TEXT")
     .map((content) => content.content)
-    .join("\n");
+    .join(" ");
+
+  // Truncate content if it exceeds maxLength
+  if (textContents.length > maxLength) {
+    return textContents.slice(0, maxLength) + "...";
+  }
 
   return textContents || "No content available";
 };
@@ -38,7 +43,7 @@ const PostList: React.FC = () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await PostService.getAll(page, 10, search, sort);
+      const data = await PostService.getAll(page, 10, search, sort, true);
       setPosts(data.content);
       console.log("data", data.content);
       setTotalPages(data.totalPages);
@@ -126,6 +131,7 @@ const PostList: React.FC = () => {
               </li>
             ))}
           </ul>
+
           <div className={styles.pagination}>
             <button
               className={styles.pageButton}

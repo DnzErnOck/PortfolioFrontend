@@ -21,7 +21,7 @@ export const ContactService = {
    */
   async createContact(contactData: CreateContactRequest): Promise<void> {
     try {
-      await API.post("/contacts", contactData);
+      await BASE_API.post("/contacts", contactData);
     } catch (error) {
       console.error("Contact oluşturulurken hata oluştu:", error);
       throw new Error("Failed to send the contact message.");
@@ -46,7 +46,7 @@ export const ContactService = {
    */
   async getAllContacts(): Promise<ContactResponse[]> {
     try {
-      const response = await BASE_API.get<ContactResponse[]>("/contacts");
+      const response = await API.get<ContactResponse[]>("/contacts");
       return response.data;
     } catch (error) {
       console.error("Contact listesi alınırken hata oluştu:", error);

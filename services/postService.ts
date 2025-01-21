@@ -29,11 +29,16 @@ export const PostService = {
     page: number = 0,
     size: number = 10,
     search: string = "",
-    sort: string = ""
+    sort: string = "",
+    isActive?: boolean 
   ): Promise<PagedResponse<PostResponse>> => {
     try {
+      const params: any = { page, size, search, sort };
+      if (isActive !== undefined) {
+        params.isActive = isActive;
+      }
       const response = await BASE_API.get<PagedResponse<PostResponse>>("/posts", {
-        params: { page, size, search, sort },
+        params,
       });
       console.log("response", response.data);
   
