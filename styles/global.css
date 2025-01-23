@@ -4,6 +4,11 @@ body {
   background-color: #f9f9f9;
 }
 
+html {   
+  scroll-behavior: smooth; 
+}
+ 
+
 div[data-nextjs-scroll-focus-boundary] {
   height: 100%;
 }

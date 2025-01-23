@@ -20,7 +20,14 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
   onRemoveContent,
 }) => {
   const [fileURL, setFileURL] = useState<string | null>(null); // Yeni yüklenen resmin URL'si
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  }, [value]);
 
 
   return (
@@ -89,6 +96,7 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
       {/* TEXT Alanı */}
       {contentType === "TEXT" && (
         <textarea
+          ref={textareaRef}
           style={{
             resize: "none",
             width: "100%",
@@ -99,6 +107,25 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
             backgroundColor: "#f9f9f9",
           }}
           placeholder="Write your text here..."
+          value={value}
+          onChange={(e) => onChangeContent(index, e.target.value)}
+        />
+      )}
+       {/* CODE Alanı */}
+       {contentType === "CODE" && (
+        <textarea
+          ref={textareaRef}
+          style={{
+            resize: "none",
+            width: "100%",
+            minHeight: "50px",
+            padding: "10px",
+            fontFamily: "monospace",
+            backgroundColor: "#f9f9f9",
+            border: "none",
+            outline: "none",
+          }}
+          placeholder="Write your code here..."
           value={value}
           onChange={(e) => onChangeContent(index, e.target.value)}
         />

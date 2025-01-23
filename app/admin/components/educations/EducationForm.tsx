@@ -60,7 +60,7 @@ const EducationForm: React.FC<EducationFormProps> = ({ initialData, onSubmit, on
               id="startDate"
               name="startDate"
               placeholder="Enter Start Date"
-              value={formData.workplace}
+              value={formData.startDate}
               onChange={handleInputChange}
               required
             />

@@ -63,7 +63,7 @@ export const LanguageService = {
    */
   async deleteLanguage(languageId: number): Promise<void> {
     try {
-      await API.delete(`/languages/${languageId}`);
+      await API.delete(`/language/${languageId}`);
     } catch (error) {
       console.error("Language silinirken hata oluştu:", error);
       throw new Error("Failed to delete the language.");

@@ -19,6 +19,10 @@ const TextSpan: React.FC<TextSpanProps> = ({ children }) => {
        
       }}
       className="inline-block"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.2 }}
+      style={{ display: "inline-block" }}
     >
       {children}
     </MotionSpan>

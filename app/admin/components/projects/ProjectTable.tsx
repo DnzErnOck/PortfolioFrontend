@@ -13,6 +13,7 @@ const formatDate = (dateString: string): string => {
   const year = date.getFullYear();
   return `${day}-${month}-${year}`;
 };
+
 const ProjectTable: React.FC<ProjectTableProps> = ({ projects, onEdit, onDelete }) => {
   return (
     <div className={styles.tableContainer}>

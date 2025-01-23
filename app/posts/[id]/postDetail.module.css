@@ -67,3 +67,29 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
+  .postCode {
+    background-color: #f5f7fa;
+    border: 1px solid #dcdfe4;
+    border-radius: 8px;
+    padding: 15px; /* padding'i biraz azaltarak daha fazla alan kazandırdım */
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-family: "Fira Code", "Courier New", Courier, monospace;
+    font-size: 14px;
+    color: #2c3e50;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Yatay kaydırmayı tekrar aktif ettik */
+    white-space: nowrap; /* Satır kaydırma */
+    position: relative;
+  }
+  
+  .postCode code {
+    display: block;
+    line-height: 1.6;
+    color: #34495e;
+    white-space: pre; /* Satır sonlarına kadar sarmama */
+  }
+  
+  
+  
+  

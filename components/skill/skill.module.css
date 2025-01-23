@@ -1,71 +1,87 @@
-/* Container genel tasarımı */
 .skillsContainer {
   text-align: center;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 4rem 2rem;
+  background-color: transparent;
   margin: 2rem auto;
   max-width: 900px;
 }
 
-/* Başlık */
 .skillsTitle {
-  font-size: 2rem;
+  font-size: 3.1rem;
   font-weight: bold;
-  color: #808080; /* Gri renk */
-  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, rgb(96, 96, 165), rgb(124, 124, 179), rgb(148, 148, 200));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 3rem;
 }
 
-/* Hata mesajı */
+
 .errorMessage {
   color: red;
   font-size: 1rem;
   margin-bottom: 1rem;
 }
 
-/* İkonların olduğu alan */
 .skillsIcons {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  padding: 1rem;
 }
 
-/* Her bir skill kartı */
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
   width: 120px;
   height: 120px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-image: url(); /* Dinamik arka planlar burada işlenecek */
-  background-size: cover;
-  background-position: center;
 }
 
-/* Hover efekti */
-.skill:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* İkon */
 .icon img {
-  width: 60px; /* Biraz daha büyük ikonlar */
+  width: 60px;
   height: 60px;
   margin-bottom: 0.5rem;
+  object-fit: contain;
 }
 
-/* Skill ismi */
 .skillName {
   font-size: 1rem;
   font-weight: 500;
   color: #333;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .skillsContainer {
+    padding: 2rem 1rem;
+  }
+
+  .skillsTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: linear-gradient(135deg, rgb(96, 96, 165), rgb(124, 124, 179), rgb(148, 148, 200));
+  }
+
+  .skillsIcons {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill {
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon img {
+    width: 45px;
+    height: 45px;
+  }
 }

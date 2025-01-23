@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { UserService } from "@/services/userService"; // Kullanıcı servisi, bilgileri almak için.
-import styles from "./about.module.css"; // CSS dosyasını import ediyoruz
-import Image from "next/image"; // next/image bileşenini import ettik
-import image from '../../images/about_avata.jpg'; // Resmi import ettik
+import { UserService } from "@/services/userService";
+import styles from "./about.module.css";
+import { motion } from "framer-motion";
 
 const About = () => {
   const [aboutMe, setAboutMe] = useState<string>("");
@@ -19,28 +18,37 @@ const About = () => {
   }, []);
 
   return (
-    <section className={styles.aboutSection}>
+    <motion.section 
+      className={styles.aboutSection}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
       <div className={styles.container}>
-        {/* Sol tarafta resim */}
-        <div className={styles.imageContainer}>
-          <Image
-            src={image} // Resmi next/image ile doğru şekilde gösteriyoruz
-            alt="Profile Picture"
-            className={styles.profileImage}
-            width={150} // Genişlik
-            height={150} // Yükseklik
-          />
+        <div className={styles.iconContainer}>
+          <motion.h2 
+            className={styles.heading}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <span>About Me</span>
+          </motion.h2>
         </div>
 
-        {/* Sağ tarafta başlık ve about metni */}
-        <div className={styles.textContainer}>
-          <h2 className={styles.heading}>About Me</h2>
+        <motion.div 
+          className={styles.textContainer}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           <p className={styles.aboutText}>
             {aboutMe || "No about information available."}
           </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

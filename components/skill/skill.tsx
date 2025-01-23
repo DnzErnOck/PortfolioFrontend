@@ -1,15 +1,15 @@
+"use client";
 import { SkillService } from '@/services/skillService';
 import React, { useEffect, useState } from 'react';
 import styles from "./skill.module.css";
+import { motion } from "framer-motion";
 
-// SkillTip modelini oluşturuyoruz
 interface Skill {
   id: number;
   imageBase64: string;
   name: string;
 }
 
-// Bir resmin ortalama rengini analiz eden yardımcı fonksiyon
 const getAverageColor = (image: HTMLImageElement): string => {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
@@ -33,7 +33,6 @@ const getAverageColor = (image: HTMLImageElement): string => {
   g = Math.floor(g / pixelCount);
   b = Math.floor(b / pixelCount);
 
-  // Parlaklaştır
   const brightnessFactor = 1.4;
   r = Math.min(255, Math.floor(r * brightnessFactor));
   g = Math.min(255, Math.floor(g * brightnessFactor));
@@ -44,16 +43,15 @@ const getAverageColor = (image: HTMLImageElement): string => {
 
 const Skill: React.FC = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
-  const [error, setError] = useState<string>(''); 
+  const [error, setError] = useState<string>('');
 
   useEffect(() => {
     const fetchSkills = async () => {
       try {
         const pagedResponse = await SkillService.getAll();
-        // `content` doğru alan ise burayı kontrol edin
         const fetchedSkills = pagedResponse.content.map((item) => ({
           id: item.id,
-          imageBase64: item.imageBase64 || "", // Varsayılan bir değer atanıyor
+          imageBase64: item.imageBase64 || "",
           name: item.name,
         }));
         setSkills(fetchedSkills);
@@ -61,10 +59,9 @@ const Skill: React.FC = () => {
         setError("Failed to fetch skills");
       }
     };
-  
+
     fetchSkills();
   }, []);
-  
 
   useEffect(() => {
     const skillCards = document.querySelectorAll(`.${styles.skill}`);
@@ -79,19 +76,47 @@ const Skill: React.FC = () => {
   }, [skills]);
 
   return (
-    <div className={styles.skillsContainer}>
-      <div className={styles.skillsTitle}>My Skills</div>
+    <motion.div 
+      className={styles.skillsContainer}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, margin: "-100px" }}
+    >
+      <motion.div 
+        className={styles.skillsTitle}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+      >
+        <span>My Skill-Set</span>
+      </motion.div>
       {error && <div className={styles.errorMessage}>{error}</div>}
       <div className={styles.skillsIcons}>
-        {skills.map((skill) => (
-          <div className={styles.skill} key={skill.id}>
+        {skills.map((skill, index) => (
+          <motion.div 
+            className={styles.skill} 
+            key={skill.id}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              delay: index * 0.1,
+              duration: 0.5,
+              type: "spring",
+              stiffness: 100
+            }}
+            whileHover={{ 
+              scale: 1.1,
+              transition: { duration: 0.2 }
+            }}
+          >
             <div className={styles.icon}>
               <img src={skill.imageBase64} alt={skill.name} />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

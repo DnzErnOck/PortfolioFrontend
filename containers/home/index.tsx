@@ -65,8 +65,13 @@ const Home = () => {
          <button onClick={handleDownloadResume} className={styles.resumeButton}>
             Download Resume
           </button>
-        <About/>
-        <Skill/>
+        <div id="about">
+          <About/>
+        </div>
+        <div id="skill">
+          <Skill />
+        </div>
+        
       </div>
     </section>
   );

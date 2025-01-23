@@ -51,3 +51,37 @@
   background-color: #3f3f91;
   transform: scale(1.05);
 }
+
+/* About Section Container */
+.aboutSection {
+  position: relative; /* To position the arrow */
+}
+
+/* Scroll Arrow */
+.scrollArrow {
+  cursor: pointer;
+  font-size: 2rem;
+  color: #555;
+  margin-top: 1rem;
+  animation: bounce 1.5s infinite;
+  user-select: none; /* Prevent text selection */
+}
+
+/* Bouncing Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Skill Section Styling (Optional) */
+#skill {
+  margin-top: 4rem;
+}
+

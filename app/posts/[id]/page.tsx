@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation"; // Eğer Next.js kullanıyorsanız
+import { useParams, useRouter } from "next/navigation";
 import { PostService } from "@/services/postService";
 import styles from "./postDetail.module.css";
+import hljs from "highlight.js";
+import "highlight.js/styles/a11y-light.css"; // veya başka bir stil seçebilirsiniz
 
 const PostDetail: React.FC = () => {
-  const { id } = useParams(); // URL'den Post ID al
-  const router = useRouter(); // Geri dönüş için router kullan
+  const { id } = useParams();
+  const router = useRouter();
   const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,7 +20,7 @@ const PostDetail: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await PostService.getById(Number(id)); // ID'yi kullanarak post detaylarını al
+        const data = await PostService.getById(Number(id));
         setPost(data);
       } catch (err) {
         setError("Post detayları alınamadı. Lütfen tekrar deneyin.");
@@ -28,6 +30,15 @@ const PostDetail: React.FC = () => {
     };
     fetchPost();
   }, [id]);
+
+  useEffect(() => {
+    if (post) {
+      const codeBlocks = document.querySelectorAll("pre code");
+      codeBlocks.forEach((block) => {
+        hljs.highlightElement(block as HTMLElement);
+      });
+    }
+  }, [post]);
 
   if (loading) return <p className={styles.loading}>Loading...</p>;
   if (error) return <p className={styles.error}>{error}</p>;
@@ -54,6 +65,10 @@ const PostDetail: React.FC = () => {
               alt="Post Image"
               className={styles.postImage}
             />
+          ) : element.contentType === "CODE" ? (
+            <pre key={element.id} className={styles.postCode}>
+              <code>{element.content}</code>
+            </pre>
           ) : null
         )}
       </div>

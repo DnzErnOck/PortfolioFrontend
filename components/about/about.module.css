@@ -1,53 +1,89 @@
 .aboutSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 20px;
-    background-color: #f8f8f8;
-    min-height: 100vh;
-    width: 100%;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+  width: 100%;
+  /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+  position: relative;
+  overflow: hidden;
+}
+
+.aboutSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  /* background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%); */
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0);
+  border-radius: 20px;
+  /* box-shadow: 0 8px 32px 0 rgb(31, 38, 135); */
+  backdrop-filter: blur(4px);
+}
+
+.iconContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading {
+  font-size: 3.1rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, rgb(96, 96, 165), rgb(124, 124, 179), rgb(148, 148, 200));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.textContainer {
+  flex: 2;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.aboutText {
+  font-size: 1.2rem;
+  color: #4a5568;
+  line-height: 1.7;
+  text-align: left;
+  /* font-family: system-ui, -apple-system, sans-serif; */
+}
+
+@media (max-width: 768px) {
   .container {
-    display: flex;
-    flex-direction: row;
-    max-width: 1200px;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    gap: 40px;
-  }
-  
-  .imageContainer {
-    flex: 1;
+    flex-direction: column;
     text-align: center;
-    margin-left: 40px; /* Resmi biraz daha sağa kaydırdık */
   }
-  
-  .profileImage {
-    width: 300px; /* Resmi büyüttük */
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .textContainer {
-    flex: 2;
-    max-width: 800px;
-  }
-  
+
   .heading {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.5rem;
   }
-  
+
+  .textContainer {
+    padding: 1rem;
+  }
+
   .aboutText {
-    font-size: 1.4rem;
-    color: #555;
-    line-height: 1.8;
-    text-align: left;
-    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    text-align: center;
   }
-  
+}
