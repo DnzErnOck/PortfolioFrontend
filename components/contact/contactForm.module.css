@@ -1,151 +1,109 @@
-/* General styling for the form container */
+/* Sayfa Konteyneri */
+.pageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 80vh; */
+  padding: 20px;
+}
+
+.contentContainer {
+  display: flex;
+  max-width: 1200px;
+  background: #ffffff7d;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gifContainer {
+  flex: 1;
+ /*  background: #f1f1f152; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.gifImage {
+  max-width: 80%;
+  height: auto;
+}
+
 .formContainer {
-  max-width: 600px;
-  margin: 60px auto;
+  flex: 1.5;
   padding: 40px;
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  border: 1px solid #e2e2e2;
 }
-
-.formContainer:hover {
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2); /* Daha güçlü gölge */
-  transform: translateY(-5px);
-}
-
-/* Page Title Styling */
 .pageTitle {
+  font-size: 28px;
+  font-weight: bold;
   text-align: center;
-  font-size: 36px;
-  color: #2c3e50;
-  margin-bottom: 25px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: dimgrey;
 }
 
-/* Styling for each form input element */
 .formGroup {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .formGroup label {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   display: block;
-  margin-bottom: 10px;
-  color: #34495e;
+  margin-bottom: 5px;
+  color: dimgrey;
+
 }
 
 .formGroup input,
 .formGroup textarea {
   width: 100%;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus {
-  outline: none;
-  border-color: #3498db;
-  background-color: #eef6fc;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
 }
 
 .formGroup textarea {
-  height: 150px;
-  resize: vertical;
+  height: 100px;
 }
 
-/* Button styling */
 .button {
-  padding: 16px;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
   background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 30px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: block;
-  width: 100%;
-  text-align: center;
 }
 
 .button:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
+  background-color: #1d78c1;
 }
 
-.button:active {
-  transform: scale(1);
-}
-
-/* Popup styling */
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px 30px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
   text-align: center;
-  z-index: 1000;
-  display: inline-flex; /* Değişiklik: inline-flex ile yatayda hizalama */
-  align-items: center; /* Yatayda ortalama */
-  gap: 10px; /* İkon ile yazı arasına boşluk ekler */
-  animation: fadeIn 0.5s ease-out;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  white-space: nowrap; /* Yazının alt satıra inmesini engeller */
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-.success {
-  background-color: #28a745;
-  color: white;
-}
-
-.error {
-  background-color: #dc3545;
-  color: white;
-}
-
-.icon {
-  font-size: 24px; /* Adjust icon size */
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .gifContainer {
+    order: 2;
+  }
+
   .formContainer {
-    padding: 30px;
-  }
-
-  .pageTitle {
-    font-size: 30px;
-  }
-
-  .button {
-    font-size: 16px;
+    order: 1;
   }
 }

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ContactService, CreateContactRequest } from "../../services/contactService";
+import Image from "next/image";
+import gifImage from "../../images/contact2.gif"; // GIF'i içe aktarıyoruz
 import styles from "./contactForm.module.css";
 
 const ContactForm: React.FC = () => {
@@ -43,55 +45,68 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className={styles.formContainer}>
-      <h1 className={styles.pageTitle}>Contact Me</h1>
+    <div className={styles.pageContainer}>
+      <div className={styles.contentContainer}>
+        {/* Sol tarafta GIF */}
+        <div className={styles.gifContainer}>
+          <Image src={gifImage} alt="Contact Animation" className={styles.gifImage} />
+        </div>
 
-      {/* Popup */}
-      {isPopupVisible && (
-        <div className={`${styles.popup} ${styles[statusType ?? ""]}`}>
-          <span className={styles.icon}>
-            {statusType === "success" ? "✅" : "❌"}
-          </span>
-          {statusMessage}
-        </div>
-      )}
+        {/* Sağ tarafta Form */}
+        <div className={styles.formContainer}>
+          <h1 className={styles.pageTitle}>Get in Touch</h1>
 
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          />
+          {isPopupVisible && (
+            <div className={`${styles.popup} ${styles[statusType ?? ""]}`}>
+              <span className={styles.icon}>
+                {statusType === "success" ? "✅" : "❌"}
+              </span>
+              {statusMessage}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit}>
+            <div className={styles.formGroup}>
+              <label>Name:</label>
+              <input
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Your Name"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Surname:</label>
+              <input
+                type="text"
+                value={formData.surname}
+                onChange={(e) => setFormData({ ...formData, surname: e.target.value })}
+                placeholder="Your Surname"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Email:</label>
+              <input
+                type="email"
+                value={formData.mailAddress}
+                onChange={(e) => setFormData({ ...formData, mailAddress: e.target.value })}
+                placeholder="Your Email"
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label>Message:</label>
+              <textarea
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                placeholder="Your Message"
+              />
+            </div>
+            <button className={styles.button} type="submit">
+              Send Message
+            </button>
+          </form>
         </div>
-        <div className={styles.formGroup}>
-          <label>Surname:</label>
-          <input
-            type="text"
-            value={formData.surname}
-            onChange={(e) => setFormData({ ...formData, surname: e.target.value })}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={formData.mailAddress}
-            onChange={(e) => setFormData({ ...formData, mailAddress: e.target.value })}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Message:</label>
-          <textarea
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          />
-        </div>
-        <button className={styles.button} type="submit">
-          Send Message
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

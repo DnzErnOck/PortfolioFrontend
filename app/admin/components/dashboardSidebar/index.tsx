@@ -8,6 +8,7 @@ import Image from "next/image";
 const menuItems = [
   { title: "Dashboard", icon: "📊", url: "/admin/dashboard" },
   { title: "Profile", icon: "👤", url: "/admin/user" },
+  { title: "About Me", icon: "📝",url: "/admin/about" },
   { title: "Projects", icon: "📁", url: "/admin/projects" },
   { title: "Skills", icon: "🛠️", url: "/admin/skills" },
   { title: "Social Media", icon: "🌐", url: "/admin/socialMedia" },

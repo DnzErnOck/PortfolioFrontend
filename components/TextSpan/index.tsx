@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import dynamic from "next/dynamic";
+import styles from "./textSpan.module.css";
 
 // Sadece `motion.span` yükleniyor
 const MotionSpan = dynamic(() => import("framer-motion").then((mod) => mod.motion.span), {
@@ -14,15 +15,12 @@ const TextSpan: React.FC<TextSpanProps> = ({ children }) => {
   return (
     <MotionSpan
       whileHover={{
-        scale: 1.3,
-        color: "#5b5bae",
-       
+        scale: 1.3, // Harf büyütme
       }}
-      className="inline-block"
+      className={styles.textSpan} // CSS modülünden sınıf kullanıyoruz
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.2 }}
-      style={{ display: "inline-block" }}
     >
       {children}
     </MotionSpan>

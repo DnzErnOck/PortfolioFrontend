@@ -9,7 +9,8 @@
 .skillsTitle {
   font-size: 3.1rem;
   font-weight: bold;
-  background: linear-gradient(135deg, rgb(96, 96, 165), rgb(124, 124, 179), rgb(148, 148, 200));
+  /* background: linear-gradient(135deg, rgb(96, 96, 165), rgb(124, 124, 179), rgb(148, 148, 200)); */
+  background: linear-gradient(135deg, rgb(107, 70, 193), rgb(107, 70, 193), rgb(148, 148, 200));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 3rem;

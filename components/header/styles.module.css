@@ -1,29 +1,76 @@
+/* Genel Header */
 .header {
-    background: linear-gradient(180deg, rgba(240, 186, 216, 0.432), rgba(255, 255, 255, 0));
-  }
-  
-  .headerWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 50px;
-    font-weight: bold;
-    letter-spacing: -1px;
-    color: #552727e0;
-  }
-  
-  .navigationMenu {
-    display: flex;
-    gap: 48px;
-    color: #494949;
-    font-weight: bold;
-    letter-spacing: 1.8px;
-  }
+  background: linear-gradient(180deg, rgba(240, 186, 216, 0.432), rgba(255, 255, 255, 0));
+  top: 0;
+  z-index: 1000;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Scroll animasyonu */
+}
 
-  
+/* Scroll olduğunda küçülme efekti */
+.header.scrolled {
+  transform: translateY(-10px); /* Yumuşak yukarı kayma */
+  background: rgba(240, 186, 216, 0.7); /* Daha koyu arka plan */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
+}
+
+/* Header Wrapper */
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 50px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  color: #552727e0;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease; /* Hover animasyonu */
+}
+
+.logo:hover {
+  color: #c13b6a; /* Hover sırasında renk değişimi */
+  transform: scale(1.1); /* Hafif büyüme */
+}
+
+/* Navigation Menu */
+.navigationMenu {
+  display: flex;
+  gap: 48px;
+  color: #494949;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Menü animasyonu */
+}
+
+.navigationMenu a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease; /* Link hover animasyonu */
+}
+
+.navigationMenu a:hover {
+  color: #c13b6a; /* Hover sırasında renk değişimi */
+}
+
+.navigationMenu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 0;
+  background: #c13b6a; /* Alt çizgi hover animasyonu */
+  transition: width 0.3s ease;
+}
+
+.navigationMenu a:hover::after {
+  width: 100%; /* Hover sırasında alt çizgi genişliği */
+}

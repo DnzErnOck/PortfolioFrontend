@@ -1,7 +1,10 @@
 body {
-  font-family: "Inter", sans-serif;
+  /* font-family: "Inter", sans-serif; */
+  font-family: ui-sans-serif, system-ui, sans-serif, 
+                 "Apple Color Emoji", "Segoe UI Emoji", 
+                 "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 16px;
-  background-color: #f9f9f9;
+  background-color: rgba(180, 129, 157, 0.089);
 }
 
 html {   
@@ -29,4 +32,57 @@ div[data-nextjs-scroll-focus-boundary] {
 body.loading {
   overflow-y: scroll; /* Kaydırma çubuğunu göster */
   
+}
+
+/* Blob Animation */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-20px, 20px) scale(1.1);
+  }
+  66% {
+    transform: translate(20px, -20px) scale(0.9);
+  }
+}
+
+/* Genel Blob Stilleri */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  filter: blur(30px);
+  opacity: 0.7;
+  animation: blob 8s infinite;
+  z-index: -1; /* Bloblar içeriğin arkasında kalacak */
+}
+
+/* Blob 1 */
+.blob-1 {
+  top: -20px;
+  left: -20px;
+  width: 150px;
+  height: 150px;
+  background-color: #d8b4fe;
+}
+
+/* Blob 2 */
+.blob-2 {
+  top: 40%;
+  right: 10px;
+  width: 200px;
+  height: 200px;
+  background-color: #fbbfdb;
+  animation-delay: 2s;
+}
+
+/* Blob 3 */
+.blob-3 {
+  bottom:35px;
+  left: 55%;
+  width: 180px;
+  height: 180px;
+  background-color: #a78bfa;
+  animation-delay: 4s;
 }

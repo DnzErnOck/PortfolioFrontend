@@ -7,8 +7,16 @@
   min-height: 80vh; /* Home sayfası biraz daha aşağıya kayacak */
   padding: 4rem 2rem; /* Daha fazla padding ekleyelim */
   text-align: center;
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
   margin-top: 40px; /* Home sayfası biraz daha aşağıda */
+}
+.namePart{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* min-height: 100vh; */
+  width: 100%;
 }
 
 /* Hoş Geldiniz Metni */
@@ -21,36 +29,34 @@
 
 /* Kullanıcı Adı */
 .nameText {
-  font-size: 3.8rem;
+  font-size: 5rem; /* Varsayılan yazı boyutu */
   font-weight: bold;
-  color: #333;
-  margin: 1.2rem 0;
+  background: linear-gradient(to right, #6b46c1, #d53f8c, #4c51bf); /* Gradient renkler */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradientin yalnızca metne uygulanması */
+  margin-bottom: 1.2rem;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+
+
+/* Sorunu çözecek ek özellik */
+.nameText:hover::selection {
+  background: none; /* Seçim durumunda transparan sorunu giderilir */
+  -webkit-text-fill-color: inherit; /* Seçim sırasında text rengini korur */
+}
+
+
+
 
 /* Typewriter Efekt Metni */
 .typingText {
   font-size: 1.4rem;
   color: #555;
-  margin: 1.5rem 0;
+  margin: 0.4rem 0;
   font-style: italic;
 }
 
-.resumeButton {
-  background-color: #5b5bae;
-  color: #fff;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.resumeButton:hover {
-  background-color: #3f3f91;
-  transform: scale(1.05);
-}
 
 /* About Section Container */
 .aboutSection {
@@ -85,3 +91,37 @@
   margin-top: 4rem;
 }
 
+/* Resume Butonu */
+.resumeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(to right, #6a5acd, #9370db); /* Gradient arka plan */
+  color: #ffffff; /* Metin rengi */
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 30px; /* Tam yuvarlak köşeler */
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  transition: all 0.3s ease-in-out; /* Yumuşak geçişler */
+}
+
+.resumeButton:hover {
+  transform: scale(1.05); /* Hover sırasında ölçekleme */
+  background: linear-gradient(to right, #7b68ee, #8a2be2); /* Hover'da farklı gradient */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Daha güçlü gölge */
+}
+
+.downloadIcon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff; /* İkon rengi */
+  transition: transform 0.3s ease-in-out;
+}
+
+.resumeButton:hover .downloadIcon {
+  transform: translateY(-2px); /* Hover sırasında ikon hareketi */
+}

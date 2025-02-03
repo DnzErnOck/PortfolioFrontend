@@ -1,0 +1,61 @@
+.cardContainer {
+    margin-top: 15px;
+  }
+  
+  .sectionTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #b10000;
+  }
+  
+  .cardItem {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+  }
+  
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #b10000;
+  }
+  
+  .removeButton {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .removeButton:hover {
+    background: #e63e3e;
+  }
+  
+  .addButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .addButton:hover {
+    background: #3e8e41;
+  }
+  .formTitle{
+    color: #b10000;
+  }

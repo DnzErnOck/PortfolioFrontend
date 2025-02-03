@@ -8,6 +8,7 @@ import { ResumeService } from "@/services/resumeService"
 import { UserService } from "@/services/userService";
 import About from "@/components/about";
 import Skill from "@/components/skill/skill";
+import { Download } from "lucide-react";
 
 
 const Home = () => {
@@ -38,33 +39,37 @@ const Home = () => {
   return (
     <section>
       <div className={styles.container}>
-        {/* Hoş Geldiniz */}
-        <div className={styles.greetingText}>Hi 👋, my name is</div>
+        <div className={styles.namePart}>
+          {/* Hoş Geldiniz */}
+          <div className={styles.greetingText}>Hi 👋, my name is</div>
 
-        {/* Kullanıcı Adı */}
-        <div className={styles.nameText}>
-          {fullName.map((letter, index) => (
-            <TextSpan key={index}>{letter === " " ? "\u00A0" : letter}</TextSpan>
-          ))}
-        </div>
+          {/* Kullanıcı Adı */}
+          <div className={styles.nameText}>
+            {fullName.map((letter, index) => (
+              <TextSpan key={index}>{letter === " " ? "\u00A0" : letter}</TextSpan>
+            ))}
+          </div>
 
-        {/* Typewriter Efekt */}
-        <div className={styles.typingText}>
-          <span><b>I'm a</b> </span>
+          {/* Typewriter Efekt */}
+          <div className={styles.typingText}>
+            <span><b>I'm a</b> </span>
+            
+            <Typewriter
+              words={["Frontend Developer", "Backend Developer", "Full-Stack Developer"]}
+              typeSpeed={50}
+              deleteSpeed={50}
+              delaySpeed={2000}
+              loop={true}
+            />
+          </div>
+          <SocialMediaIcons />
+          {/* Resume Butonu */}
           
-          <Typewriter
-            words={["Frontend Developer", "Backend Developer", "Full-Stack Developer"]}
-            typeSpeed={50}
-            deleteSpeed={50}
-            delaySpeed={2000}
-            loop={true}
-          />
-        </div>
-        <SocialMediaIcons />
-         {/* Resume Butonu */}
-         <button onClick={handleDownloadResume} className={styles.resumeButton}>
-            Download Resume
+          <button onClick={handleDownloadResume} className={styles.resumeButton}>
+            <span>Download Resume</span>
+            <Download className={styles.downloadIcon} />
           </button>
+        </div>
         <div id="about">
           <About/>
         </div>
