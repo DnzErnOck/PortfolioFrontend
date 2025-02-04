@@ -1,61 +1,78 @@
 .container {
-  padding: 20px;
+  padding: 40px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .pageTitle {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 40px; /* Başlık ve projeler arası boşluk */
-  text-align: center;
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 40px;
+  color: #3b3b3b;
 }
 
+/* 🌿 Daha Soft ve Profesyonel Kart Tasarımı */
 .projectList {
   display: flex;
   flex-direction: column;
- 
+  gap: 24px;
 }
 
+.projectCard {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05); /* Çok hafif shadow */
+  padding: 24px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
+.projectCard:hover {
+  transform: translateY(-3px);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* 📌 SAYFALAMA (Minimal ve Net) */
 .pagination {
   display: flex;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
+  gap: 10px;
 }
+
+/* 🔲 Minimal ve Şık Sayfa Butonları */
 .pageButton {
-  margin: 0 5px;
-  padding: 10px 15px;
-  border: 1px solid #ddd;
+  padding: 12px 16px;
   border-radius: 8px;
-  background-color: #f5f5f5;
-  color: #333;
-  cursor: pointer;
   font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #f5f5f5;
+  color: #333;
 }
 
 .pageButton:hover {
-  background-color: #e0e0e0;
-  transform: translateY(-2px);
+  background: #e0e0e0;
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 .pageButton.active {
-  background-color: #4caf50;
+  background: #333;
   color: white;
-  border-color: #4caf50;
-  font-weight: bold;
+  border-color: #333;
 }
 
 .pageButton.disabled {
+  background: rgba(200, 200, 200, 0.4);
+  color: #888;
   cursor: not-allowed;
-  background-color: #f5f5f5;
-  color: #bbb;
-  border-color: #ddd;
-  transform: none;
-}
-
-.pageButton:disabled:hover {
-  transform: none;
+  border: none;
 }

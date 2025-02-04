@@ -11,6 +11,7 @@ interface ProjectResponse {
   projectDate: string;
   liveSiteLink: string;
   githubLink: string;
+  technologies: string[]; // Teknoloji etiketleri eklendi
 }
 
 interface PagedResponse {
@@ -39,13 +40,13 @@ const ProjectContainer: React.FC = () => {
       <h1 className={styles.pageTitle}>My Projects</h1>
       <ProjectList projects={projects} />
 
-      {/* Modern Sayfalama */}
+      {/* ✅ Modern Sayfalama */}
       <div className={styles.pagination}>
         <button
           className={`${styles.pageButton} ${page === 1 ? styles.disabled : ""}`}
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
         >
-          Previous
+          ⬅ Previous
         </button>
 
         {Array.from({ length: totalPages }, (_, index) => (
@@ -66,7 +67,7 @@ const ProjectContainer: React.FC = () => {
           }`}
           onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
         >
-          Next
+          Next ➡
         </button>
       </div>
     </div>
