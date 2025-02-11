@@ -40,7 +40,7 @@ const ContactForm: React.FC = () => {
       setStatusType("error");
       setIsPopupVisible(true);
 
-      setTimeout(() => setIsPopupVisible(false), 3000);
+      setTimeout(() => setIsPopupVisible(false), 55000);
     }
   };
 

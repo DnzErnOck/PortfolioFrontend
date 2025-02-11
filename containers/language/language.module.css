@@ -1,51 +1,84 @@
 /* Ana Container */
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 30px;
-    background-color: #f4f7f6;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 70px;
+}
+
+/* Başlık Stili */
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Dil Kartı */
+.languageItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(8px); /* Blur efekti */
+  background: rgba(255, 255, 255, 0.7); /* Şeffaf beyaz arka plan */
+  border-radius: 12px;
+  padding: 20px 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Tam genişlik */
+  min-height: 80px; /* Eğitim kartıyla benzer yükseklik */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Hafif şeffaf çerçeve */
+  color:#2b6cb0;
+  margin-bottom: 10px;
+}
+
+.languageItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Dil Adı */
+.languageName {
+  font-size: 24px;
+  /* font-weight: 600; */
+  color: #2b6cb0;
+}
+
+/* Yıldızlar */
+.stars {
+  display: flex;
+  gap: 5px;
+}
+
+/* Dolu Yıldız */
+.filledStar {
+  color: #f8b400;
+  font-size: 22px;
+}
+
+/* Boş Yıldız */
+.emptyStar {
+  color: #ccc;
+  font-size: 22px;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .container {
+      padding: 15px;
   }
-  
-  /* Başlık Stili */
-  .sectionTitle {
-    font-size: 32px;
-    font-weight: 700;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
+
   .languageItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    color: #2c3e50;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100px;
   }
-  .languageItem:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
+
   .stars {
-    display: flex;
-    gap: 5px;
+      margin-top: 10px;
   }
-  
-  .filledStar {
-    color: #f8b400;
-    font-size: 20px;
-  }
-  
-  .emptyStar {
-    color: #ccc;
-    font-size: 20px;
-  }
-  
+}

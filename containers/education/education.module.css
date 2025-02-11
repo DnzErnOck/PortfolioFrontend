@@ -1,70 +1,93 @@
 /* Ana Container */
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px;
-    background-color: #f4f7f6;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Başlık Stili */
+.sectionTitle {
+  font-size: 2.3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #3b3b3b;
+}
+
+/* Eğitim Kartı */
+.educationItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(8px); /* Blur efekti */
+  background: rgba(255, 255, 255, 0.7); /* Şeffaf beyaz arka plan */
+  border-radius: 12px;
+  padding: 10px 25px 15px 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%; /* Kart tam satır genişliğinde */
+  min-height: 160px; /* Yükseklik artırıldı */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7); /* Hafif şeffaf çerçeve */
+}
+
+.educationItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Eğitim Kartı Başlığı */
+.educationItem h3 {
+  font-size: 24px;
+  color: #2b6cb0;
+  /* margin-bottom: 10px; */
+}
+
+/* Eğitim Kartı Tarihi (Daha küçük font ve zarif) */
+.educationDate {
+  font-size: 14px;  /* Daha küçük font */
+  color: rgba(0, 0, 0, 0.6); /* Daha silik gri ton */
+  background: transparent;
+  border-radius: 4px;
+  font-style: italic;
+  display: inline-block;
+  margin-bottom: 10px; /* Başka elementlerden biraz mesafe */
+}
+
+/* Detay Paragrafları */
+.educationItem p:not(.educationDate) {
+  font-size: 18px;
+  color: #444;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+
+
+
+/* Responsive (Mobilde boyut ayarı) */
+@media (max-width: 768px) {
+  .educationDate {
+    font-size: 12px;
+    padding: 4px 10px;
   }
-  
-  /* Başlık Stili */
-  .sectionTitle {
-    font-size: 32px;
-    font-weight: 700;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 15px;
-  }
-  
-  /* Eğitim Kartı */
-  .educationItem {
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .educationItem:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* Eğitim Kartı Başlığı */
-  .educationItem h3 {
-    font-size: 20px;
-    color: #2b6cb0;
-    margin-bottom: 8px;
-  }
-  
-  /* Detay Paragrafları */
-  .educationItem p {
-    font-size: 16px;
-    color: #555;
-    margin: 4px 0;
-  }
-  
-  /* Tarih */
-  .educationItem p:last-child {
-    font-style: italic;
-    color: #888;
-  }
-  @media (max-width: 768px) {
-    .container {
+}
+
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+  .container {
       padding: 15px;
-    }
-  
-    .languageItem,
-    .educationItem {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .progressBar {
-      width: 100%;
-      margin-top: 10px;
-    }
   }
-  
+
+  .educationItem {
+      min-height: 180px;
+      padding: 20px;
+  }
+
+  .educationDate {
+      position: static;
+      margin-bottom: 10px;
+  }
+}

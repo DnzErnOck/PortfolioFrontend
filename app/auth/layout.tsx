@@ -8,11 +8,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="admin-container">
-        {/* Admin içerikleri */}
-        {children}
-      </body>
-    </html>
+    <div className="admin-container">
+      {/* Admin içerikleri */}
+      {children}
+    </div>
   );
 }

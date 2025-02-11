@@ -18,6 +18,14 @@ const skillColors: Record<string, string> = {
   React: "#61DAFB",
   "Next.js": "#000000",
   Intellij: "#A633D6",
+  Javascript: "#F7DF1E", // JavaScript için sarı
+  HTML: "#E34F26", // HTML için kırmızı-turuncu
+  CSS: "#1572B6", // CSS için mavi
+  PostgreSql: "#336791", // PostgreSQL için koyu mavi
+  Postman: "#872B0AFF", // Postman için turuncu
+  Redux: "#764ABC", // Redux için mor
+  Github: "#4A4747FF", // GitHub için koyu gri
+  Eclipse: "#2C2255", // Eclipse için mor-lacivert
 };
 
 const getSkillColor = (skill: string) => ({
@@ -47,6 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {/* 📌 Alttaki İçerik Alanı */}
       <div className={styles.cardContent}>
+      <div className={styles.cardTitleAndSkills}>
         <h3 className={styles.cardTitle}>{title}</h3>
 
         {/* 🏷️ Teknoloji Etiketleri */}
@@ -56,6 +65,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               {skill}
             </span>
           ))}
+          </div>
         </div>
 
         {/* 📄 Açıklama */}

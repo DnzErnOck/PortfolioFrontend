@@ -32,7 +32,7 @@
   .addButton:hover {
     background-color: #2563eb;
   }
-  
+    
   .pagination {
     display: flex;
     justify-content: end;

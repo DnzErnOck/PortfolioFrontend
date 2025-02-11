@@ -6,13 +6,24 @@
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
   width: 100%;
-  max-width: 1000px; /* 🔥 Maksimum genişlik biraz küçültüldü */
+  max-width: 900px; /* 🔥 Maksimum genişlik biraz küçültüldü */
+  max-height: 700px;
   position: relative;
   margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1400px;
+  justify-content: center;
+}
+
+
 
 .cardContainer:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -22,15 +33,19 @@
 /* Üstteki Görsel */
 .cardImageContainer {
   width: 100%;
-  height: 250px; /* 🔥 Resmin yüksekliği küçültüldü */
-  overflow: hidden;
+  height: 300px; /* 🔥 Resmin yüksekliği küçültüldü */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8; 
   border-radius: 12px;
+  
 }
 
 .cardImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* 🔥 Görsel kutuya tam oturacak */
+  object-fit: cover;  /*contain ile 🔥 Görsel kutuya tam oturacak */
   display: block;
   border-radius: 12px;
 }
@@ -38,57 +53,87 @@
 /* Alttaki İçerik Alanı */
 .cardContent {
   width: 100%;
-  padding: 15px; /* 🔥 Boşluk azaltıldı */
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  padding-bottom: 50px;
+}
+.cardTitleAndSkills {
+  display: flex;
+  flex-direction: row; /* Başlık ve skill yanyana */
+  align-items: center; /* Yatayda hizala */
+  gap: 15px; /* Başlık ve skill arasında boşluk */
+  margin-bottom: 8px; /* Başlık ve skill etiketlerinin altındaki boşluğu azalt */
 }
 
 /* Başlık */
 .cardTitle {
-  font-size: 1.8rem; /* 🔥 Başlık biraz küçültüldü */
+  font-size: 1.9rem;
   color: #333333;
-  margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: normal;
+  margin-bottom: 0; /* Başlık altındaki boşluğu kaldır */
 }
 
 /* Teknoloji Etiketleri */
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px; /* 🔥 Boşluk azaltıldı */
+ /*  gap: 13px; */
+  margin-left: auto; /* Skill etiketlerini sağa yasla */
+  margin-top: 0;
+/*   right: 12px;
+  position: absolute; */
 }
 
 .skill {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 0.9rem; /* 🔥 Etiketler küçültüldü */
-  font-weight: 600;
-  text-transform: uppercase;
-  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.7rem;
+  font-weight: 400;
   letter-spacing: 0.5px;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.1); /* Hafif bir arka plan rengi */
+  color: #333;
+  margin: 4px;
+  white-space: nowrap;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Açıklama */
 .cardDetail {
-  font-size: 0.95rem; /* 🔥 Açıklama metni küçültüldü */
+  font-size: 0.9rem; /* 🔥 Açıklama metni küçültüldü */
   color: #555555;
-  margin: 8px 0 30px;
+  margin: 8px 0 4px;
+  flex-grow: 1; /* 🔥 CardDetail büyüse bile butonları aşağıda tutar */
+  line-height: 1.6;
 }
 
 /* Butonlar */
 .buttons {
+/*   display: flex;
+  gap: 12px;
+  margin-top: 12px; */
+
+  position: absolute; /* 🔥 Sabit konum */
+  bottom: 12px; /* Kartın altına yapıştır */
+  right: 12px; /* Kartın soluna yapıştır */
   display: flex;
-  gap: 15px;
-  margin-top: 15px;
+  gap: 10px;
 }
 
 .iconLink {
   color: #333;
-  font-size: 1.2rem; /* 🔥 İkon boyutu küçültüldü */
+  font-size: 1.1rem; /* 🔥 İkon boyutu küçültüldü */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,6 +152,6 @@
 
 /* Buton metni */
 .buttonText {
-  margin-left: 6px;
-  font-size: 0.9rem; /* 🔥 Buton yazıları küçültüldü */
+  margin-left: 5px;
+  font-size: 0.85rem; /* 🔥 Buton yazıları küçültüldü */
 }

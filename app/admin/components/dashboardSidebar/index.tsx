@@ -26,8 +26,10 @@ export default function DashboardSidebar() {
   const [user, setUser] = useState<any | null>(null); // Kullanıcı verisi için state
 
   const logout = () => {
-    localStorage.removeItem("token");
-    window.location.href = "/auth";
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      window.location.href = "/auth";
+    }
   };
 
   useEffect(() => {

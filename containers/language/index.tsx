@@ -16,6 +16,12 @@ const languageLevelMap: { [key: string]: number } = {
   UpperIntermediate: 80,
   Advanced: 100,
   Proficient: 120,
+  A1: 20,
+  A2: 40,
+  B1: 60,
+  B2: 80,
+  C1: 100,
+  C2: 120,
 };
 
 const LanguageContainer: React.FC = () => {
@@ -34,13 +40,15 @@ const LanguageContainer: React.FC = () => {
       <h2 className={styles.sectionTitle}>Languages</h2>
       <div className={styles.starContainer}>
         {languages.map((lang) => {
-          const stars = Math.ceil((languageLevelMap[lang.languageLevel] || 0) / 20);
-          console.log(`Language: ${lang.name}, Level: ${lang.languageLevel}, Stars: ${stars}`);
+          const stars = Math.ceil(
+            (languageLevelMap[lang.languageLevel] ?? 0) / 20
+          );
+          /* console.log(`Language: ${lang.name}, Level: ${lang.languageLevel}, Stars: ${stars}`); */
           return (
             <div key={lang.id} className={styles.languageItem}>
-              <strong>{lang.name}</strong>
+              <h3>{lang.name}</h3>
               <div className={styles.stars}>
-                {Array.from({ length: 5 }).map((_, index) => (
+                {Array.from({ length: 6 }).map((_, index) => (
                   <span 
                     key={index} 
                     className={index < stars ? styles.filledStar : styles.emptyStar}
