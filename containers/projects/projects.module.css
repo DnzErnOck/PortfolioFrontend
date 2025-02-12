@@ -10,11 +10,11 @@
 }
 
 .pageTitle {
-  font-size: 2.3rem;
-  font-weight: bold;
-  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: left;
   margin-bottom: 40px;
-  color: #3b3b3b;
 }
 
 /* 🌿 Daha Soft ve Profesyonel Kart Tasarımı */

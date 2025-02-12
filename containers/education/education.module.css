@@ -7,11 +7,11 @@
 
 /* Başlık Stili */
 .sectionTitle {
-  font-size: 2.3rem;
-  font-weight: bold;
-  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: left;
   margin-bottom: 40px;
-  color: #3b3b3b;
+  color: #2c3e50;
 }
 
 /* Eğitim Kartı */

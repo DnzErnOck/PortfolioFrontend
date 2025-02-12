@@ -37,7 +37,7 @@ const ProjectContainer: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* <h1 className={styles.pageTitle}>My Projects</h1> */}
+      <h1 className={styles.pageTitle}>My Projects</h1>
       <ProjectList projects={projects} />
 
       {/* ✅ Modern Sayfalama */}
