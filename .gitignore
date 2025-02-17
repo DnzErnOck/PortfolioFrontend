@@ -39,7 +39,3 @@ app/auth/
 services/authService.ts
 containers/auth
 
-# committe bunu yap:
-# git rm -r --cached app/auth  # Takipten çıkar ama dosyaları silmez
-# git commit -m "Stopped tracking app/auth folder"
-# git push origin master
