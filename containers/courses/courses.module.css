@@ -1,14 +1,18 @@
-.courseSection {
-  padding: 3rem 2rem;
-  background-color: #f9f9f9;
+.coursesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  padding:25px 20px;
+  overflow: hidden; /* Scroll'u kaldırır */
 }
 
 .title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 40px;
 }
 
 .cardGrid {
@@ -20,7 +24,7 @@
 }
 
 .courseCard {
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.7);
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

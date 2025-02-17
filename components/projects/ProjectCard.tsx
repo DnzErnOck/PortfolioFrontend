@@ -18,6 +18,14 @@ const skillColors: Record<string, string> = {
   React: "#61DAFB",
   "Next.js": "#000000",
   Intellij: "#A633D6",
+  Javascript: "#F7DF1E",
+  HTML: "#E34F26",
+  CSS: "#1572B6",
+  PostgreSql: "#336791",
+  Postman: "#872B0AFF",
+  Redux: "#764ABC",
+  Github: "#4A4747FF",
+  Eclipse: "#2C2255",
 };
 
 const getSkillColor = (skill: string) => ({
@@ -35,7 +43,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <div className={styles.cardContainer}>
-      {/* 🖼️ Üstteki Görsel Alanı */}
+      {/* 🖼️ Sol Tarafta Görsel */}
       <div className={styles.cardImageContainer}>
         <img
           src={imageBase64 ? `${imageBase64}` : "/default-placeholder.png"}
@@ -45,20 +53,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         />
       </div>
 
-      {/* 📌 Alttaki İçerik Alanı */}
+      {/* 📌 Sağ Tarafta İçerik */}
       <div className={styles.cardContent}>
-        <h3 className={styles.cardTitle}>{title}</h3>
-
-        {/* 🏷️ Teknoloji Etiketleri */}
-        <div className={styles.skills}>
-          {skillNames.map((skill, index) => (
-            <span key={index} className={styles.skill} style={getSkillColor(skill)}>
-              {skill}
-            </span>
-          ))}
+        <div className={styles.cardTitleAndSkills}>
+          <h3 className={styles.cardTitle}>{title}</h3>
+          <div className={styles.skills}>
+            {skillNames.map((skill, index) => (
+              <span
+                key={index}
+                className={styles.skill}
+                style={getSkillColor(skill)}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* 📄 Açıklama */}
         <p className={styles.cardDetail}>{detail}</p>
 
         {/* 🔗 Bağlantılar */}

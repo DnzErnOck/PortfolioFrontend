@@ -17,6 +17,7 @@
   justify-content: center;
   /* min-height: 100vh; */
   width: 100%;
+  padding-left: 150px;
 }
 
 /* Hoş Geldiniz Metni */
@@ -32,11 +33,14 @@
   font-size: 5rem; /* Varsayılan yazı boyutu */
   font-weight: bold;
   background: linear-gradient(to right, #6b46c1, #d53f8c, #4c51bf); /* Gradient renkler */
-  -webkit-background-clip: text;
+  background-clip: text; /* Standart özellik */
+  -webkit-background-clip: text; /* WebKit için */
   -webkit-text-fill-color: transparent; /* Gradientin yalnızca metne uygulanması */
+  color: transparent; /* Standart özellik için */
   margin-bottom: 1.2rem;
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
 
 
 

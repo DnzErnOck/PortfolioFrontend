@@ -27,11 +27,12 @@ const EducationContainer: React.FC = () => {
       <h2 className={styles.sectionTitle}>Education</h2>
       {educations.map((edu) => (
         <div key={edu.id} className={styles.educationItem}>
-          <h3>{edu.name}</h3>
-          <p>{edu.major}</p>
-          <p>
+          <p  className={styles.educationDate}>
             {formatDate(edu.startDate)} - {formatDate(edu.finishDate)}
           </p>
+          <h3>{edu.name}</h3>
+          <p>{edu.major}</p>
+          
         </div>
       ))}
     </div>

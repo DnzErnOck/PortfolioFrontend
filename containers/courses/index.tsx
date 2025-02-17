@@ -20,15 +20,15 @@ const CoursesContainer: React.FC = () => {
 
   const getCourses = async () => {
     try {
-      const data = await CourseService.fetchCourses();
-      setCourses(data);
+      const data = await CourseService.getAll();
+      setCourses(data.content);
     } catch (error) {
       console.error("Error fetching courses:", error);
     }
   };
 
   return (
-    <section className={styles.courseSection}>
+    <section className={styles.coursesContainer}>
       <h1 className={styles.title}>Courses</h1>
       {courses.length ? (
         <div className={styles.cardGrid}>
@@ -38,7 +38,9 @@ const CoursesContainer: React.FC = () => {
               <p className={styles.courseInstructor}>
                 <strong>Instructor:</strong> {course.instructor}
               </p>
-              <p className={styles.courseDetail}>{course.detail}</p>
+              <p className={styles.courseDetail}>
+              <strong>Detail:</strong> {course.detail}
+              </p>
               <p className={styles.courseDate}>
                 <strong>Date:</strong> {new Date(course.date).toLocaleDateString()}
               </p>

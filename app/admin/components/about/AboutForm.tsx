@@ -31,6 +31,7 @@ const AboutForm: React.FC<AboutFormProps> = ({ initialData, onSubmit, onCancel }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    console.log("Updated aboutText:", value);
   };
 
   const handleCardChange = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -38,6 +39,7 @@ const AboutForm: React.FC<AboutFormProps> = ({ initialData, onSubmit, onCancel }
     const updatedCards = [...formData.cards];
     updatedCards[index] = { ...updatedCards[index], [name]: value };
     setFormData({ ...formData, cards: updatedCards });
+    console.log("Updated Cards:", updatedCards);
   };
 
   const addNewCard = () => {
@@ -51,8 +53,10 @@ const AboutForm: React.FC<AboutFormProps> = ({ initialData, onSubmit, onCancel }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Gönderilen veri:", formData); // Burada console'a yazdır
     onSubmit(formData);
   };
+  
 
   return (
     <div className={styles.overlay}>

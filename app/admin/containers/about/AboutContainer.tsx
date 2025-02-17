@@ -84,7 +84,7 @@ const AboutContainer = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1>About Management</h1>
-        {!aboutData && (
+        {aboutData?.length === 0 && (
           <button className={styles.addButton} onClick={() => setIsModalOpen(true)}>
             + Add About
           </button>
@@ -102,12 +102,14 @@ const AboutContainer = () => {
         </div>
       )}
 
-      {aboutData ? (
-        <AboutTable aboutEntries={aboutData} onEdit={setSelectedAbout} onDelete={handleDeleteAbout} />
-      ) : (
-        <p className={styles.noData}>No About section found. Please add one.</p>
-      )}
-
+      <div>
+        {aboutData && aboutData.length > 0 ? (
+          <AboutTable aboutEntries={aboutData} onEdit={setSelectedAbout} onDelete={handleDeleteAbout} />
+        ) : (
+          <AboutTable aboutEntries={[]} onEdit={setSelectedAbout} onDelete={handleDeleteAbout} />
+        )}
+      </div>
+      
       {isModalOpen && <AboutForm onSubmit={handleCreateAbout} onCancel={() => setIsModalOpen(false)} />}
       {selectedAbout && <AboutForm initialData={selectedAbout} onSubmit={handleUpdateAbout} onCancel={() => setSelectedAbout(null)} />}
     </div>

@@ -1,56 +1,69 @@
-/* Kartın genel yapısı */
+/* Kartın Genel Yapısı */
 .cardContainer {
   display: flex;
-  flex-direction: column; /* 🔥 Resim üste, içerik alta */
-  align-items: center;
-  background: #ffffff;
+  flex-direction: row; /* Resim solda, içerik sağda */
+  align-items: stretch; /* İçerik ve resim arasında hizalama */
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
   width: 100%;
-  max-width: 1000px; /* 🔥 Maksimum genişlik biraz küçültüldü */
-  position: relative;
+  max-width: 1200px; /* Kartın maksimum genişliği arttırıldı */
   margin-bottom: 30px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
+/* Kart Hover Efekti */
 .cardContainer:hover {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transform: scale(1.02);
 }
 
-/* Üstteki Görsel */
+/* Sol Taraf: Resim Alanı */
 .cardImageContainer {
-  width: 100%;
-  height: 250px; /* 🔥 Resmin yüksekliği küçültüldü */
-  overflow: hidden;
+  width: 70%; /* Resmin genişliği */
+  display: flex;
+  justify-content: center; /* Resmi yatayda ortala */
+  align-items: center; /* Resmi dikeyde ortala */
   border-radius: 12px;
+  overflow: hidden;
+  padding-left: 15px;
 }
 
 .cardImage {
   width: 100%;
-  height: 100%;
-  object-fit: cover;  /* 🔥 Görsel kutuya tam oturacak */
+  height: auto;
+  object-fit: cover; /* Resmin boyutunu koruyarak sığdır */
   display: block;
   border-radius: 12px;
 }
 
-/* Alttaki İçerik Alanı */
+/* Sağ Taraf: İçerik Alanı */
 .cardContent {
-  width: 100%;
-  padding: 15px; /* 🔥 Boşluk azaltıldı */
+  width: 60%; /* İçerik kısmı genişletildi */
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  height: auto; /* İçerik yüksekliği otomatik */
+  min-height: 250px; /* İçeriğin minumum yüksekliği */
+}
+
+/* Başlık ve Skill Etiketleri */
+.cardTitleAndSkills {
+  display: flex;
+  flex-direction: column; /* Başlık üstte, etiketler altında */
   align-items: flex-start;
-  justify-content: center;
+  gap: 10px;
 }
 
 /* Başlık */
 .cardTitle {
-  font-size: 1.8rem; /* 🔥 Başlık biraz küçültüldü */
+  font-size: 2rem; /* Başlık boyutu büyütüldü */
   color: #333333;
-  margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: normal;
+  margin: 0;
 }
 
 /* Teknoloji Etiketleri */
@@ -58,41 +71,50 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 8px; /* 🔥 Boşluk azaltıldı */
 }
 
 .skill {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 0.9rem; /* 🔥 Etiketler küçültüldü */
-  font-weight: 600;
-  text-transform: uppercase;
-  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 0.7rem;
   letter-spacing: 0.5px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.1); /* Arka plan rengi */
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.skill:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* Açıklama */
 .cardDetail {
-  font-size: 0.95rem; /* 🔥 Açıklama metni küçültüldü */
+  font-size: 1rem;
   color: #555555;
-  margin: 8px 0 30px;
+  line-height: 1.6;
+  flex-grow: 1;
 }
 
 /* Butonlar */
 .buttons {
   display: flex;
-  gap: 15px;
-  margin-top: 15px;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: flex-end; /* Butonları sağa hizala */
 }
 
 .iconLink {
   color: #333;
-  font-size: 1.2rem; /* 🔥 İkon boyutu küçültüldü */
+  font-size: 1.2rem; /* İkon boyutu büyütüldü */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 8px;
   transition: all 0.3s ease-in-out;
   background: #f5f5f5;
@@ -105,8 +127,8 @@
   transform: scale(1.05);
 }
 
-/* Buton metni */
+/* Buton Metni */
 .buttonText {
-  margin-left: 6px;
-  font-size: 0.9rem; /* 🔥 Buton yazıları küçültüldü */
+  margin-left: 8px;
+  font-size: 0.85rem;
 }

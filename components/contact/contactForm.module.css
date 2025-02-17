@@ -68,21 +68,25 @@
 }
 
 .button {
-  width: 100%;
+  width: 50%;
   padding: 12px;
   font-size: 16px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 8px;
+  background-color: #f3f3f3;
+  color: dimgrey;
+  border: 1px solid #d1d1d1;
+  border-radius: 100px;
   cursor: pointer;
+  font-weight: 600;
+  display: block;
+  margin: 20px auto; 
 }
 
 .button:hover {
-  background-color: #1d78c1;
+  background-color: #4b97d5;
+  color: #333;
 }
 
-.popup {
+/* .popup {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -91,7 +95,65 @@
   background: #fff;
   border-radius: 8px;
   text-align: center;
+  color: #000;
+} */
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px 40px;
+  background: #fff;
+  border-radius: 100px; /* Daha yuvarlak köşeler */
+  text-align: center;
+  color: #333; /* Daha koyu metin rengi */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Yumuşak gölge */
+  width: auto;
+  max-width: 600px; /* Maksimum genişlik */
+  animation: fadeIn 0.3s ease-in-out; /* Animasyon */
+  height: 78px; /* Pop-up'ın yüksekliği */
+  display: flex;
+  align-items: center; /* Dikeyde ortalama */
+  justify-content: center; /* Yatayda ortalama */
+  padding-left: 25px; /* Icon ile çerçeve arasına boşluk */
 }
+
+.popup.success {
+  background: rgba(210, 237, 218, 0.9); /* Başarılı mesajlar için yeşil ton */
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.popup.error {
+  background: rgba(248, 215, 218, 0.9); /* Hata mesajları için kırmızı ton */
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.popup .icon {
+  font-size: 30px;
+  margin-bottom: 5px;
+  margin-right: 4px;
+}
+
+.popup p {
+  font-size: 16px;
+  margin: 0;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {

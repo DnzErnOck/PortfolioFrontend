@@ -1,25 +1,28 @@
 .container {
-  padding: 40px;
-  max-width: 1200px;
+  padding: 25px 20px;
+  max-width: 1350px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+
+ /*  min-height: 100vh;
+  align-items: center; */
 }
 
 .pageTitle {
-  font-size: 2.3rem;
-  font-weight: bold;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
   text-align: left;
   margin-bottom: 40px;
-  color: #3b3b3b;
 }
 
 /* 🌿 Daha Soft ve Profesyonel Kart Tasarımı */
 .projectList {
-  display: flex;
+ display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px; 
+  align-items: center;
 }
 
 .projectCard {
@@ -29,7 +32,15 @@
   padding: 24px;
   transition: all 0.3s ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
+  max-width: 750px; /* Genişliği artırdım */
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+
 
 .projectCard:hover {
   transform: translateY(-3px);

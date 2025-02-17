@@ -55,6 +55,8 @@ const CertificateContainer = () => {
 
   const handleUpdateCertificate = async (certificate: any): Promise<boolean> => {
     try {
+      console.log(certificate);
+      
       await CertificateService.update(certificate);
       loadCertificates();
       setSelectedCertificate(null);

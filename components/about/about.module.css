@@ -27,14 +27,26 @@
   padding: 0 20px;
 }
 
+/* Hata mesajı için stil */
+.errorText {
+  color: #544b4b;  /* Koyu kırmızı */
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
 .heading {
   font-size: 3.1rem;
   font-weight: bold;
   background: linear-gradient(135deg, rgb(107, 70, 193), rgb(107, 70, 193), rgb(148, 148, 200));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text; /* Standart özellik */
+  color: transparent; /* Yazı rengini şeffaf yapıyoruz */
   margin-bottom: 20px;
 }
+
 
 .aboutText {
   font-size: 1.2rem;

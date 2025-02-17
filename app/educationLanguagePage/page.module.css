@@ -1,15 +1,19 @@
 .pageContainer {
-    display: flex;
+/*     display: flex;
     flex-direction: column;
     gap: 3rem;
     padding: 2rem;
-    background-color: #f9f9f9;
     min-height: 100vh;
-    text-align: center;
+    text-align: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding:25px 20px;
   }
   
   .containerStyle {
     width: 50%;
-    margin: 0 auto; /* Ortalamak için */
+    /* margin: 0 auto; */ /* Ortalamak için */
   }
   
