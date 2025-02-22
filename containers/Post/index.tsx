@@ -58,27 +58,7 @@ const PostList: React.FC = () => {
     fetchPostsData();
   }, [page, search, sort]);
 
-  /* const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-    setPage(0);
-  };
-
-  const toggleSort = () => {
-    setSort(sort === "desc" ? "asc" : "desc");
-    setPage(0);
-  };
-
-  const handlePreviousPage = () => {
-    if (page > 0) setPage(page - 1);
-  };
-
-  const handleNextPage = () => {
-    if (page < totalPages - 1) setPage(page + 1);
-  };
-
-  const handlePostClick = (id: number) => {
-    router.push(`/posts/${id}`);
-  }; */
+ 
 
   return (
     <div className={styles.postListContainer}>
@@ -108,13 +88,7 @@ const PostList: React.FC = () => {
           {posts.map((post) => (
               <li key={post.id} className={styles.postItem} onClick={() => router.push(`/posts/${post.id}`)}>
                 {extractFirstImage(post.elements) && <img src={extractFirstImage(post.elements)} alt={post.title} className={styles.postImage} />}
-                {/* {extractFirstImage(post.elements) && (
-                  <img
-                    src={extractFirstImage(post.elements)}
-                    alt={post.title || "Post image"}
-                    className={styles.postImage}
-                  />
-                )} */}
+                
                 <div className={styles.postContent}>
                   <h3 className={styles.postTitle}>{post.title}</h3>
                   <p className={styles.postDate}>
