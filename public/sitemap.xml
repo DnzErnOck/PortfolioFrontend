@@ -1,0 +1,54 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
+const sitemap = async (req: NextApiRequest, res: NextApiResponse) => {
+  // Post verilerini API'den alıyoruz
+  const posts = await fetchPosts();
+
+  // URLs listemizi oluşturuyoruz
+  const urls = [
+    const urls = [
+        { loc: 'https://www.yourwebsite.com/', lastmod: '2025-02-20', changefreq: 'daily', priority: '1.0' },  // Anasayfa
+        { loc: 'https://www.yourwebsite.com/projects', lastmod: '2025-02-20', changefreq: 'daily', priority: '0.8' },  // Projeler
+        { loc: 'https://www.yourwebsite.com/experiences', lastmod: '2025-02-20', changefreq: 'daily', priority: '0.7' },  // Deneyimler
+        { loc: 'https://www.yourwebsite.com/certificates', lastmod: '2025-02-20', changefreq: 'daily', priority: '0.7' },  // Sertifikalar
+        { loc: 'https://www.yourwebsite.com/educationLanguagePage', lastmod: '2025-02-20', changefreq: 'daily', priority: '0.7' },  // Eğitim
+        { loc: 'https://www.yourwebsite.com/courses', lastmod: '2025-02-20', changefreq: 'daily', priority: '0.6' },  // Kurslar
+        { loc: 'https://www.yourwebsite.com/contact', lastmod: '2025-02-20', changefreq: 'daily', priority: '0.5' }   // İletişim
+];
+
+    // Diğer sabit sayfalar
+    ...posts.map((post: any) => ({
+      loc: `https://www.yourwebsite.com/posts/${post.id}`, // Dinamik post URL'si
+      lastmod: post.updatedAt, // Post güncellenme tarihi
+      changefreq: 'monthly',
+      priority: '0.7',
+    })),
+  ];
+
+  // Sitemap için XML başlığını ekliyoruz
+  const xmlHeader = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
+
+  // URL'leri XML formatında hazırlıyoruz
+  const xmlUrls = urls.map((url) => {
+    return `
+      <url>
+        <loc>${url.loc}</loc>
+        <lastmod>${url.lastmod}</lastmod>
+        <changefreq>${url.changefreq}</changefreq>
+        <priority>${url.priority}</priority>
+      </url>`;
+  }).join('\n');
+
+  // XML kapanış etiketi
+  const xmlFooter = `\n</urlset>`;
+
+  // Tam sitemap XML içeriğini oluşturuyoruz
+  const xmlContent = xmlHeader + xmlUrls + xmlFooter;
+
+  // Content-Type başlığını XML olarak ayarlıyoruz
+  res.setHeader('Content-Type', 'application/xml');
+  res.write(xmlContent);
+  res.end();
+};
+
+export default sitemap;
