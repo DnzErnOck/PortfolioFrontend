@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
-        <Link className={styles.logo} href="/">
+        <Link className={styles.logo} href="/" aria-label="Ana Sayfa">
             <VscCodeReview />
         </Link> 
         <nav className={styles.navigationMenu}>
