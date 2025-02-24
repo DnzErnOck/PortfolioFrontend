@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { UserService } from "@/services/userService";
+import { logout } from "./logout"; // Logout fonksiyonunu import ettik
 import styles from "./dashboardSidebar.module.css";
-import image from '../../../../images/avatar2.jpg'; 
+import image from "../../../../images/avatar2.jpg"; 
 import Image from "next/image";
+
 const menuItems = [
   { title: "Dashboard", icon: "📊", url: "/admin/dashboard" },
   { title: "Profile", icon: "👤", url: "/admin/user" },
@@ -23,19 +25,12 @@ const menuItems = [
 ];
 
 export default function DashboardSidebar() {
-  const [user, setUser] = useState<any | null>(null); // Kullanıcı verisi için state
-
-  const logout = () => {
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("token");
-      window.location.href = "/auth";
-    }
-  };
+  const [user, setUser] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const userData = await UserService.getUser(); // Servisten kullanıcıyı çek
-      setUser(userData); // State'e kullanıcıyı ata
+      const userData = await UserService.getUser();
+      setUser(userData);
     };
     fetchUserData();
   }, []);
@@ -43,14 +38,9 @@ export default function DashboardSidebar() {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.header}>
-       
-        <Image
-            src={image} // Resmi next/image ile doğru şekilde gösteriyoruz
-            alt="User Avatar"
-            className={styles.avatar}
-          />
+        <Image src={image} alt="User Avatar" className={styles.avatar} />
         <div className={styles.userInfo}>
-          <h2 className={styles.userName}>{user?.name +" "+user?.surname}</h2>
+          <h2 className={styles.userName}>{user?.name + " " + user?.surname}</h2>
           <p className={styles.userRole}>Full Stack Developer</p>
         </div>
       </div>

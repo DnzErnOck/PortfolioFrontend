@@ -5,6 +5,7 @@ import { CertificateService } from "../../services/certificateService";
 import styles from "./certificate.module.css";
 import { Eye } from "lucide-react";
 
+
 interface Certificate {
   id: number;
   name: string;
