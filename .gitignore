@@ -39,3 +39,7 @@ app/auth/
 services/authService.ts
 containers/auth
 
+app/admin/components/dashboardSidebar/logout.ts
+config/axiosInstances.ts
+services/loginService.ts
+public/robots.txt
