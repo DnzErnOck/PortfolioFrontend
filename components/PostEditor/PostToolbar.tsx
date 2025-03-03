@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./PostToolbar.module.css";
+import styles from "./postToolbar.module.css";
 import { FiEdit, FiImage, FiCode } from "react-icons/fi";
 
 interface PostToolbarProps {

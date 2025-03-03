@@ -87,7 +87,7 @@ const LanguageContainer = () => {
           + Add New Language
         </button>
       </div>
-
+      {loading && <p>Loading...</p>} {/* Buraya ekledik */}
       {notification && (
         <div
           className={`${styles.notification} ${!notification ? styles.hidden : ""}`}

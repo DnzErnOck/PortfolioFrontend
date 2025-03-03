@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import styles from "./PostContainer.module.css";
+import styles from "./postContainer.module.css";
 import { PostService } from "@/services/postService";
 import PostTable from "../../components/post/PostTable";
 import PostForm from "../../components/post/PostForm";
@@ -127,7 +127,7 @@ const PostContainer = () => {
           + Add New Post
         </button>
       </div>
-
+      {loading && <p>Loading...</p>} {/* Buraya ekledik */}
       {notification && (
         <div
           className={`${styles.notification}`}

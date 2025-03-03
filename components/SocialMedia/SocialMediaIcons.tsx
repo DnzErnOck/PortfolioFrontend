@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SocialMediaService } from "@/services/socialMediaService";
 import styles from "./socialMediaIcons.module.css";
-
+import Image from 'next/image';
 type SocialMedia = {
   id: number;
   imageBase64: string; // Zorunlu string
@@ -40,10 +40,13 @@ const SocialMediaIcons = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <img
+          <Image
             src={socialMedia.imageBase64}
             alt={socialMedia.name}
             className={styles.iconImage}
+            width={400} 
+            height={200} 
+            unoptimized 
           />
         </a>
       ))}

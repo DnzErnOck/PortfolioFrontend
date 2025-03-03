@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../../utils/adminTable/form.module.css";
 import {SkillService } from "@/services/skillService";
-
+import Image from 'next/image';
 interface ProjectFormProps {
   initialData?: any;
   onSubmit: (data: any) => void;
@@ -183,7 +183,9 @@ const ProjectForm: React.FC<ProjectFormProps> = ({ initialData, onSubmit, onCanc
             <label htmlFor="image">Upload Image</label>
             <input type="file" id="image" name="image" onChange={handleFileChange} />
             {formData.imageBase64 && (
-              <img src={formData.imageBase64} alt="Preview" className={styles.imagePreview} />
+              <Image src={formData.imageBase64} alt="Preview" className={styles.imagePreview} width={200} 
+              height={400} 
+              unoptimized />
             )}
           </div>
 

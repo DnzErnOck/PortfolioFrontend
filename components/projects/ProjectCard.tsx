@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import styles from "./projects.module.css";
-
+import Image from 'next/image';
 interface ProjectCardProps {
   imageBase64?: string;
   title: string;
@@ -45,11 +45,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div className={styles.cardContainer}>
       {/* 🖼️ Sol Tarafta Görsel */}
       <div className={styles.cardImageContainer}>
-        <img
+        <Image
           src={imageBase64 ? `${imageBase64}` : "/default-placeholder.png"}
           alt={title}
           className={styles.cardImage}
           onError={(e) => (e.currentTarget.src = "/default-placeholder.png")}
+          width={400} 
+          height={200} 
+          unoptimized 
         />
       </div>
 

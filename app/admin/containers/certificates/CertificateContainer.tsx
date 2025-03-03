@@ -1,9 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SkillService } from "@/services/skillService";
-import SkillTable from "../../components/skills/SkillTable";
-import SkillForm from "../../components/skills/SkillForm";
 
 import styles from "../../../utils/adminTable/container.module.css";
 import { CertificateService } from "@/services/certificateService";
@@ -109,7 +106,7 @@ const CertificateContainer = () => {
           + Add New Certificate
         </button>
       </div>
-
+      {loading && <p>Loading...</p>} {/* Buraya ekledik */}
       {notification && (
         <div
           className={`${styles.notification} ${!notification ? styles.hidden : ""}`}

@@ -103,7 +103,7 @@ const ProjectContainer = () => {
           + Add New Project
         </button>
       </div>
-
+      {loading && <p>Loading...</p>} {/* Buraya ekledik */}
       {notification && (
         <div
           className={`${styles.notification} ${!notification ? styles.hidden : ""}`}

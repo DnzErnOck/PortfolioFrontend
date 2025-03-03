@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ToDoList from "../toDoList/ToDoList";
 import styles from "./dashboardContent.module.css";
-import { User2, Book, Code2, ImageIcon, BarChart3, Settings, Globe, Briefcase } from "lucide-react";
+import { User2, Book, Code2, ImageIcon, Globe, Briefcase } from "lucide-react";
 
 const cards = [
   { 

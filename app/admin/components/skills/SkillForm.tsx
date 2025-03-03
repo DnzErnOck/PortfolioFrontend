@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "../../../utils/adminTable/form.module.css";
+import Image from "next/image";
 interface SkillFormProps {
   initialData?: any; // Eğer bir skill düzenlenecekse başlangıç verileri
   onSubmit: (data: any) => void;
@@ -89,7 +90,9 @@ const SkillForm: React.FC<SkillFormProps> = ({ initialData, onSubmit, onCancel }
             <label htmlFor="image">Upload Image</label>
             <input type="file" id="image" name="image" onChange={handleFileChange} />
             {formData.imageBase64 && (
-              <img src={formData.imageBase64} alt="Preview" className={styles.imagePreview} style={{width:"30%",height:"50%"}} />
+              <Image src={formData.imageBase64} alt="Preview" className={styles.imagePreview} style={{width:"30%",height:"50%"}} width={200} 
+              height={200} 
+              unoptimized />
             )}
           </div>
 

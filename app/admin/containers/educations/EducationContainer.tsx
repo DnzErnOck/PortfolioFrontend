@@ -87,7 +87,7 @@ const EducationContainer = () => {
           + Add New Education
         </button>
       </div>
-
+      {loading && <p>Loading...</p>} {/* Buraya ekledik */}
       {notification && (
         <div
           className={`${styles.notification} ${!notification ? styles.hidden : ""}`}

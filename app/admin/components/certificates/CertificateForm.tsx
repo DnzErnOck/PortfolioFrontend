@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "../../../utils/adminTable/form.module.css";
-
+import Image from 'next/image';
 interface CertificateFormProps {
   initialData?: any;
   onSubmit: (data: any) => void;
@@ -145,7 +145,8 @@ const CertificateForm: React.FC<CertificateFormProps> = ({ initialData, onSubmit
             <label htmlFor="image">Upload Image</label>
             <input type="file" id="image" name="image" onChange={handleFileChange} />
             {formData.imageBase64 && (
-              <img src={formData.imageBase64} alt="Preview" className={styles.imagePreview} />
+              <Image src={formData.imageBase64} alt="Preview" className={styles.imagePreview} unoptimized  width={400} 
+              height={200} />
             )}
           </div>
 

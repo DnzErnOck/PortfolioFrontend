@@ -7,7 +7,7 @@ import { PostService } from "@/services/postService";
 import styles from "../app/posts/[id]/postDetail.module.css";
 import hljs from "highlight.js";
 import "highlight.js/styles/a11y-light.css"; // Highlight.js style
-
+import Image from 'next/image';
 const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
   const router = useRouter();
   const [post, setPost] = useState<any>(null);
@@ -59,11 +59,14 @@ const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
               {element.content}
             </p>
           ) : element.contentType === "IMAGE" && element.imageBase64 ? (
-            <img
+            <Image
               key={element.id}
               src={element.imageBase64}
               alt="Post Image"
               className={styles.postImage}
+              width={200} 
+              height={400} 
+              unoptimized 
             />
           ) : element.contentType === "CODE" ? (
             <pre key={element.id} className={styles.postCode}>

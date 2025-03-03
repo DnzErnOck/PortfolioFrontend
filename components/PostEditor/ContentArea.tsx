@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ContentBlock from "./ContentBlock";
 
 interface ContentAreaProps {

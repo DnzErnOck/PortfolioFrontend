@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-
+import Image from 'next/image';
 interface ContentBlockProps {
   index: number;
   contentType: string;
@@ -68,7 +68,7 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
           />
           {/* Yeni resim varsa öncelikli olarak göster, yoksa mevcut resmi göster */}
           {fileURL ? (
-            <img
+            <Image
               src={fileURL}
               alt="New Upload"
               style={{
@@ -76,10 +76,13 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
                 marginTop: "10px",
                 borderRadius: "8px",
               }}
+              width={400} 
+              height={200} 
+              unoptimized 
             />
           ) : (
             imageBase64 && (
-              <img
+              <Image
                 src={imageBase64}
                 alt="Existing Image"
                 style={{
@@ -87,6 +90,9 @@ const ContentBlock: React.FC<ContentBlockProps> = ({
                   marginTop: "10px",
                   borderRadius: "8px",
                 }}
+                width={400} 
+                height={200} 
+                unoptimized 
               />
             )
           )}

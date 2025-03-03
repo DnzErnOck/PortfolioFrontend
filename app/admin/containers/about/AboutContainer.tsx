@@ -90,7 +90,7 @@ const AboutContainer = () => {
           </button>
         )}
       </div>
-
+      {loading && <p>Loading...</p>} {/* Buraya ekledik */}
       {notification && (
         <div
           className={`${styles.notification} ${notification ? styles.visible : styles.hidden}`}

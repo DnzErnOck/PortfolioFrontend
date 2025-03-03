@@ -1,7 +1,6 @@
 import { Inter } from "next/font/google";
 import "@/styles/reset.css";
 import "@/styles/global.css";
-import Header from "@/components/header";
 import ClientWrapper from "@/components/ClientWrapper";
 import { UserService } from "@/services/userService";
 import { Metadata } from "next";
