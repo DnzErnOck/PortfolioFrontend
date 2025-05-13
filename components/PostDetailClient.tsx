@@ -8,6 +8,7 @@ import styles from "../app/posts/[id]/postDetail.module.css";
 import hljs from "highlight.js";
 import "highlight.js/styles/a11y-light.css"; // Highlight.js style
 import Image from 'next/image';
+import ReactMarkdown from "react-markdown";
 const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
   const router = useRouter();
   const [post, setPost] = useState<any>(null);
@@ -55,9 +56,9 @@ const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
       <div className={styles.postContent}>
         {post.elements.map((element: any) =>
           element.contentType === "TEXT" ? (
-            <p key={element.id} className={styles.postText}>
-              {element.content}
-            </p>
+            <div key={element.id} className={styles.postText}>
+              <ReactMarkdown>{element.content}</ReactMarkdown>
+            </div>
           ) : element.contentType === "IMAGE" && element.imageBase64 ? (
             <Image
               key={element.id}

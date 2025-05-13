@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ContactService, CreateContactRequest } from "../../services/contactService";
 import Image from "next/image";
-import gifImage from "../../images/contact2.gif"; // GIF'i içe aktarıyoruz
+import gifImage from "../../public/images/contact2.gif"; // GIF'i içe aktarıyoruz
 import styles from "./contactForm.module.css";
 
 const ContactForm: React.FC = () => {
