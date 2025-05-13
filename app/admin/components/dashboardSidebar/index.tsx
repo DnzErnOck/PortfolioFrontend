@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { UserService } from "@/services/userService";
 import { logout } from "./logout"; // Logout fonksiyonunu import ettik
 import styles from "./dashboardSidebar.module.css";
-import image from "../../../../images/avatar2.jpg"; 
+import image from "../../../../public/images/avatar2.jpg";
 import Image from "next/image";
+
 
 const menuItems = [
   { title: "Dashboard", icon: "📊", url: "/admin/dashboard" },
