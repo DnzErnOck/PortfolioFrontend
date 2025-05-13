@@ -1,11 +1,12 @@
 import path from 'path';
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   webpack(config) {
-    config.resolve.alias['@'] = path.resolve(__dirname); // Alias'ı ekliyoruz
+    // __dirname yerine, import.meta.url ile dizin yolunu alıyoruz
+    const directory = path.dirname(new URL(import.meta.url).pathname);
+    config.resolve.alias['@'] = path.resolve(directory); // Alias'ı ekliyoruz
     return config;
   },
 };
