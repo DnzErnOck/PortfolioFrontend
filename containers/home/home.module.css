@@ -3,21 +3,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Üstten biraz daha boşluk bırakalım */
-  min-height: 80vh; /* Home sayfası biraz daha aşağıya kayacak */
-  padding: 4rem 2rem; /* Daha fazla padding ekleyelim */
+  justify-content: flex-start;
+  min-height: 80vh;
+  padding: 4rem 1rem;
   text-align: center;
-  /* background: #f8f8f8; */
-  margin-top: 40px; /* Home sayfası biraz daha aşağıda */
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 40px auto 0;
 }
-.namePart{
+
+.namePart {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  /* min-height: 100vh; */
   width: 100%;
-  padding-left: 150px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Hoş Geldiniz Metni */
@@ -26,45 +30,44 @@
   color: #555;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 /* Kullanıcı Adı */
 .nameText {
-  font-size: 5rem; /* Varsayılan yazı boyutu */
+  font-size: 5rem;
   font-weight: bold;
-  background: linear-gradient(to right, #6b46c1, #d53f8c, #4c51bf); /* Gradient renkler */
-  background-clip: text; /* Standart özellik */
-  -webkit-background-clip: text; /* WebKit için */
-  -webkit-text-fill-color: transparent; /* Gradientin yalnızca metne uygulanması */
-  color: transparent; /* Standart özellik için */
+  background: linear-gradient(to right, #6b46c1, #d53f8c, #4c51bf);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
   margin-bottom: 1.2rem;
-  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  line-height: 1.1;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
-
-
-
-/* Sorunu çözecek ek özellik */
 .nameText:hover::selection {
-  background: none; /* Seçim durumunda transparan sorunu giderilir */
-  -webkit-text-fill-color: inherit; /* Seçim sırasında text rengini korur */
+  background: none;
+  -webkit-text-fill-color: inherit;
 }
-
-
-
 
 /* Typewriter Efekt Metni */
 .typingText {
   font-size: 1.4rem;
   color: #555;
-  margin: 0.4rem 0;
+  margin: 0.4rem 0 1.5rem;
   font-style: italic;
+  line-height: 1.4;
 }
-
 
 /* About Section Container */
 .aboutSection {
-  position: relative; /* To position the arrow */
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 /* Scroll Arrow */
@@ -74,7 +77,7 @@
   color: #555;
   margin-top: 1rem;
   animation: bounce 1.5s infinite;
-  user-select: none; /* Prevent text selection */
+  user-select: none;
 }
 
 /* Bouncing Animation */
@@ -90,9 +93,10 @@
   }
 }
 
-/* Skill Section Styling (Optional) */
+/* Skill Section */
 #skill {
   margin-top: 4rem;
+  width: 100%;
 }
 
 /* Resume Butonu */
@@ -101,31 +105,137 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(to right, #6a5acd, #9370db); /* Gradient arka plan */
-  color: #ffffff; /* Metin rengi */
+  background: linear-gradient(to right, #6b46c1, #9370db);
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
   padding: 0.8rem 2rem;
   border: none;
-  border-radius: 30px; /* Tam yuvarlak köşeler */
+  border-radius: 30px;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
-  transition: all 0.3s ease-in-out; /* Yumuşak geçişler */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  margin-top: 1rem;
 }
 
 .resumeButton:hover {
-  transform: scale(1.05); /* Hover sırasında ölçekleme */
-  background: linear-gradient(to right, #7b68ee, #8a2be2); /* Hover'da farklı gradient */
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Daha güçlü gölge */
+  transform: translateY(-2px);
+  background: linear-gradient(to right, #7b68ee, #8a2be2);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
 }
 
 .downloadIcon {
   width: 20px;
   height: 20px;
-  color: #ffffff; /* İkon rengi */
+  color: #ffffff;
   transition: transform 0.3s ease-in-out;
 }
 
 .resumeButton:hover .downloadIcon {
-  transform: translateY(-2px); /* Hover sırasında ikon hareketi */
+  transform: translateY(-2px);
+}
+
+/* Tablet için responsive tasarım */
+@media (max-width: 1024px) {
+  .container {
+    padding: 3rem 1rem;
+  }
+
+  .namePart {
+    padding: 0 15px;
+  }
+
+  .nameText {
+    font-size: 4rem;
+  }
+
+  .greetingText {
+    font-size: 1.8rem;
+  }
+
+  .typingText {
+    font-size: 1.2rem;
+  }
+
+  .resumeButton {
+    padding: 0.7rem 1.8rem;
+  }
+}
+
+/* Mobil için responsive tasarım */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem 0.5rem;
+    margin-top: 20px;
+  }
+
+  .namePart {
+    padding: 0 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nameText {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .greetingText {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .typingText {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .resumeButton {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .downloadIcon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Küçük mobil cihazlar için responsive tasarım */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem 0.3rem;
+  }
+
+  .namePart {
+    padding: 0 8px;
+  }
+
+  .nameText {
+    font-size: 2.5rem;
+  }
+
+  .greetingText {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .typingText {
+    font-size: 1rem;
+    margin: 0.3rem 0 1rem;
+  }
+
+  .resumeButton {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .downloadIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  #skill {
+    margin-top: 3rem;
+  }
 }

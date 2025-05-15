@@ -3,145 +3,173 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* min-height: 80vh; */
-  padding: 20px;
+  padding: 40px 20px;
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .contentContainer {
   display: flex;
+  width: 100%;
   max-width: 1200px;
-  background: #ffffff7d;
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
 }
 
 .gifContainer {
   flex: 1;
- /*  background: #f1f1f152; */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 30px;
+  background: rgba(241, 241, 241, 0.3);
+  position: sticky;
+  top: 0;
+  height: 100%;
+  min-height: 400px;
 }
 
 .gifImage {
-  max-width: 80%;
+  max-width: 100%;
   height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  max-height: 500px;
+}
+
+.gifImage:hover {
+  transform: scale(1.02);
 }
 
 .formContainer {
   flex: 1.5;
   padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
 }
+
 .pageTitle {
-  font-size: 28px;
+  font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
-  color: dimgrey;
+  margin-bottom: 30px;
+  color: #333;
+  background: linear-gradient(135deg, rgb(107, 70, 193), rgb(148, 148, 200));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .formGroup {
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .formGroup label {
-  font-size: 14px;
+  font-size: 1rem;
   font-weight: 600;
   display: block;
-  margin-bottom: 5px;
-  color: dimgrey;
-
+  margin-bottom: 8px;
+  color: #444;
+  transition: color 0.3s ease;
 }
 
 .formGroup input,
 .formGroup textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: rgb(107, 70, 193);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
 }
 
 .formGroup textarea {
-  height: 100px;
+  height: 150px;
+  resize: vertical;
+  min-height: 100px;
 }
 
 .button {
-  width: 50%;
-  padding: 12px;
-  font-size: 16px;
-  background-color: #f3f3f3;
-  color: dimgrey;
-  border: 1px solid #d1d1d1;
-  border-radius: 100px;
+  width: 200px;
+  padding: 14px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, rgb(107, 70, 193), rgb(148, 148, 200));
+  color: white;
+  border: none;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 600;
   display: block;
-  margin: 20px auto; 
+  margin: 30px auto;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
-  background-color: #4b97d5;
-  color: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(107, 70, 193, 0.3);
 }
 
-/* .popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  text-align: center;
-  color: #000;
-} */
+.button:active {
+  transform: translateY(0);
+}
 
 .popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 30px 40px;
+  padding: 20px 40px;
   background: #fff;
-  border-radius: 100px; /* Daha yuvarlak köşeler */
+  border-radius: 30px;
   text-align: center;
-  color: #333; /* Daha koyu metin rengi */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Yumuşak gölge */
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   width: auto;
-  max-width: 600px; /* Maksimum genişlik */
-  animation: fadeIn 0.3s ease-in-out; /* Animasyon */
-  height: 78px; /* Pop-up'ın yüksekliği */
+  max-width: 90%;
+  animation: fadeIn 0.3s ease-in-out;
+  min-height: 78px;
   display: flex;
-  align-items: center; /* Dikeyde ortalama */
-  justify-content: center; /* Yatayda ortalama */
-  padding-left: 25px; /* Icon ile çerçeve arasına boşluk */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1000;
 }
 
 .popup.success {
-  background: rgba(210, 237, 218, 0.9); /* Başarılı mesajlar için yeşil ton */
+  background: rgba(210, 237, 218, 0.95);
   border: 1px solid #c3e6cb;
   color: #155724;
 }
 
 .popup.error {
-  background: rgba(248, 215, 218, 0.9); /* Hata mesajları için kırmızı ton */
+  background: rgba(248, 215, 218, 0.95);
   border: 1px solid #f5c6cb;
   color: #721c24;
 }
 
 .popup .icon {
-  font-size: 30px;
-  margin-bottom: 5px;
-  margin-right: 4px;
+  font-size: 24px;
+  flex-shrink: 0;
 }
 
 .popup p {
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0;
+  line-height: 1.4;
 }
-
 
 @keyframes fadeIn {
   0% {
@@ -154,18 +182,149 @@
   }
 }
 
+/* Tablet için responsive tasarım */
+@media (max-width: 1024px) {
+  .pageContainer {
+    padding: 30px 15px;
+  }
 
-/* Responsive */
+  .contentContainer {
+    max-width: 90%;
+  }
+
+  .gifContainer {
+    padding: 25px;
+    min-height: 350px;
+  }
+
+  .gifImage {
+    max-height: 400px;
+  }
+
+  .formContainer {
+    padding: 30px;
+  }
+
+  .pageTitle {
+    font-size: 2rem;
+  }
+
+  .button {
+    width: 180px;
+    font-size: 1rem;
+  }
+}
+
+/* Mobil için responsive tasarım */
 @media (max-width: 768px) {
-  .card {
+  .contentContainer {
     flex-direction: column;
+    max-width: 95%;
   }
 
   .gifContainer {
     order: 2;
+    padding: 20px;
+    min-height: 250px;
+    position: relative;
+  }
+
+  .gifImage {
+    max-height: 300px;
   }
 
   .formContainer {
     order: 1;
+    padding: 25px;
+  }
+
+  .pageTitle {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .formGroup {
+    margin-bottom: 20px;
+  }
+
+  .formGroup label {
+    font-size: 0.9rem;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .button {
+    width: 160px;
+    padding: 12px;
+    margin: 25px auto;
+  }
+}
+
+/* Küçük mobil cihazlar için responsive tasarım */
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 20px 10px;
+  }
+
+  .contentContainer {
+    max-width: 100%;
+    border-radius: 15px;
+  }
+
+  .gifContainer {
+    padding: 15px;
+    min-height: 200px;
+  }
+
+  .gifImage {
+    max-height: 250px;
+  }
+
+  .formContainer {
+    padding: 20px;
+  }
+
+  .pageTitle {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .formGroup {
+    margin-bottom: 15px;
+  }
+
+  .formGroup label {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .button {
+    width: 140px;
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .popup {
+    padding: 15px 25px;
+    border-radius: 20px;
+    min-height: 60px;
+  }
+
+  .popup .icon {
+    font-size: 20px;
+  }
+
+  .popup p {
+    font-size: 0.9rem;
   }
 }

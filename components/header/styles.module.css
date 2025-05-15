@@ -4,6 +4,7 @@
   top: 0;
   z-index: 1000;
   transition: transform 0.3s ease, background-color 0.3s ease; /* Scroll animasyonu */
+  position: sticky;
 }
 
 /* Scroll olduğunda küçülme efekti */
@@ -19,6 +20,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
+  position: relative;
 }
 
 /* Logo */
@@ -39,6 +41,22 @@
   transform: scale(1.1); /* Hafif büyüme */
 }
 
+/* Menu Button */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #552727e0;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.menuButton:hover {
+  color: #c13b6a;
+}
+
 /* Navigation Menu */
 .navigationMenu {
   display: flex;
@@ -46,31 +64,116 @@
   color: #494949;
   font-weight: bold;
   letter-spacing: 1.8px;
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Menü animasyonu */
+  transition: all 0.3s ease;
 }
 
-.navigationMenu a {
+/* Base link styles */
+.navLink {
+  all: initial;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
   position: relative;
+  color: #494949;
   text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease; /* Link hover animasyonu */
 }
 
-.navigationMenu a:hover {
-  color: #c13b6a; /* Hover sırasında renk değişimi */
+/* Hover effect */
+.navLink:hover {
+  color: #c13b6a;
 }
 
-.navigationMenu a::after {
-  content: "";
+/* Underline effect */
+.navLink:after {
+  content: '';
   position: absolute;
-  left: 0;
   bottom: -5px;
-  height: 2px;
+  left: 0;
   width: 0;
-  background: #c13b6a; /* Alt çizgi hover animasyonu */
-  transition: width 0.3s ease;
+  height: 2px;
+  background-color: transparent;
+  transition: all 0.3s ease;
 }
 
-.navigationMenu a:hover::after {
-  width: 100%; /* Hover sırasında alt çizgi genişliği */
+.navLink:hover:after {
+  width: 100%;
+  background-color: #c13b6a;
+}
+
+/* Active state */
+.active {
+  color: #c13b6a;
+}
+
+.active:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #c13b6a;
+}
+
+/* Reset any default or browser-specific styles that might affect the courses link */
+.navLink[href='/courses'] {
+  text-decoration: none;
+}
+
+.navLink[href='/courses']::after {
+  width: 0;
+}
+
+.navLink[href='/courses'].active::after {
+  width: 100% !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .navigationMenu {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    display: block;
+    z-index: 1001;
+  }
+
+  .navigationMenu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    flex-direction: column;
+    padding: 80px 40px;
+    gap: 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+  }
+
+  .navigationMenu.showMenu {
+    right: 0;
+  }
+
+  .logo {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navigationMenu {
+    width: 100%;
+    padding: 80px 20px;
+  }
+
+  .logo {
+    font-size: 32px;
+  }
 }

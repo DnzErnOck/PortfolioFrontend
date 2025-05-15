@@ -1,19 +1,57 @@
 .pageContainer {
-/*     display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    padding: 2rem;
-    min-height: 100vh;
-    text-align: center; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    padding:25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 60px 20px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.containerStyle {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  padding: 20px;
+}
+
+/* Tablet için responsive tasarım */
+@media (max-width: 1024px) {
+  .pageContainer {
+    padding: 40px 15px;
   }
-  
+
   .containerStyle {
-    width: 50%;
-    /* margin: 0 auto; */ /* Ortalamak için */
+    gap: 30px;
+    padding: 15px;
   }
+}
+
+/* Mobil için responsive tasarım */
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 30px 10px;
+  }
+
+  .containerStyle {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 10px;
+  }
+}
+
+/* Küçük mobil cihazlar için responsive tasarım */
+@media (max-width: 480px) {
+  .pageContainer {
+    padding: 20px 8px;
+  }
+
+  .containerStyle {
+    gap: 20px;
+    padding: 8px;
+  }
+}
   
