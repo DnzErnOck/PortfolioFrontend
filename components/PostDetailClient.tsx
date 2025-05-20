@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -9,6 +8,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/a11y-light.css"; // Highlight.js style
 import Image from 'next/image';
 import ReactMarkdown from "react-markdown";
+
 const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
   const router = useRouter();
   const [post, setPost] = useState<any>(null);
@@ -71,7 +71,7 @@ const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
             />
           ) : element.contentType === "CODE" ? (
             <pre key={element.id} className={styles.postCode}>
-              <code>{element.content}</code>
+              <code className="language-javascript">{element.content}</code>
             </pre>
           ) : null
         )}
