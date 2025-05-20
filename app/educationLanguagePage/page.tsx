@@ -8,8 +8,6 @@ const EducationLanguagePage: React.FC = () => {
     <div className={styles.pageContainer}>
       <div className={styles.containerStyle}>
         <EducationContainer />
-      </div>
-      <div className={styles.containerStyle}>
         <LanguageContainer />
       </div>
     </div>

@@ -1,21 +1,21 @@
 .skillsContainer {
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 3rem 1rem;
   background-color: transparent;
-  margin: 2rem auto;
+  margin: 1.5rem auto;
   max-width: 1200px;
   width: 100%;
 }
 
 .skillsTitle {
-  font-size: 3.1rem;
+  font-size: 2.8rem;
   font-weight: bold;
   /* background: linear-gradient(135deg, rgb(96, 96, 165), rgb(124, 124, 179), rgb(148, 148, 200)); */
   background: linear-gradient(135deg, rgb(107, 70, 193), rgb(107, 70, 193), rgb(148, 148, 200));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   padding: 0 10px;
 }
 
@@ -30,10 +30,11 @@
 
 .skillsIcons {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
   justify-items: center;
-  padding: 1rem;
+  align-items: start;
+  padding: 0.5rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -45,10 +46,10 @@
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 1.5rem;
-  width: 130px;
-  height: 130px;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 100px;
+  height: 100px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -67,8 +68,8 @@
 }
 
 .icon img {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   margin-bottom: 0.5rem;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -90,44 +91,17 @@
 /* Tablet için responsive tasarım */
 @media (max-width: 1024px) {
   .skillsContainer {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem;
   }
 
   .skillsTitle {
-    font-size: 2.5rem;
-  }
-
-  .skillsIcons {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .skill {
-    width: 120px;
-    height: 120px;
-  }
-
-  .icon img {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-/* Mobil için responsive tasarım */
-@media (max-width: 768px) {
-  .skillsContainer {
-    padding: 2rem 0.5rem;
-  }
-
-  .skillsTitle {
-    font-size: 2rem;
+    font-size: 2.3rem;
     margin-bottom: 2rem;
   }
 
   .skillsIcons {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem;
-    padding: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1.25rem;
   }
 
   .skill {
@@ -137,15 +111,46 @@
   }
 
   .icon img {
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
+  }
+}
+
+/* Mobil için responsive tasarım */
+@media (max-width: 768px) {
+  .skillsContainer {
+    padding: 2rem 0.75rem;
+  }
+
+  .skillsTitle {
+    font-size: 2rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .skillsIcons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .skill {
+    width: 80px;
+    height: 80px;
+    padding: 0.5rem;
+  }
+
+  .icon img {
+    width: 40px;
+    height: 40px;
   }
 }
 
 /* Küçük mobil cihazlar için responsive tasarım */
 @media (max-width: 480px) {
   .skillsContainer {
-    padding: 1.5rem 0.3rem;
+    padding: 1.5rem 0.5rem;
   }
 
   .skillsTitle {
@@ -154,14 +159,15 @@
   }
 
   .skillsIcons {
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: repeat(2, minmax(80px, 1fr));
+    gap: 0.75rem;
+    padding: 0.25rem;
   }
 
   .skill {
-    width: 90px;
-    height: 90px;
-    padding: 0.8rem;
+    width: 80px;
+    height: 80px;
+    padding: 0.75rem;
   }
 
   .icon img {
@@ -170,6 +176,6 @@
   }
 
   .skillName {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }

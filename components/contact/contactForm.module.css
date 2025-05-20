@@ -3,16 +3,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: 24px 8px;
   width: 100%;
   min-height: 100vh;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.02);
 }
 
 .contentContainer {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 950px;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   overflow: hidden;
@@ -26,21 +27,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  padding: 8px;
   background: rgba(241, 241, 241, 0.3);
-  position: sticky;
-  top: 0;
-  height: 100%;
-  min-height: 400px;
+  min-height: 200px;
+  border-radius: 20px 0 0 20px;
 }
 
 .gifImage {
   max-width: 100%;
+  max-height: 100%;
   height: auto;
+  object-fit: contain;
   border-radius: 10px;
   transition: transform 0.3s ease;
-  object-fit: cover;
-  max-height: 500px;
 }
 
 .gifImage:hover {
@@ -48,16 +47,16 @@
 }
 
 .formContainer {
-  flex: 1.5;
-  padding: 40px;
+  flex: 1;
+  padding: 0px 20px;
   background: rgba(255, 255, 255, 0.95);
 }
 
 .pageTitle {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 30px;
+  margin-top: 20px;
   color: #333;
   background: linear-gradient(135deg, rgb(107, 70, 193), rgb(148, 148, 200));
   -webkit-background-clip: text;
@@ -66,7 +65,7 @@
 }
 
 .formGroup {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .formGroup label {
@@ -104,8 +103,8 @@
 
 .button {
   width: 200px;
-  padding: 14px;
-  font-size: 1.1rem;
+  padding: 12px;
+  font-size: 1 rem;
   background: linear-gradient(135deg, rgb(107, 70, 193), rgb(148, 148, 200));
   color: white;
   border: none;
@@ -113,8 +112,9 @@
   cursor: pointer;
   font-weight: 600;
   display: block;
-  margin: 30px auto;
+  margin: auto;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .button:hover {
@@ -146,6 +146,7 @@
   justify-content: center;
   gap: 10px;
   z-index: 1000;
+  
 }
 
 .popup.success {
@@ -189,7 +190,7 @@
   }
 
   .contentContainer {
-    max-width: 90%;
+    max-width: 98%;
   }
 
   .gifContainer {
@@ -202,16 +203,16 @@
   }
 
   .formContainer {
-    padding: 30px;
+    padding: 18px;
   }
 
   .pageTitle {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .button {
-    width: 180px;
-    font-size: 1rem;
+    width: 150px;
+    font-size: 0.9rem;
   }
 }
 
@@ -224,13 +225,14 @@
 
   .gifContainer {
     order: 2;
-    padding: 20px;
-    min-height: 250px;
-    position: relative;
+    padding: 15px;
+    min-height: 200px;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
   }
 
   .gifImage {
-    max-height: 300px;
+    max-height: 250px;
   }
 
   .formContainer {

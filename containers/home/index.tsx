@@ -76,7 +76,7 @@ const Home = () => {
           </button>
         </div>
 
-        <div id="about">
+        <div id="about" className={styles.aboutContainer}>
           <About />
         </div>
         

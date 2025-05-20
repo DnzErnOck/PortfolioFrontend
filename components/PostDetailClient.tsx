@@ -47,7 +47,7 @@ const PostDetailClient: React.FC<{ id: string }> = ({ id }) => {
   return (
     <div className={styles.postDetailContainer}>
       <button className={styles.backButton} onClick={() => router.back()}>
-        Geri
+        Back
       </button>
       <h1 className={styles.postTitle}>{post.title}</h1>
       <p className={styles.postDate}>

@@ -1,7 +1,7 @@
 .postListContainer {
     max-width: 900px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 50px 20px;
     font-family: Arial, sans-serif;
     color: #333;
   }
@@ -57,30 +57,35 @@
     padding: 20px;
     margin-bottom: 15px;
     border-radius: 8px;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
     background-color: #fff;
+    align-items: flex-start;
+    max-width: 100%;
+    position: relative;
+    cursor: pointer;
   }
   
   .postItem:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0;
   }
   
   .postImage {
-    width: 150px; /* Fixed width for the image */
-    height: 100px; /* Fixed height for consistency */
-    object-fit: cover; /* Ensures the image fits well */
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    min-height: 100px;
+    object-fit: cover;
     border-radius: 8px;
-    flex-shrink: 0; /* Prevents the image from shrinking */
+    flex-shrink: 0;
   }
-  
   
   .postContent {
-    flex: 1; /* Take up remaining space */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Prevent content overflow */
+    overflow: hidden;
   }
-  
   
   .postTitle {
     font-size: 22px;
@@ -94,21 +99,19 @@
   }
   
   .postPreview {
-    overflow: hidden; /* Ensures content does not overflow the container */
-    white-space: normal; /* Allows text to wrap to the next line */
-    display: -webkit-box; /* Required for multiline ellipsis */
-    -webkit-line-clamp: 2; /* Limits the text to 2 lines */
-    -webkit-box-orient: vertical; /* Required for multiline ellipsis */
-    /* Standard property for compatibility */
+    overflow: hidden;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     display: flex;
     flex-direction: column;
-    line-clamp: 2; /* Standard property */
-    text-overflow: ellipsis; /* Adds ellipsis for truncated text */
-    max-width: 100%; /* Adjusts to container size */
-    line-height: 1.5; /* Adds spacing between lines for readability */
-    height: calc(1.5em * 2); /* Line height * number of lines (2 in this case) */
+    line-clamp: 2;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    line-height: 1.5;
+    height: calc(1.5em * 2);
   }
-  
   
   .pagination {
     display: flex;
@@ -152,14 +155,7 @@
     font-size: 16px;
     color: #555;
   }
-  .postImage {
-    width: 100%;
-    max-width: 200px;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    object-fit: cover;
-  }
+  
   .sortButton {
     background: none;
     border: none;
@@ -177,26 +173,11 @@
   .sortButton:hover .sortIcon {
     color: #000000;
   }
+  
   .controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-  }
-  .postItem {
-    display: flex;
-    gap: 20px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    transition: box-shadow 0.3s ease;
-    background-color: #fff;
-    align-items: flex-start; /* Align image and content to the top */
-    max-width: 100%; /* Ensure it doesn't overflow */
-  }
-  
-  .postItem:hover {
-    background-color: #f0f0f0;
   }
   

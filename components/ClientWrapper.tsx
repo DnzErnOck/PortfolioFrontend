@@ -17,7 +17,7 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
         )}
         {/* Header sadece özel olmayan rotalarda */}
         {!isSpecialRoute && <Header />}
-        <main>{children}</main>
+        {children}
     </>
   );
 }

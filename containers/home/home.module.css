@@ -4,24 +4,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 80vh;
-  padding: 4rem 1rem;
+  min-height: 100vh;
+  padding: 6rem 1rem 4rem;
+  padding-top: 64px;
   text-align: center;
-  margin-top: 40px;
   width: 100%;
   max-width: 1400px;
-  margin: 40px auto 0;
+  margin: 0 auto;
+  overflow-y: auto;
 }
 
 .namePart {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   padding: 0 20px;
   max-width: 1200px;
   margin: 0 auto;
+  min-height: calc(100vh - 78px);
+  padding-top: 10vh;
+  text-align: left;
 }
 
 /* Hoş Geldiniz Metni */
@@ -31,6 +35,7 @@
   font-weight: bold;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  text-align: left;
 }
 
 /* Kullanıcı Adı */
@@ -44,9 +49,12 @@
   color: transparent;
   margin-bottom: 1.2rem;
   transition: all 0.3s ease-in-out;
-  line-height: 1.1;
+  line-height: 1.22;
   word-wrap: break-word;
   max-width: 100%;
+  text-align: left;
+  overflow: visible;
+  padding-bottom: 0.2em;
 }
 
 .nameText:hover::selection {
@@ -61,6 +69,8 @@
   margin: 0.4rem 0 1.5rem;
   font-style: italic;
   line-height: 1.4;
+  text-align: left;
+  min-height: 3rem;
 }
 
 /* About Section Container */
@@ -116,6 +126,7 @@
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
   margin-top: 1rem;
+  margin-bottom: 3rem;
 }
 
 .resumeButton:hover {
@@ -138,7 +149,7 @@
 /* Tablet için responsive tasarım */
 @media (max-width: 1024px) {
   .container {
-    padding: 3rem 1rem;
+    padding: 5rem 1rem 3rem;
   }
 
   .namePart {
@@ -147,6 +158,9 @@
 
   .nameText {
     font-size: 4rem;
+    line-height: 1.22;
+    overflow: visible;
+    padding-bottom: 0.2em;
   }
 
   .greetingText {
@@ -165,34 +179,43 @@
 /* Mobil için responsive tasarım */
 @media (max-width: 768px) {
   .container {
-    padding: 2rem 0.5rem;
-    margin-top: 20px;
+    padding: 4.5rem 0.5rem 2rem;
+    margin-top: 0;
+    padding-top: 56px;
   }
 
   .namePart {
-    padding: 0 10px;
     align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    padding-top: 4vh;
+    min-height: auto;
+    padding-bottom: 4vh;
+  }
+
+  .greetingText, .nameText, .typingText {
     text-align: center;
   }
 
   .nameText {
-    font-size: 3rem;
-    text-align: center;
+    font-size: 3.8rem;
+    line-height: 1.22;
+    overflow: visible;
+    padding-bottom: 0.2em;
   }
 
   .greetingText {
-    font-size: 1.5rem;
-    text-align: center;
+    font-size: 1.9rem;
   }
 
   .typingText {
-    font-size: 1.1rem;
-    text-align: center;
+    font-size: 1.4rem;
   }
 
   .resumeButton {
     padding: 0.6rem 1.5rem;
     font-size: 0.9rem;
+    margin-bottom: 4rem;
   }
 
   .downloadIcon {
@@ -204,30 +227,36 @@
 /* Küçük mobil cihazlar için responsive tasarım */
 @media (max-width: 480px) {
   .container {
-    padding: 1.5rem 0.3rem;
+    padding: 4rem 0.3rem 1.5rem;
   }
 
   .namePart {
     padding: 0 8px;
+    padding-top: 3vh;
+    padding-bottom: 5vh;
   }
 
   .nameText {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    line-height: 1.22;
+    overflow: visible;
+    padding-bottom: 0.2em;
   }
 
   .greetingText {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
   }
 
   .typingText {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin: 0.3rem 0 1rem;
   }
 
   .resumeButton {
     padding: 0.5rem 1.2rem;
     font-size: 0.85rem;
+    margin-bottom: 5rem;
   }
 
   .downloadIcon {
@@ -238,4 +267,9 @@
   #skill {
     margin-top: 3rem;
   }
+}
+
+.aboutContainer {
+  margin-top: 0;
+  width: 100%;
 }

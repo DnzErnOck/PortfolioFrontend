@@ -44,7 +44,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={interFontFamily.className}>
-      <body className="container flex flex-col min-h-screen relative overflow-hidden">
+      <body className="container flex flex-col min-h-screen relative">
         <ClientWrapper>
           {/* <Header /> */}
           <main>{children}</main>

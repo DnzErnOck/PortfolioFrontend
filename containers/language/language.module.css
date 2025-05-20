@@ -2,8 +2,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 70px;
 }
 
 /* Başlık Stili */
@@ -11,28 +9,33 @@
   font-size: 32px;
   font-weight: 700;
   color: #2c3e50;
-  text-align: left;
+  text-align: center;
   margin-bottom: 40px;
 }
 
 /* Dil Kartı */
 .languageItem {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   backdrop-filter: blur(8px); /* Blur efekti */
   background: rgba(255, 255, 255, 0.7); /* Şeffaf beyaz arka plan */
   border-radius: 12px;
-  padding: 20px 25px;
+  padding: 12px 18px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  width: 100%; /* Tam genişlik */
-  min-height: 80px; /* Eğitim kartıyla benzer yükseklik */
+  width: 100%;
+  max-width: 600px;
+  min-height: 70px;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.4); /* Hafif şeffaf çerçeve */
   color:#2b6cb0;
   margin-bottom: 10px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .languageItem:hover {
@@ -50,7 +53,9 @@
 /* Yıldızlar */
 .stars {
   display: flex;
+  flex-direction: row;
   gap: 5px;
+  margin-top: 8px;
 }
 
 /* Dolu Yıldız */

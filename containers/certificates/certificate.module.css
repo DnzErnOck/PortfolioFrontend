@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   height: auto;
-  padding:25px 20px;
+  padding:50px 20px;
 }
 
 /* 🔹 Başlık */
@@ -19,11 +19,18 @@
 /* 📜 Sertifika Grid */
 .certificatesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   width: 100%;
   max-width: 1400px;
   justify-content: center;
+  justify-items: center;
+}
+
+@media (max-width: 768px) {
+  .certificatesGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* 🏆 Sertifika Kartı */
@@ -34,7 +41,8 @@
   padding: 30px;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   height: auto;
-  max-width: 500px;
+  max-width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

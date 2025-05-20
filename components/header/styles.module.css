@@ -1,26 +1,26 @@
 /* Genel Header */
 .header {
-  background: linear-gradient(180deg, rgba(240, 186, 216, 0.432), rgba(255, 255, 255, 0));
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  transition: transform 0.3s ease, background-color 0.3s ease; /* Scroll animasyonu */
-  position: sticky;
-}
-
-/* Scroll olduğunda küçülme efekti */
-.header.scrolled {
-  transform: translateY(-10px); /* Yumuşak yukarı kayma */
-  background: rgba(240, 186, 216, 0.7); /* Daha koyu arka plan */
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Daha belirgin gölge */
+  background: rgba(255, 255, 255, 0.54);
+  backdrop-filter: blur(4px);
+/*   border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+  height: 50px;
+  width: 100%;
 }
 
 /* Header Wrapper */
 .headerWrapper {
+  max-width: 1400px;
+  height: 100%;
+  margin: 0 auto;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  position: relative;
+  padding: 0 1rem;
 }
 
 /* Logo */
@@ -41,7 +41,7 @@
   transform: scale(1.1); /* Hafif büyüme */
 }
 
-/* Menu Button */
+/* Comment out mobile menu button styles
 .menuButton {
   display: none;
   background: none;
@@ -51,33 +51,33 @@
   cursor: pointer;
   padding: 5px;
   transition: color 0.3s ease;
+  z-index: 1001;
 }
 
 .menuButton:hover {
   color: #c13b6a;
 }
+*/
 
 /* Navigation Menu */
 .navigationMenu {
   display: flex;
-  gap: 48px;
+  gap: 24px;
   color: #494949;
-  font-weight: bold;
-  letter-spacing: 1.8px;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  height: 100%;
+  align-items: center;
 }
 
 /* Base link styles */
 .navLink {
-  all: initial;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  cursor: pointer;
-  position: relative;
+  font-size: 0.9rem;
   color: #494949;
   text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 /* Hover effect */
@@ -89,17 +89,16 @@
 .navLink:after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
-  background-color: transparent;
-  transition: all 0.3s ease;
+  background-color: #c13b6a;
+  transition: width 0.3s ease;
 }
 
 .navLink:hover:after {
   width: 100%;
-  background-color: #c13b6a;
 }
 
 /* Active state */
@@ -108,13 +107,7 @@
 }
 
 .active:after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
   width: 100%;
-  height: 2px;
-  background-color: #c13b6a;
 }
 
 /* Reset any default or browser-specific styles that might affect the courses link */
@@ -130,50 +123,128 @@
   width: 100% !important;
 }
 
+/* Comment out close button styles
+.closeButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #c13b6a;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  z-index: 3001;
+}
+*/
+
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .navigationMenu {
-    gap: 24px;
+    gap: 20px;
+  }
+  
+  .navLink {
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 768px) {
+  .header {
+    height: 45px;
+  }
+
+  .navigationMenu {
+    gap: 16px;
+  }
+
+  .navLink {
+    font-size: 0.8rem;
+  }
+}
+
+/* Comment out mobile menu styles
+@media (max-width: 768px) {
+  .header {
+    height: 56px;
+    min-height: 56px;
+  }
+
   .menuButton {
     display: block;
-    z-index: 1001;
+    position: fixed;
+    right: 20px;
+    top: 15px;
   }
 
   .navigationMenu {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 400px;
+    right: -100vw;
+    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
     flex-direction: column;
-    padding: 80px 40px;
-    gap: 20px;
+    padding: 70px 24px 24px 24px;
+    gap: 32px;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
+    align-items: flex-start;
+    z-index: 3000;
+    display: none;
+    padding-top: 70px;
+    justify-content: flex-start;
+    flex-grow: 0;
   }
 
   .navigationMenu.showMenu {
     right: 0;
+    display: flex;
+  }
+
+  .navLink {
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 12px 0;
   }
 
   .logo {
-    font-size: 40px;
+    font-size: 36px;
+  }
+
+  .closeButton { 
+    display: block;
+    position: absolute; 
+    top: 15px; 
+    right: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .navigationMenu {
-    width: 100%;
-    padding: 80px 20px;
+    width: 100vw;
+    max-width: 100vw;
+    padding: 80px 10px 10px 10px;
+  }
+
+  .menuButton {
+    right: 15px;
+    top: 12px;
+  }
+
+  .navLink {
+    font-size: 1rem;
+    padding: 10px 0;
   }
 
   .logo {
     font-size: 32px;
   }
+
+  .closeButton {
+    top: 12px;
+    right: 15px;
+  }
 }
+*/
