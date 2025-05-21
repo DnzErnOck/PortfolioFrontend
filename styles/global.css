@@ -14,14 +14,60 @@ body {
 html {   
   scroll-behavior: smooth;
   height: 100%;
+  width: 100%;
 }
 
-/* Add padding to main content to prevent overlap with header */
-main {
-  /* padding-top: 50px; */
-  min-height: calc(100vh - 50px);
-  position: relative;
-  z-index: 1;
+/* Reset stacking context for common layout elements */
+main,
+.container,
+section,
+article,
+aside,
+nav,
+header:not(.header),
+footer,
+.pageContainer,
+.contentContainer,
+.aboutSection,
+.formContainer,
+.namePart,
+.skillsContainer,
+.timeline,
+.timelineItem,
+.card,
+.cardContainer,
+.cardGrid,
+.educationItem,
+.experienceItem,
+.popup,
+.modal,
+[class*="pageContainer"],
+[class*="contentContainer"],
+[class*="aboutSection"],
+[class*="formContainer"],
+[class*="namePart"],
+[class*="skillsContainer"],
+[class*="timeline"],
+[class*="timelineItem"],
+[class*="card"],
+[class*="cardContainer"],
+[class*="cardGrid"],
+[class*="educationItem"],
+[class*="experienceItem"],
+[class*="popup"],
+[class*="modal"],
+[class*="home_container"],
+[class*="experience_container"],
+[class*="certificate_certificatesContainer"],
+[class*="certificate_certificateCard"],
+[class*="page_pageContainer"],
+[class*="postList_postListContainer"] {
+  position: static !important;
+  z-index: auto !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
 }
 
 div[data-nextjs-scroll-focus-boundary] {
@@ -33,8 +79,8 @@ div[data-nextjs-scroll-focus-boundary] {
   grid-template-columns: 1fr min(1440px, 94%) 1fr;
   grid-template-rows: 50px auto 60px;
   /* min-height: 100vh; */
-  position: relative;
-  z-index: 1;
+  position: static;
+  z-index: auto;
 }
 
 .container > * {
@@ -64,7 +110,6 @@ body.loading {
   }
 }
 
-/* Genel Blob Stilleri */
 .blob {
   position: fixed;
   border-radius: 50%;
@@ -72,7 +117,7 @@ body.loading {
   filter: blur(20px);
   opacity: 0.4;
   animation: blob 8s infinite;
-  z-index: 0;
+  z-index: -1; /* Ensure blobs are behind all content */
   pointer-events: none;
 }
 
@@ -102,4 +147,20 @@ body.loading {
   height: 250px;
   background: linear-gradient(to bottom, #a78bfa, #c4b5fd);
   animation-delay: 4s;
+}
+
+/* Remove duplicated stacking context reset from previous attempts if any */
+
+body.menu-open > *:not(.header):not(.mobileMenuOverlay) {
+  pointer-events: none !important;
+  user-select: none !important;
+  opacity: 0.2 !important;
+  filter: blur(2px) !important;
+}
+body.menu-open .mobileMenuOverlay,
+body.menu-open .mobileMenuOverlay * {
+  filter: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  user-select: auto !important;
 }

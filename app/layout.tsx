@@ -5,7 +5,7 @@ import ClientWrapper from "@/components/ClientWrapper";
 import { UserService } from "@/services/userService";
 import { Metadata } from "next";
 
-const interFontFamily = Inter({ subsets: ["latin"] });
+const interFontFamily = Inter({ subsets: ["latin", "latin-ext"] });
 
 // Layout-level metadata generation
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,7 +43,7 @@ export default async function RootLayout({
 
 
   return (
-    <html lang="en" className={interFontFamily.className}>
+    <html lang="tr" className={interFontFamily.className}>
       <body className="container flex flex-col min-h-screen relative">
         <ClientWrapper>
           {/* <Header /> */}
