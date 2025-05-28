@@ -185,67 +185,70 @@
   }
 
   .namePart {
-    align-items: center;
+    min-height: calc(100vh - 190px);
     text-align: center;
-    justify-content: flex-start;
-    padding-top: 4vh;
-    min-height: auto;
-    padding-bottom: 4vh;
+    padding: 0 15px;
   }
 
   .greetingText, .nameText, .typingText {
     text-align: center;
   }
 
+  .greetingText {
+    font-size: 1.9rem;
+    margin-bottom: 2rem;
+  }
+
   .nameText {
     font-size: 3.8rem;
     line-height: 1.22;
     overflow: visible;
-    padding-bottom: 0.2em;
-  }
-
-  .greetingText {
-    font-size: 1.9rem;
+    padding-bottom: 0.5em;
+    margin-bottom: 2rem;
   }
 
   .typingText {
     font-size: 1.4rem;
+    margin-bottom: 2.5rem;
   }
 
   .resumeButton {
     padding: 0.6rem 1.5rem;
     font-size: 0.9rem;
-    margin-bottom: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
   }
 
   .downloadIcon {
     width: 18px;
     height: 18px;
   }
+
+  .aboutContainer {
+    margin-top: 2rem;
+  }
 }
 
 /* Küçük mobil cihazlar için responsive tasarım */
 @media (max-width: 480px) {
   .container {
-    padding: 4rem 0.3rem 1.5rem;
+    padding: 7rem 0.3rem 1.5rem;
   }
 
   .namePart {
-    padding: 0 8px;
-    padding-top: 3vh;
-    padding-bottom: 5vh;
+    padding: 0 15px;
   }
 
   .nameText {
     font-size: 2.8rem;
     line-height: 1.22;
     overflow: visible;
-    padding-bottom: 0.2em;
+    padding-bottom: 0.5em;
   }
 
   .greetingText {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.8rem;
   }
 
   .typingText {
@@ -256,7 +259,6 @@
   .resumeButton {
     padding: 0.5rem 1.2rem;
     font-size: 0.85rem;
-    margin-bottom: 5rem;
   }
 
   .downloadIcon {

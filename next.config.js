@@ -13,6 +13,6 @@ const nextConfig = {
     return config;
   },
 };
-console.log("NEXT_PUBLIC_API_URL in browser:", process.env.NEXT_PUBLIC_API_URL);
+// console.log("NEXT_PUBLIC_API_URL in browser:", process.env.NEXT_PUBLIC_API_URL);
 
 export default nextConfig;

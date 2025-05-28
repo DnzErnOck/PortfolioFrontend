@@ -45,7 +45,7 @@ const PostList: React.FC = () => {
     try {
       const data = await PostService.getAll(page - 1, 3, search, sort, true);
       setPosts(data.content);
-      console.log("data", data.content);
+      // console.log("data", data.content);
       setTotalPages(data.totalPages);
     } catch (err) {
       setError("Gönderiler alınamadı. Lütfen tekrar deneyin.");

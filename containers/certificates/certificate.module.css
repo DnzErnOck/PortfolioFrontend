@@ -5,6 +5,7 @@
   align-items: center;
   height: auto;
   padding:50px 20px;
+  overflow: visible !important;
 }
 
 /* 🔹 Başlık */
@@ -30,6 +31,9 @@
 @media (max-width: 768px) {
   .certificatesGrid {
     grid-template-columns: 1fr;
+  }
+  .certificatesTitle {
+    font-size: 1.5rem;
   }
 }
 
@@ -92,138 +96,128 @@
   display: none;
 }
 
-/* 🎖️ Sertifika Görüntüleme Butonu */
-.viewCertificateButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: 12px;
-  padding: 8px 20px;
-  background: #f3f3f3; /* Buton rengi düz */
-  color: #333;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.2s ease-in-out;
-  font-size: 1rem;
-  border: 1px solid #d1d1d1;
-  cursor: pointer;
-}
-
-/* Hover Efekti */
-.viewCertificateButton:hover {
-  background: #e1e1e1;
-  border-color: #c1c1c1;
-}
-
-/* Buton devre dışı */
-.viewCertificateButton:disabled {
-  background: #f8f8f8;
-  cursor: not-allowed;
-}
-
-/* 👁️ Eye İkonu */
-.eyeIcon {
-  width: 18px;
-  height: 18px;
-  margin-right: 8px;
-  opacity: 0.7;
-}
-
-
 /* 🌟 Sertifika Resmi Konteyner */
 .certificateImageWrapper {
-  position: relative;
   width: 100%;
-  height: 230px;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  height: 220px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   background: #f8f8f8;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 18px;
 }
 
-/* 🌟 Hover Olduğunda Karanlık Efekt */
-.certificateImageWrapper:hover .certificateImage {
-  filter: brightness(0.5);
-}
-
-/* 🌟 Göz İkonu Hover'da Çıkacak */
-.imageOverlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.certificateImageWrapper:hover .imageOverlay {
-  opacity: 1;
-}
-
-.overlayEyeIcon {
-  width: 40px;
-  height: 40px;
-  color: white;
-  opacity: 0.9;
-}
-
-/* 🖼️ Sertifika Resmi */
 .certificateImage {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  border-radius: 12px;
+  display: block;
+  border-radius: 6px;
+  box-shadow: none;
 }
 
 /* 🎖️ Pop-up Modal */
 .modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  position: fixed !important;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(30, 30, 30, 0.55);
+  backdrop-filter: blur(4px);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 999;
+  justify-content: center;
+  z-index: 9999 !important;
+  animation: modalFadeIn 0.25s;
 }
 
-/* 🎖️ Modal İçeriği */
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .modalContent {
   position: relative;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  max-height: 90%;
+  background: rgba(255,255,255,0.98);
+  max-width: 92vw;
+  max-height: 85vh;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  border-radius: 18px;
+  padding: 0;
+  border: 1.5px solid #e0e0e0;
+  animation: modalScaleIn 0.22s;
 }
 
-/* 🖼️ Büyük Resim */
+@keyframes modalScaleIn {
+  from { transform: scale(0.95); }
+  to { transform: scale(1); }
+}
+
 .modalImage {
-  max-width: 100%;
+  max-width: 90vw;
   max-height: 80vh;
-  border-radius: 10px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  border: 2px solid #fff;
 }
 
-/* ❌ Kapat Butonu */
 .closeButton {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  background: none;
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,0.92);
   border: none;
-  font-size: 30px;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.7rem;
   cursor: pointer;
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+}
+.closeButton:hover {
+  background: #fbc2eb;
+  color: #6b46c1;
+}
+
+@media (max-width: 600px) {
+  .certificateImageWrapper {
+    height: 140px;
+    margin-bottom: 10px;
+  }
+  .certificateImage {
+    max-height: 120px;
+  }
+  .modalContent {
+    max-width: 99vw;
+    max-height: 70vh;
+    border-radius: 10px;
+  }
+  .modalImage {
+    max-width: 98vw;
+    max-height: 60vh;
+    border-radius: 8px;
+  }
+  .closeButton {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    top: 8px;
+    right: 8px;
+  }
 }

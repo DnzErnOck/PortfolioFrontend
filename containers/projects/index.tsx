@@ -46,7 +46,7 @@ const ProjectContainer: React.FC = () => {
           className={`${styles.pageButton} ${page === 1 ? styles.disabled : ""}`}
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
         >
-          ⬅ Previous
+          <span className={styles.arrow}>⬅</span> Previous
         </button>
 
         {Array.from({ length: totalPages }, (_, index) => (
@@ -67,7 +67,7 @@ const ProjectContainer: React.FC = () => {
           }`}
           onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
         >
-          Next ➡
+          Next <span className={styles.arrow}>➡</span>
         </button>
       </div>
     </div>
